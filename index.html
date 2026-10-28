@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>وَرِيـد | المنظومة الوطنية للتبرع بالدم</title>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #dc2626;
+            --primary-hover: #b91c1c;
+            --bg: #f8fafc;
+            --surface: #ffffff;
+            --text-main: #0f172a;
+            --text-muted: #64748b;
+            --border: #e2e8f0;
+            --success: #10b981;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Tajawal', sans-serif;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body {
+            background-color: var(--bg);
+            color: var(--text-main);
+            min-height: 100vh;
+            padding-bottom: 50px;
+        }
+
+        /* شريط الطوارئ العاجل */
+        .sos-bar {
+            background: linear-gradient(135deg, #b91c1c, #7f1d1d);
+            color: #ffffff;
+            padding: 12px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            font-size: 0.95rem;
+            font-weight: 700;
+            box-shadow: 0 4px 15px rgba(185, 28, 28, 0.25);
+        }
+
+        .pulse-dot {
+            width: 10px;
+            height: 10px;
+            background-color: #ef4444;
+            border-radius: 50%;
+            outline: 3px solid rgba(239, 68, 68, 0.4);
+            animation: pulse 1.4s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(0.9); opacity: 0.8; }
+            50% { transform: scale(1.4); opacity: 1; }
+            100% { transform: scale(0.9); opacity: 0.8; }
+        }
+
+        .container {
+            max-width: 850px;
+            margin: 24px auto;
+            padding: 0 16px;
+        }
+
+        /* ترويسة الصفحة */
+        .header-card {
+            background: var(--surface);
+            padding: 28px 20px;
+            border-radius: 20px;
+            text-align: center;
+            border: 1px solid var(--border);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+            margin-bottom: 20px;
+        }
+
+        .brand-title {
+            color: var(--primary);
+            font-size: 2.2rem;
+            font-weight: 900;
+            letter-spacing: -0.5px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .brand-subtitle {
+            color: var(--text-muted);
+            margin-top: 6px;
+            font-size: 1rem;
+        }
+
+        .action-btns {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            margin-top: 18px;
+        }
+
+        .btn-register-open {
+            background: #fee2e2;
+            color: var(--primary);
+            border: 1px solid #fecaca;
+            padding: 10px 22px;
+            border-radius: 12px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .btn-register-open:hover {
+            background: var(--primary);
+            color: #ffffff;
+        }
+
+        /* أدوات الفلترة والبحث */
+        .filter-panel {
+            background: var(--surface);
+            padding: 20px;
+            border-radius: 18px;
+            border: 1px solid var(--border);
+            margin-bottom: 24px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.02);
+        }
+
+        .blood-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 8px;
+            margin-bottom: 16px;
+        }
+
+        .blood-btn {
+            background: #f1f5f9;
+            border: 1.5px solid var(--border);
+            padding: 10px 0;
+            border-radius: 10px;
+            font-weight: 900;
+            font-size: 1.1rem;
+            color: var(--text-main);
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .blood-btn.active {
+            background: var(--primary);
+            color: white;
+            border-color: var(--primary);
+            box-shadow: 0 4px 10px rgba(220, 38, 38, 0.3);
+        }
+
+        .search-inputs {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            margin-bottom: 14px;
+        }
+
+        select, input {
+            width: 100%;
+            padding: 12px 14px;
+            border: 1.5px solid var(--border);
+            border-radius: 10px;
+            font-size: 0.95rem;
+            outline: none;
+            background: #ffffff;
+        }
+
+        select:focus, input:focus {
+            border-color: var(--primary);
+        }
+
+        .btn-main-search {
+            width: 100%;
+            background: var(--primary);
+            color: white;
+            padding: 13px;
+            border: none;
+            border-radius: 12px;
+            font-size: 1.05rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .btn-main-search:hover {
+            background: var(--primary-hover);
+        }
+
+        /* قائمة المتبرعين */
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 14px;
+            padding: 0 4px;
+            font-weight: 700;
+            color: var(--text-muted);
+        }
+
+        .donor-card {
+            background: var(--surface);
+            padding: 16px 20px;
+            border-radius: 16px;
+            border: 1px solid var(--border);
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.02);
+        }
+
+        .donor-details h4 {
+            font-size: 1.15rem;
+            color: var(--text-main);
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .donor-details p {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            margin-top: 4px;
+        }
+
+        .badge-blood {
+            background: #fee2e2;
+            color: var(--primary);
+            font-weight: 900;
+            font-size: 1.3rem;
+            padding: 8px 16px;
+            border-radius: 12px;
+            min-width: 65px;
+            text-align: center;
+        }
+
+        .actions-cell {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .btn-call {
+            background: var(--success);
+            color: white;
+            text-decoration: none;
+            padding: 10px 16px;
+            border-radius: 10px;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 0.95rem;
+        }
+
+        .btn-call:hover {
+            background: #059669;
+        }
+
+        .empty-placeholder {
+            background: var(--surface);
+            border: 1px dashed var(--border);
+            border-radius: 16px;
+            text-align: center;
+            padding: 40px 20px;
+            color: var(--text-muted);
+        }
+
+        /* نافذة إضافة متبرع جديد (Modal) */
+        .modal {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(15, 23, 42, 0.6);
+            backdrop-filter: blur(4px);
+            align-items: center;
+            justify-content: center;
+            padding: 16px;
+            z-index: 1000;
+        }
+
+        .modal.active {
+            display: flex;
+        }
+
+        .modal-body {
+            background: #ffffff;
+            width: 100%;
+            max-width: 480px;
+            border-radius: 20px;
+            padding: 24px;
+            position: relative;
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .modal-header h3 {
+            font-size: 1.3rem;
+            color: var(--primary);
+        }
+
+        .btn-close {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--text-muted);
+        }
+
+        .form-group {
+            margin-bottom: 14px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 6px;
+            font-weight: 700;
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 600px) {
+            .search-inputs {
+                grid-template-columns: 1fr;
+            }
+            .donor-card {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 14px;
+            }
+            .actions-cell {
+                width: 100%;
+                justify-content: space-between;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- شريط الطوارئ -->
+    <div class="sos-bar">
+        <div class="pulse-dot"></div>
+        <span id="sosMsg">مستشفى الزاوية التعليمي (قسم الحوادث): مطلوب وحدات دم فصيلة O- و AB+ عاجلاً</span>
+    </div>
+
+    <div class="container">
+        <!-- ترويسة المنظومة -->
+        <header class="header-card">
+            <h1 class="brand-title">وَرِيـد <span>🩸</span></h1>
+            <p class="brand-subtitle">المنظومة الوطنية السحابية للتبرع بالدم وربط المصارف والمستشفيات</p>
+            <div class="action-btns">
+                <button class="btn-register-open" onclick="openModal()">+ تسجيل متبرع جديد</button>
+            </div>
+        </header>
+
+        <!-- لوحة البحث والفلترة -->
+        <div class="filter-panel">
+            <div class="blood-grid">
+                <button type="button" class="blood-btn" onclick="selectBlood(this, 'O+')">O+</button>
+                <button type="button" class="blood-btn" onclick="selectBlood(this, 'O-')">O-</button>
+                <button type="button" class="blood-btn" onclick="selectBlood(this, 'A+')">A+</button>
+                <button type="button" class="blood-btn" onclick="selectBlood(this, 'A-')">A-</button>
+                <button type="button" class="blood-btn" onclick="selectBlood(this, 'B+')">B+</button>
+                <button type="button" class="blood-btn" onclick="selectBlood(this, 'B-')">B-</button>
+                <button type="button" class="blood-btn" onclick="selectBlood(this, 'AB+')">AB+</button>
+                <button type="button" class="blood-btn" onclick="selectBlood(this, 'AB-')">AB-</button>
+            </div>
+
+            <div class="search-inputs">
+                <select id="cityFilter">
+                    <option value="">جميع المدن</option>
+                    <option value="الزاوية">الزاوية</option>
+                    <option value="طرابلس">طرابلس</option>
+                    <option value="صبراتة">صبراتة</option>
+                    <option value="صرمان">صرمان</option>
+                    <option value="جنزور">جنزور</option>
+                    <option value="الزنتان">الزنتان</option>
+                    <option value="مصراتة">مصراتة</option>
+                    <option value="بنغازي">بنغازي</option>
+                </select>
+                <input type="text" id="keywordFilter" placeholder="بحث بالرقم أو الرمز...">
+            </div>
+
+            <button class="btn-main-search" onclick="searchDonors()">بحث مباشر</button>
+        </div>
+
+        <!-- نتائج البحث -->
+        <div class="section-header">
+            <span>المتبرعون الجاهزون للتواصل</span>
+            <span id="donorsCount">0 متبرع</span>
+        </div>
+
+        <div id="donorsContainer">
+            <div class="empty-placeholder">
+                جاري فحص الاتصال وقاعدة البيانات...
+            </div>
+        </div>
+    </div>
+
+    <!-- نافذة تسجيل متبرع جديد -->
+    <div class="modal" id="registerModal">
+        <div class="modal-body">
+            <div class="modal-header">
+                <h3>تسجيل بيانات متبرع جديد</h3>
+                <button class="btn-close" onclick="closeModal()">×</button>
+            </div>
+            <form id="addDonorForm" onsubmit="submitDonor(event)">
+                <div class="form-group">
+                    <label>فصيلة الدم:</label>
+                    <select id="regBlood" required>
+                        <option value="O+">O+</option>
+                        <option value="O-">O-</option>
+                        <option value="A+">A+</option>
+                        <option value="A-">A-</option>
+                        <option value="B+">B+</option>
+                        <option value="B-">B-</option>
+                        <option value="AB+">AB+</option>
+                        <option value="AB-">AB-</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>المدينة:</label>
+                    <input type="text" id="regCity" placeholder="مثال: الزاوية" required>
+                </div>
+                <div class="form-group">
+                    <label>رقم الهاتف:</label>
+                    <input type="tel" id="regPhone" placeholder="09xxxxxxxx" required>
+                </div>
+                <div class="form-group">
+                    <label>أوقات التوفر:</label>
+                    <select id="regTime">
+                        <option value="24/7">متاح 24/7 طوارئ</option>
+                        <option value="مساء فقط">فترة مسائية فقط</option>
+                        <option value="صباحاً فقط">فترة صباحية فقط</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn-main-search" style="margin-top: 10px;">حفظ في المنظومة</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        let selectedBlood = '';
+
+        function selectBlood(btn, blood) {
+            if (selectedBlood === blood) {
+                selectedBlood = '';
+                btn.classList.remove('active');
+            } else {
+                document.querySelectorAll('.blood-btn').forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                selectedBlood = blood;
+            }
+            searchDonors();
+        }
+
+        async function searchDonors() {
+            const city = document.getElementById('cityFilter').value;
+            const keyword = document.getElementById('keywordFilter').value;
+            const container = document.getElementById('donorsContainer');
+            
+            container.innerHTML = '<div class="empty-placeholder">جاري جلب البيانات...</div>';
+
+            let query = '/api/donors?readiness=ready';
+            if (selectedBlood) query += `&blood=${encodeURIComponent(selectedBlood)}`;
+            if (city) query += `&city=${encodeURIComponent(city)}`;
+            if (keyword) query += `&keyword=${encodeURIComponent(keyword)}`;
+
+            try {
+                const res = await fetch(query);
+                if (!res.ok) throw new Error('Network error');
+                const data = await res.json();
+
+                if (data.success && data.donors && data.donors.length > 0) {
+                    document.getElementById('donorsCount').innerText = `${data.count} متبرع`;
+                    container.innerHTML = data.donors.map(d => `
+                        <div class="donor-card">
+                            <div class="donor-details">
+                                <h4>${d.code} - ${d.city} ${d.is_verified ? '<span title="تم التحقق من الفصيلة">🛡️</span>' : ''}</h4>
+                                <p>التواجد: ${d.preferred_time || '24/7'}</p>
+                            </div>
+                            <div class="actions-cell">
+                                <div class="badge-blood">${d.blood_type}</div>
+                                <a href="tel:${d.phone}" class="btn-call">📞 اتصال</a>
+                            </div>
+                        </div>
+                    `).join('');
+                } else {
+                    document.getElementById('donorsCount').innerText = '0 متبرع';
+                    container.innerHTML = '<div class="empty-placeholder">لا يوجد متبرعون متاحون حالياً بهذا التصنيف.</div>';
+                }
+            } catch (err) {
+                document.getElementById('donorsCount').innerText = '0 متبرع';
+                container.innerHTML = `
+                    <div class="empty-placeholder">
+                        <p style="color: var(--primary); font-weight: 700; margin-bottom: 6px;">جاهز لاستقبال أول متبرع</p>
+                        <p>اضغط على "+ تسجيل متبرع جديد" لإضافة أول كشف في المنظومة السحابية.</p>
+                    </div>
+                `;
+            }
+        }
+
+        function openModal() {
+            document.getElementById('registerModal').classList.add('active');
+        }
+
+        function closeModal() {
+            document.getElementById('registerModal').classList.remove('active');
+        }
+
+        async function submitDonor(e) {
+            e.preventDefault();
+            const payload = {
+                blood: document.getElementById('regBlood').value,
+                city: document.getElementById('regCity').value,
+                phone: document.getElementById('regPhone').value,
+                preferredTime: document.getElementById('regTime').value,
+                isReady: true
+            };
+
+            try {
+                const res = await fetch('/api/donors', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+
+                if (res.ok) {
+                    alert('تم تسجيل المتبرع بنجاح في قاعدة البيانات!');
+                    closeModal();
+                    document.getElementById('addDonorForm').reset();
+                    searchDonors();
+                } else {
+                    alert('حدث خطأ أثناء حفظ البيانات، يرجى المحاولة لاحقاً.');
+                }
+            } catch (err) {
+                alert('فشل الاتصال بالخادم، تأكد من إعدادات Vercel.');
+            }
+        }
+
+        window.onload = searchDonors;
+    </script>
+</body>
+</html>
