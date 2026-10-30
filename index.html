@@ -212,7 +212,7 @@
       font-weight: 500;
     }
 
-    /* شريط الإحصائيات الحية */
+    /* شريط الإحصائيات الحية (مطابق للتصميم النظيف) */
     .kpi-grid {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
@@ -448,7 +448,7 @@
       opacity: 0.85;
     }
 
-    /* لوحة البحث والتصفية */
+    /* لوحة البحث والتصفية (مطابقة للتصميم النظيف 2x2) */
     .advanced-filter-box {
       background: var(--bg-subtle);
       border: 1px solid var(--border-color);
@@ -957,6 +957,7 @@
       color: var(--text-muted);
     }
 
+    /* كشف الطباعة الخاص بالإدارة فقط */
     #printableRosterSection { display: none; }
     @media print {
       body * { visibility: hidden; }
@@ -986,7 +987,7 @@
 </head>
 <body>
 
-  <!-- الشريط الحكومي العلوي -->
+  <!-- الشريط الحكومي العلوي (نفس التصميم الأصلي النظيف) -->
   <div class="gov-topbar">
     <div class="gov-topbar-inner">
       <div class="gov-badge">
@@ -1000,7 +1001,7 @@
     </div>
   </div>
 
-  <!-- الهيدر الرئيسي للمنصة -->
+  <!-- الهيدر الرئيسي (نفس التصميم الأصلي في الصورة 247) -->
   <header class="main-header">
     <div class="header-container">
       <div class="brand-row">
@@ -1031,14 +1032,14 @@
           <span class="kpi-lbl">🟢 جاهزون للتبرع الفوري</span>
         </div>
         <div class="kpi-card">
-          <span class="kpi-val" id="kpiBanks">12</span>
+          <span class="kpi-val" id="kpiBanks">8</span>
           <span class="kpi-lbl">🏥 مصارف الدم المركزية المربوطة</span>
         </div>
       </div>
     </div>
   </header>
 
-  <!-- شريط نداءات الاستغاثة العاجلة -->
+  <!-- شريط نداء الاستغاثة العاجل -->
   <div class="sos-banner" id="publicSosBanner">
     <div class="sos-banner-inner">
       <span class="sos-tag">🚨 نداء طوارئ عاجل</span>
@@ -1049,7 +1050,7 @@
 
   <div class="container">
     
-    <!-- أزرار التنقل الرئيسية -->
+    <!-- أزرار التنقل الـ 4 الأصلية -->
     <input type="radio" name="main_nav" id="tab-search" class="tab-radio" checked>
     <input type="radio" name="main_nav" id="tab-banks" class="tab-radio">
     <input type="radio" name="main_nav" id="tab-compat" class="tab-radio">
@@ -1062,7 +1063,7 @@
       <label for="tab-reg" class="nav-label">➕ تسجيل متبرع (بكود سري)</label>
     </div>
 
-    <!-- 1: محرك البحث الفوري -->
+    <!-- ================= 1: محرك البحث الفوري (نفس شكل الصورة 247 تماماً) ================= -->
     <div id="view-search" class="view-box">
       <div class="card">
         <div class="section-head">
@@ -1081,47 +1082,15 @@
             <div class="form-group">
               <label>📍 تصفية حسب المدينة:</label>
               <select id="filterCity" onchange="window.renderDonors()">
-                <option value="">كل المدن والمناطق الليبية</option>
-                <!-- الساحل الغربي والجبل -->
+                <option value="">كل المدن الليبية</option>
                 <option value="الزاوية">الزاوية</option>
                 <option value="صرمان">صرمان</option>
                 <option value="صبراتة">صبراتة</option>
                 <option value="زوارة">زوارة</option>
-                <option value="العجيلات">العجيلات</option>
-                <option value="الجميل">الجميل</option>
-                <option value="رقدالين">رقدالين</option>
-                <option value="غريان">غريان</option>
-                <option value="يفرن">يفرن</option>
-                <option value="الزنتان">الزنتان</option>
-                <option value="جادو">جادو</option>
-                <option value="نالوت">نالوت</option>
-                <!-- العاصمة والوسطى -->
                 <option value="طرابلس">طرابلس</option>
-                <option value="جنزور">جنزور</option>
-                <option value="تاجوراء">تاجوراء</option>
-                <option value="ترهونة">ترهونة</option>
-                <option value="مسلاتة">مسلاتة</option>
-                <option value="الخمس">الخمس</option>
-                <option value="زليتن">زليتن</option>
                 <option value="مصراتة">مصراتة</option>
-                <option value="سرت">سرت</option>
-                <option value="بني وليد">بني وليد</option>
-                <!-- المنطقة الشرقية -->
                 <option value="بنغازي">بنغازي</option>
-                <option value="المرج">المرج</option>
-                <option value="البيضاء">البيضاء</option>
-                <option value="شحات">شحات</option>
-                <option value="درنة">درنة</option>
-                <option value="طبرق">طبرق</option>
-                <option value="إجدابيا">إجدابيا</option>
-                <option value="الكفرة">الكفرة</option>
-                <!-- المنطقة الجنوبية -->
                 <option value="سبها">سبها</option>
-                <option value="أوباري">أوباري</option>
-                <option value="مرزق">مرزق</option>
-                <option value="غات">غات</option>
-                <option value="براك الشاطئ">براك الشاطئ</option>
-                <option value="الجفرة (هون/ودان)">الجفرة (هون/ودان)</option>
               </select>
             </div>
 
@@ -1172,7 +1141,7 @@
       </div>
     </div>
 
-    <!-- 2: مخزون مصارف الدم -->
+    <!-- ================= 2: مخزون مصارف الدم ================= -->
     <div id="view-banks" class="view-box">
       <div class="card">
         <div class="section-head">
@@ -1183,19 +1152,9 @@
               <option value="الزاوية">الزاوية</option>
               <option value="صرمان">صرمان</option>
               <option value="صبراتة">صبراتة</option>
-              <option value="زوارة">زوارة</option>
-              <option value="العجيلات">العجيلات</option>
               <option value="طرابلس">طرابلس</option>
-              <option value="غريان">غريان</option>
-              <option value="الزنتان">الزنتان</option>
-              <option value="الخمس">الخمس</option>
-              <option value="زليتن">زليتن</option>
               <option value="مصراتة">مصراتة</option>
-              <option value="سرت">سرت</option>
               <option value="بنغازي">بنغازي</option>
-              <option value="البيضاء">البيضاء</option>
-              <option value="درنة">درنة</option>
-              <option value="طبرق">طبرق</option>
               <option value="سبها">سبها</option>
             </select>
           </div>
@@ -1209,7 +1168,7 @@
       </div>
     </div>
 
-    <!-- 3: فحص توافق الفصائل -->
+    <!-- ================= 3: فحص توافق الفصائل ================= -->
     <div id="view-compat" class="view-box">
       <div class="card">
         <div class="section-head">
@@ -1235,7 +1194,7 @@
       </div>
     </div>
 
-    <!-- 4: تسجيل متبرع (بكود سري) -->
+    <!-- ================= 4: تسجيل متبرع (بكود سري) ================= -->
     <div id="view-reg" class="view-box">
       <div class="card">
         <div class="section-head">
@@ -1261,38 +1220,10 @@
                 <option value="صرمان">صرمان</option>
                 <option value="صبراتة">صبراتة</option>
                 <option value="زوارة">زوارة</option>
-                <option value="العجيلات">العجيلات</option>
-                <option value="الجميل">الجميل</option>
-                <option value="رقدالين">رقدالين</option>
-                <option value="غريان">غريان</option>
-                <option value="يفرن">يفرن</option>
-                <option value="الزنتان">الزنتان</option>
-                <option value="جادو">جادو</option>
-                <option value="نالوت">نالوت</option>
                 <option value="طرابلس">طرابلس</option>
-                <option value="جنزور">جنزور</option>
-                <option value="تاجوراء">تاجوراء</option>
-                <option value="ترهونة">ترهونة</option>
-                <option value="مسلاتة">مسلاتة</option>
-                <option value="الخمس">الخمس</option>
-                <option value="زليتن">زليتن</option>
                 <option value="مصراتة">مصراتة</option>
-                <option value="سرت">سرت</option>
-                <option value="بني وليد">بني وليد</option>
                 <option value="بنغازي">بنغازي</option>
-                <option value="المرج">المرج</option>
-                <option value="البيضاء">البيضاء</option>
-                <option value="شحات">شحات</option>
-                <option value="درنة">درنة</option>
-                <option value="طبرق">طبرق</option>
-                <option value="إجدابيا">إجدابيا</option>
                 <option value="سبها">سبها</option>
-                <option value="أوباري">أوباري</option>
-                <option value="مرزق">مرزق</option>
-                <option value="غات">غات</option>
-                <option value="براك الشاطئ">براك الشاطئ</option>
-                <option value="الكفرة">الكفرة</option>
-                <option value="الجفرة (هون/ودان)">الجفرة (هون/ودان)</option>
               </select>
             </div>
           </div>
@@ -1300,7 +1231,7 @@
           <div class="form-group-spaced">
             <label>📞 رقم الهاتف الليبي: <span style="color:var(--primary)">*</span></label>
             <input type="tel" id="vPhone" placeholder="091XXXXXXX أو 092XXXXXXX" maxlength="10" dir="ltr" style="text-align:right;" required>
-            <span style="font-size:11.5px; color:var(--text-muted);">10 أرقام تبدأ بـ 09 (سيتم تشفيره بالنجوم في القائمة العامة).</span>
+            <span style="font-size:11.5px; color:var(--text-muted);">10 أرقام تبدأ بـ 09 (سيتم تشفيره بالنجوم في القائمة).</span>
           </div>
 
           <div style="display:grid; grid-template-columns: 1fr 1fr; gap:12px;" class="form-group-spaced">
@@ -1322,7 +1253,7 @@
             </div>
           </div>
 
-          <button type="submit" class="btn-submit" id="btnSubmitForm">توليد كود المتبرع والانضمام سحابياً 🩸</button>
+          <button type="submit" class="btn-submit">توليد كود المتبرع والانضمام 🩸</button>
         </form>
       </div>
     </div>
@@ -1343,7 +1274,39 @@
     </div>
   </div>
 
-  <!-- لوحة الإدارة المعتمدة -->
+  <!-- نافذة تأكيد وتفعيل المتبرع (واتساب والرسائل القصيرة) -->
+  <div id="verifySuccessModal" class="modal-overlay">
+    <div class="modal-box" style="border: 3px solid var(--success); max-width:520px; text-align:center;">
+      <div style="font-size:45px; margin-bottom:8px;">✅</div>
+      <h3 style="color:var(--success); font-size:21px; font-weight:900; margin-bottom:6px;">تم تسجيلك في المنظومة الوطنية بنجاح!</h3>
+      <p style="font-size:13px; color:var(--text-muted); margin-bottom:14px;">كود المتبرع السري الخاص بك:</p>
+      
+      <div style="background:var(--bg-subtle); border:2px dashed var(--success); padding:12px; border-radius:12px; margin-bottom:16px;">
+        <span style="font-size:26px; font-weight:900; color:var(--primary); letter-spacing:1px;" id="modalDonorCode">WRD-0000</span>
+        <div style="font-size:12px; color:var(--text-muted); margin-top:4px;" id="modalDonorMeta">فصيلة O+ | الزاوية</div>
+      </div>
+
+      <div style="background:var(--success-light); border:1px solid var(--success-border); padding:12px 14px; border-radius:10px; margin-bottom:18px; font-size:13px; font-weight:700; color:var(--text-main); text-align:right; line-height:1.7;">
+        🛡️ <strong>خطوة التوثيق والتفعيل:</strong><br>
+        لتوثيق حسابك وظهور شارة <span style="color:var(--success); font-weight:900;">«✔ مفعل (موثق)»</span> أمام المستشفيات وأقسام الطوارئ، يرجى تأكيد رقمك للإدارة عبر أحد الخيارين:
+      </div>
+
+      <div style="display:flex; flex-direction:column; gap:10px; margin-bottom:14px;">
+        <a id="btnVerifyWhatsApp" href="#" target="_blank" style="background:#25d366; color:white; padding:12px; border-radius:10px; font-size:14px; font-weight:900; text-decoration:none; display:flex; align-items:center; justify-content:center; gap:8px; box-shadow:0 3px 10px rgba(37,211,102,0.3);">
+          💬 إرسال تأكيد التفعيل عبر واتساب
+        </a>
+        <a id="btnVerifySMS" href="#" style="background:#0284c7; color:white; padding:12px; border-radius:10px; font-size:14px; font-weight:900; text-decoration:none; display:flex; align-items:center; justify-content:center; gap:8px; box-shadow:0 3px 10px rgba(2,132,199,0.3);">
+          📱 إرسال تأكيد التفعيل عبر الرسائل القصيرة (SMS)
+        </a>
+      </div>
+
+      <button type="button" onclick="window.closeVerifyModal()" style="background:#64748b; color:white; border:none; padding:10px; border-radius:8px; font-size:13px; font-weight:800; cursor:pointer; width:100%;">
+        المتابعة لقائمة المتبرعين (التفعيل لاحقاً) ⬅
+      </button>
+    </div>
+  </div>
+
+  <!-- ================= لوحة الإدارة المعتمدة (جميع أدوات الإكسيل والتحكم هنا فقط) ================= -->
   <div id="adminModal" class="modal-overlay">
     <div class="modal-box" style="max-width:760px; text-align:right;">
       <div id="adminLoginView" style="text-align:center;">
@@ -1363,7 +1326,21 @@
           <button type="button" onclick="window.closeAdmin()" style="background:#64748b; color:white; border:none; padding:6px 14px; border-radius:6px; font-size:12px; font-weight:800; cursor:pointer;">خروج ✖</button>
         </div>
 
-        <!-- 1. التحكم في شريط نداء الطوارئ -->
+        <!-- 0. هاتف إدارة المنظومة لاستقبال طلبات التفعيل -->
+        <div class="admin-section-card">
+          <div class="admin-section-title">
+            <span style="color:var(--success);">📱 رقم هاتف الإدارة لاستقبال رسائل التفعيل (واتساب و SMS)</span>
+          </div>
+          <div style="display:flex; gap:8px; margin-top:4px;">
+            <input type="tel" id="admContactPhone" placeholder="0926497310" dir="ltr" style="text-align:right;">
+            <button type="button" onclick="window.adminSaveContactPhone()" style="background:var(--success); color:white; border:none; padding:8px 14px; border-radius:8px; font-weight:800; cursor:pointer; white-space:nowrap;">
+              💾 حفظ الرقم
+            </button>
+          </div>
+          <div style="font-size:11.5px; color:var(--text-muted); margin-top:5px;">هذا الرقم ستصل إليه رسائل الواتساب وSMS التلقائية من المتطوعين الجدد لطلب التفعيل.</div>
+        </div>
+
+        <!-- 1. التحكم في شريط نداء الطوارئ (النشرة الإخبارية) -->
         <div class="admin-section-card">
           <div class="admin-section-title">
             <span style="color:var(--primary);">📢 1. التحكم في شريط نداء الطوارئ (النشرة الإخبارية)</span>
@@ -1391,7 +1368,7 @@
           </button>
         </div>
 
-        <!-- 2. استيراد وتصدير كشوفات المتبرعين -->
+        <!-- 2. استيراد وتصدير كشوفات المتبرعين (Excel / CSV / PDF Paste / طباعة) -->
         <div class="admin-section-card">
           <div class="admin-section-title">
             <span style="color:var(--success);">📥 2. إدخال جماعي للمتبرعين (Excel / CSV / لصق من PDF) والطباعة</span>
@@ -1433,7 +1410,7 @@
           </div>
         </div>
 
-        <!-- 3. إدارة مصارف الدم والمستشفيات -->
+        <!-- 3. إدارة مصارف الدم والمستشفيات (إضافة / تعديل / إظهار أو إخفاء الأكياس) -->
         <div class="admin-section-card">
           <div class="admin-section-title">
             <span style="color:var(--accent-blue);">🏥 3. إدارة المستشفيات ومصارف الدم</span>
@@ -1485,16 +1462,10 @@
               <option value="صرمان">صرمان</option>
               <option value="صبراتة">صبراتة</option>
               <option value="زوارة">زوارة</option>
-              <option value="العجيلات">العجيلات</option>
               <option value="طرابلس">طرابلس</option>
               <option value="غريان">غريان</option>
-              <option value="الزنتان">الزنتان</option>
               <option value="مصراتة">مصراتة</option>
-              <option value="سرت">سرت</option>
               <option value="بنغازي">بنغازي</option>
-              <option value="البيضاء">البيضاء</option>
-              <option value="درنة">درنة</option>
-              <option value="طبرق">طبرق</option>
               <option value="سبها">سبها</option>
             </select>
           </div>
@@ -1530,7 +1501,7 @@
     </div>
   </div>
 
-  <!-- كشف الطباعة الرسمي -->
+  <!-- جدول الطباعة الورقية الرسمي (للإدارة فقط عند الضغط على طباعة) -->
   <div id="printableRosterSection">
     <div style="text-align:center; border-bottom:2px solid #000; padding-bottom:10px; margin-bottom:12px;">
       <h2 style="font-size:18px; font-weight:900;">منظومة «وَرِيـد» الوطنية لخدمات نقل الدم — ليبيا</h2>
@@ -1558,39 +1529,18 @@
   </footer>
 
   <script>
-    const ADMIN_SECRET = "yamen2007hi@gmail.com";
     const STORAGE_KEY_DONORS = "wareed_donors_clean_v7";
     const STORAGE_KEY_BANKS = "wareed_banks_clean_v7";
     const STORAGE_KEY_SOS = "wareed_sos_clean_v7";
+    const STORAGE_KEY_ADMIN_PHONE = "wareed_admin_phone_v7";
     const BLOOD_TYPES = ["O+", "O-", "A+", "A-", "B+", "B-", "AB+", "AB-"];
 
-    let initialBanksData = [
-      {"id": "bank_zawiya_edu", "city": "الزاوية", "name": "مصرف الدم المركزي بمستشفى الزاوية التعليمي", "location": "الزاوية - مجمع الكليات والمستشفى التعليمي", "map_query": "Zawiya Teaching Hospital, Az Zawiyah, Libya", "phone": "", "fb_url": "https://www.facebook.com/search/top?q=مستشفى%20الزاوية%20التعليمي", "show_stock": true, "last_updated": "2026-10-28 08:30", "updated_by": "أخصائي مصرف الدم المناوب", "stock": {"O+": "high", "O-": "crit", "A+": "high", "A-": "low", "B+": "high", "B-": "low", "AB+": "high", "AB-": "crit"}},
-      {"id": "bank_zawiya_kidney", "city": "الزاوية", "name": "مستشفى الكلى بالزاوية", "location": "الزاوية - المركز التخصصي لأمراض وجراحة الكلى", "map_query": "Kidney Hospital Az Zawiyah, Libya", "phone": "", "fb_url": "https://www.facebook.com/search/top?q=مستشفى%20الكلى%20الزاوية", "show_stock": false, "last_updated": "2026-10-28 08:30", "updated_by": "وحدة نقل الدم", "stock": {"O+": "high", "O-": "low", "A+": "high", "A-": "low", "B+": "high", "B-": "low", "AB+": "high", "AB-": "low"}},
-      {"id": "bank_surman_general", "city": "صرمان", "name": "مستشفى صرمان العام ومصرف الدم", "location": "صرمان - الطريق الرئيسي وسط المدينة", "map_query": "Surman General Hospital, Surman, Libya", "phone": "", "fb_url": "https://www.facebook.com/search/top?q=مستشفى%20صرمان%20العام", "show_stock": false, "last_updated": "2026-10-28 08:30", "updated_by": "قسم المختبرات وبنك الدم", "stock": {"O+": "high", "O-": "crit", "A+": "high", "A-": "low", "B+": "high", "B-": "low", "AB+": "high", "AB-": "crit"}},
-      {"id": "bank_sabratah_oncology", "city": "صبراتة", "name": "مصرف الدم بمعهد الأورام ومستشفى صبراتة التعليمي", "location": "صبراتة - بالقرب من الطريق الساحلي", "map_query": "Sabratha Oncology Teaching Hospital, Sabratha, Libya", "phone": "", "fb_url": "https://www.facebook.com/search/top?q=المعهد%20القومي%20لعلاج%20الأورام%20بصبراتة", "show_stock": true, "last_updated": "2026-10-28 08:30", "updated_by": "أخصائي نقل الدم", "stock": {"O+": "high", "O-": "crit", "A+": "high", "A-": "low", "B+": "high", "B-": "crit", "AB+": "high", "AB-": "crit"}},
-      {"id": "bank_tripoli_central", "city": "طرابلس", "name": "مصرف الدم المركزي طرابلس ومستشفى شارع الزاوية", "location": "طرابلس - شارع الزاوية / طريق الشط", "map_query": "Tripoli Central Hospital, Tripoli, Libya", "phone": "021-3605001", "fb_url": "https://www.facebook.com/search/top?q=مصرف%20الدم%20المركزي%20طرابلس", "show_stock": true, "last_updated": "2026-10-28 08:00", "updated_by": "إدارة مصرف الدم", "stock": {"O+": "high", "O-": "crit", "A+": "low", "A-": "crit", "B+": "high", "B-": "low", "AB+": "high", "AB-": "low"}},
-      {"id": "bank_misrata_central", "city": "مصراتة", "name": "مصرف الدم المركزي مصراتة", "location": "مصراتة - المقاصبة بالقرب من معهد الأورام", "map_query": "Central Blood Bank, Misrata, Libya", "phone": "", "fb_url": "https://www.facebook.com/search/top?q=مصرف%20الدم%20المركزي%20مصراتة", "show_stock": false, "last_updated": "2026-10-28 08:00", "updated_by": "شعبة الإمداد", "stock": {"O+": "high", "O-": "low", "A+": "high", "A-": "low", "B+": "high", "B-": "low", "AB+": "high", "AB-": "crit"}},
-      {"id": "bank_benghazi_central", "city": "بنغازي", "name": "مصرف الدم المركزي بنغازي (الهواري)", "location": "بنغازي - منطقة الهواري", "map_query": "Central Blood Bank Benghazi, Benghazi, Libya", "phone": "", "fb_url": "https://www.facebook.com/search/top?q=مصرف%20الدم%20المركزي%20بنغازي", "show_stock": false, "last_updated": "2026-10-28 08:00", "updated_by": "المناوب الفني", "stock": {"O+": "high", "O-": "low", "A+": "high", "A-": "crit", "B+": "high", "B-": "low", "AB+": "high", "AB-": "crit"}},
-      {"id": "bank_sabha_central", "city": "سبها", "name": "مصرف الدم المركزي سبها", "location": "سبها - بالقرب من مركز سبها الطبي", "map_query": "Sebha Medical Center, Sabha, Libya", "phone": "", "fb_url": "https://www.facebook.com/search/top?q=مصرف%20الدم%20المركزي%20سبها", "show_stock": false, "last_updated": "2026-10-28 08:00", "updated_by": "فني بنك الدم", "stock": {"O+": "low", "O-": "crit", "A+": "low", "A-": "crit", "B+": "low", "B-": "crit", "AB+": "low", "AB-": "crit"}},
-      {"id": "bank_khoms_edu", "city": "الخمس", "name": "مستشفى الخمس التعليمي ومصرف الدم", "location": "الخمس - بالقرب من الطريق الساحلي", "map_query": "Al Khums Teaching Hospital, Libya", "phone": "", "fb_url": "", "show_stock": false, "last_updated": "2026-10-28 08:00", "updated_by": "قسم المختبر", "stock": {"O+": "high", "O-": "low", "A+": "high", "A-": "low", "B+": "high", "B-": "low", "AB+": "high", "AB-": "low"}},
-      {"id": "bank_zintan_gen", "city": "الزنتان", "name": "مستشفى الزنتان العام ومصرف الدم", "location": "الزنتان - الجبل الغربي", "map_query": "Zintan General Hospital, Libya", "phone": "", "fb_url": "", "show_stock": false, "last_updated": "2026-10-28 08:00", "updated_by": "وحدة الدم", "stock": {"O+": "high", "O-": "low", "A+": "high", "A-": "low", "B+": "high", "B-": "low", "AB+": "high", "AB-": "low"}},
-      {"id": "bank_bayda_central", "city": "البيضاء", "name": "مصرف الدم المركزي البيضاء (مستشفى الثورة)", "location": "البيضاء - مجمع مستشفى الثورة التعليمي", "map_query": "Al Thawra Hospital Bayda, Libya", "phone": "", "fb_url": "", "show_stock": false, "last_updated": "2026-10-28 08:00", "updated_by": "فني التحاليل", "stock": {"O+": "high", "O-": "low", "A+": "high", "A-": "low", "B+": "high", "B-": "low", "AB+": "high", "AB-": "low"}},
-      {"id": "bank_tobruk_med", "city": "طبرق", "name": "مركز طبرق الطبي ومصرف الدم", "location": "طبرق - وسط المدينة", "map_query": "Tobruk Medical Center, Libya", "phone": "", "fb_url": "", "show_stock": false, "last_updated": "2026-10-28 08:00", "updated_by": "شعبة الدم", "stock": {"O+": "high", "O-": "crit", "A+": "high", "A-": "low", "B+": "high", "B-": "low", "AB+": "high", "AB-": "crit"}}
-    ];
-
-    let initialDonorsData = [
-      {"id": "d_1001", "code": "WRD-1042", "blood": "O+", "city": "الزاوية", "phone": "0914528391", "preferredTime": "24/7", "lastDonationDate": "", "isVerified": true, "createdAt": "2026-10-20"},
-      {"id": "d_1002", "code": "WRD-1089", "blood": "O-", "city": "الزاوية", "phone": "0926419283", "preferredTime": "24/7", "lastDonationDate": "", "isVerified": true, "createdAt": "2026-10-21"},
-      {"id": "d_1003", "code": "WRD-1124", "blood": "A+", "city": "صرمان", "phone": "0913384920", "preferredTime": "evening", "lastDonationDate": "", "isVerified": true, "createdAt": "2026-10-22"},
-      {"id": "d_1004", "code": "WRD-1158", "blood": "B+", "city": "صبراتة", "phone": "0945192837", "preferredTime": "morning", "lastDonationDate": "", "isVerified": false, "createdAt": "2026-10-24"},
-      {"id": "d_1005", "code": "WRD-1190", "blood": "A-", "city": "الزاوية", "phone": "0928172635", "preferredTime": "24/7", "lastDonationDate": "", "isVerified": true, "createdAt": "2026-10-25"},
-      {"id": "d_1006", "code": "WRD-1204", "blood": "O+", "city": "طرابلس", "phone": "0917263541", "preferredTime": "24/7", "lastDonationDate": "", "isVerified": false, "createdAt": "2026-10-26"},
-      {"id": "d_1007", "code": "WRD-1239", "blood": "AB+", "city": "الزاوية", "phone": "0925544332", "preferredTime": "evening", "lastDonationDate": "2026-10-01", "isVerified": false, "createdAt": "2026-10-27"}
-    ];
+    let initialBanksData = [{"id": "bank_zawiya_edu", "city": "الزاوية", "name": "مصرف الدم المركزي بمستشفى الزاوية التعليمي", "location": "الزاوية - مجمع الكليات والمستشفى التعليمي", "map_query": "Zawiya Teaching Hospital, Az Zawiyah, Libya", "phone": "", "fb_url": "https://www.facebook.com/search/top?q=مستشفى%20الزاوية%20التعليمي", "show_stock": true, "last_updated": "2026-10-28 08:30", "updated_by": "أخصائي مصرف الدم المناوب", "stock": {"O+": "high", "O-": "crit", "A+": "high", "A-": "low", "B+": "high", "B-": "low", "AB+": "high", "AB-": "crit"}}, {"id": "bank_zawiya_kidney", "city": "الزاوية", "name": "مستشفى الكلى بالزاوية", "location": "الزاوية - المركز التخصصي لأمراض وجراحة الكلى", "map_query": "Kidney Hospital Az Zawiyah, Libya", "phone": "", "fb_url": "https://www.facebook.com/search/top?q=مستشفى%20الكلى%20الزاوية", "show_stock": false, "last_updated": "2026-10-28 08:30", "updated_by": "وحدة نقل الدم", "stock": {"O+": "high", "O-": "low", "A+": "high", "A-": "low", "B+": "high", "B-": "low", "AB+": "high", "AB-": "low"}}, {"id": "bank_surman_general", "city": "صرمان", "name": "مستشفى صرمان العام ومصرف الدم", "location": "صرمان - الطريق الرئيسي وسط المدينة", "map_query": "Surman General Hospital, Surman, Libya", "phone": "", "fb_url": "https://www.facebook.com/search/top?q=مستشفى%20صرمان%20العام", "show_stock": false, "last_updated": "2026-10-28 08:30", "updated_by": "قسم المختبرات وبنك الدم", "stock": {"O+": "high", "O-": "crit", "A+": "high", "A-": "low", "B+": "high", "B-": "low", "AB+": "high", "AB-": "crit"}}, {"id": "bank_sabratah_oncology", "city": "صبراتة", "name": "مصرف الدم بمعهد الأورام ومستشفى صبراتة التعليمي", "location": "صبراتة - بالقرب من الطريق الساحلي", "map_query": "Sabratha Oncology Teaching Hospital, Sabratha, Libya", "phone": "", "fb_url": "https://www.facebook.com/search/top?q=المعهد%20القومي%20لعلاج%20الأورام%20بصبراتة", "show_stock": true, "last_updated": "2026-10-28 08:30", "updated_by": "أخصائي نقل الدم", "stock": {"O+": "high", "O-": "crit", "A+": "high", "A-": "low", "B+": "high", "B-": "crit", "AB+": "high", "AB-": "crit"}}, {"id": "bank_tripoli_central", "city": "طرابلس", "name": "مصرف الدم المركزي طرابلس ومستشفى شارع الزاوية", "location": "طرابلس - شارع الزاوية / طريق الشط", "map_query": "Tripoli Central Hospital, Tripoli, Libya", "phone": "021-3605001", "fb_url": "https://www.facebook.com/search/top?q=مصرف%20الدم%20المركزي%20طرابلس", "show_stock": true, "last_updated": "2026-10-28 08:00", "updated_by": "إدارة مصرف الدم", "stock": {"O+": "high", "O-": "crit", "A+": "low", "A-": "crit", "B+": "high", "B-": "low", "AB+": "high", "AB-": "low"}}, {"id": "bank_misrata_central", "city": "مصراتة", "name": "مصرف الدم المركزي مصراتة", "location": "مصراتة - المقاصبة بالقرب من معهد الأورام", "map_query": "Central Blood Bank, Misrata, Libya", "phone": "", "fb_url": "https://www.facebook.com/search/top?q=مصرف%20الدم%20المركزي%20مصراتة", "show_stock": false, "last_updated": "2026-10-28 08:00", "updated_by": "شعبة الإمداد", "stock": {"O+": "high", "O-": "low", "A+": "high", "A-": "low", "B+": "high", "B-": "low", "AB+": "high", "AB-": "crit"}}, {"id": "bank_benghazi_central", "city": "بنغازي", "name": "مصرف الدم المركزي بنغازي (الهواري)", "location": "بنغازي - منطقة الهواري", "map_query": "Central Blood Bank Benghazi, Benghazi, Libya", "phone": "", "fb_url": "https://www.facebook.com/search/top?q=مصرف%20الدم%20المركزي%20بنغازي", "show_stock": false, "last_updated": "2026-10-28 08:00", "updated_by": "المناوب الفني", "stock": {"O+": "high", "O-": "low", "A+": "high", "A-": "crit", "B+": "high", "B-": "low", "AB+": "high", "AB-": "crit"}}, {"id": "bank_sabha_central", "city": "سبها", "name": "مصرف الدم المركزي سبها", "location": "سبها - بالقرب من مركز سبها الطبي", "map_query": "Sebha Medical Center, Sabha, Libya", "phone": "", "fb_url": "https://www.facebook.com/search/top?q=مصرف%20الدم%20المركزي%20سبها", "show_stock": false, "last_updated": "2026-10-28 08:00", "updated_by": "فني بنك الدم", "stock": {"O+": "low", "O-": "crit", "A+": "low", "A-": "crit", "B+": "low", "B-": "crit", "AB+": "low", "AB-": "crit"}}];
+    let initialDonorsData = [];
 
     let currentBloodFilter = "";
     let currentVerifyFilter = "all";
+    let adminSessionToken = sessionStorage.getItem("wareed_admin_token") || "";
 
     function getSosConfig() {
       try {
@@ -1634,38 +1584,36 @@
       window.quickFilterBlood(cfg.blood || "O-");
     };
 
-    function getLocalDonors() {
+    function getDonors() {
       try {
         const raw = localStorage.getItem(STORAGE_KEY_DONORS);
-        if (!raw) {
-          localStorage.setItem(STORAGE_KEY_DONORS, JSON.stringify(initialDonorsData));
-          return initialDonorsData;
-        }
+        if (!raw) return initialDonorsData;
         return JSON.parse(raw);
       } catch (e) {
         return initialDonorsData;
       }
     }
 
-    function saveLocalDonors(list) {
+    function saveDonors(list) {
       localStorage.setItem(STORAGE_KEY_DONORS, JSON.stringify(list));
+      window.renderDonors();
     }
 
-    async function getDonors() {
+    // جلب المتبرعين الحقيقيين من قاعدة بيانات Neon عند فتح المنصة
+    window.syncDonorsFromServer = async function() {
       try {
-        const res = await fetch('/api/donors', { cache: 'no-store' });
-        if (res.ok) {
-          const data = await res.json();
-          if (data && data.success && Array.isArray(data.donors) && data.donors.length > 0) {
-            saveLocalDonors(data.donors);
-            return data.donors;
+        const res = await fetch('/api/donors');
+        const data = await res.json();
+        if (res.ok && data.success && Array.isArray(data.donors)) {
+          saveDonors(data.donors);
+          if (document.getElementById("adminDashboardView").style.display === "block") {
+            window.renderAdminDonors();
           }
         }
-      } catch (e) {
-        console.log("العمل عبر الذاكرة المحلية مؤقتاً");
+      } catch (err) {
+        console.warn("تعذر الاتصال بالسيرفر، يتم عرض البيانات المحفوظة مؤقتاً.");
       }
-      return getLocalDonors();
-    }
+    };
 
     function getBanks() {
       try {
@@ -1758,8 +1706,34 @@
       window.setVerificationFilter("all");
     };
 
-    window.renderDonors = async function() {
-      const list = await getDonors();
+    window.getFilteredDonorsList = function() {
+      const list = getDonors();
+      const cityVal = document.getElementById("filterCity").value;
+      const readVal = document.getElementById("filterReadiness").value;
+      const kwVal = document.getElementById("filterKeyword").value.trim().toLowerCase();
+
+      return list.filter(d => {
+        const r = calculateReadiness(d.lastDonationDate);
+        const matchBlood = !currentBloodFilter || d.blood === currentBloodFilter;
+        const matchCity = !cityVal || d.city === cityVal;
+        let matchReadiness = true;
+        if (readVal === "ready") matchReadiness = r.isReady;
+        if (readVal === "resting") matchReadiness = !r.isReady;
+        let matchVerify = true;
+        if (currentVerifyFilter === "verified") matchVerify = d.isVerified === true;
+        if (currentVerifyFilter === "unverified") matchVerify = d.isVerified === false;
+        let matchKw = true;
+        if (kwVal) {
+          matchKw = (d.code && d.code.toLowerCase().includes(kwVal)) ||
+                    (d.phone && d.phone.includes(kwVal)) ||
+                    (d.city && d.city.includes(kwVal));
+        }
+        return matchBlood && matchCity && matchReadiness && matchVerify && matchKw;
+      });
+    };
+
+    window.renderDonors = function() {
+      const list = getDonors();
       renderBloodPills(list);
 
       let totalVerified = 0;
@@ -1780,29 +1754,7 @@
       document.getElementById("countActVerified").textContent = totalVerified;
       document.getElementById("countActUnverified").textContent = totalUnverified;
 
-      const cityVal = document.getElementById("filterCity").value;
-      const readVal = document.getElementById("filterReadiness").value;
-      const kwVal = document.getElementById("filterKeyword").value.trim().toLowerCase();
-
-      const filtered = list.filter(d => {
-        const r = calculateReadiness(d.lastDonationDate);
-        const matchBlood = !currentBloodFilter || d.blood === currentBloodFilter;
-        const matchCity = !cityVal || d.city === cityVal;
-        let matchReadiness = true;
-        if (readVal === "ready") matchReadiness = r.isReady;
-        if (readVal === "resting") matchReadiness = !r.isReady;
-        let matchVerify = true;
-        if (currentVerifyFilter === "verified") matchVerify = d.isVerified === true;
-        if (currentVerifyFilter === "unverified") matchVerify = d.isVerified === false;
-        let matchKw = true;
-        if (kwVal) {
-          matchKw = (d.code && d.code.toLowerCase().includes(kwVal)) ||
-                    (d.phone && d.phone.includes(kwVal)) ||
-                    (d.city && d.city.includes(kwVal));
-        }
-        return matchBlood && matchCity && matchReadiness && matchVerify && matchKw;
-      });
-
+      const filtered = window.getFilteredDonorsList();
       document.getElementById("searchResultsCounter").textContent = "إجمالي النتائج المطابقة: " + filtered.length + " متبرع";
 
       const container = document.getElementById("donorsListContainer");
@@ -1952,8 +1904,8 @@
         '<div style="font-size:12px; color:var(--text-muted);">اضغط على أي فصيلة بالأعلى للانتقال المباشر إلى المتبرعين المتاحين بها.</div>';
     };
 
+    // تسجيل المتبرع مباشرة في قاعدة بيانات Neon مع منع تكرار الأرقام
     window.submitDonor = async function() {
-      const btn = document.getElementById("btnSubmitForm");
       const rawPhone = document.getElementById("vPhone").value.trim();
       const arDigits = ['٠','١','٢','٣','٤','٥','٦','٧','٨','٩'];
       const phone = rawPhone.replace(/[٠-٩]/g, d => arDigits.indexOf(d)).replace(/\D/g, "");
@@ -1963,56 +1915,101 @@
       const statusType = document.getElementById("vLastDonationType").value;
 
       if (!/^09\d{8}$/.test(phone)) {
-        alert("خطأ: يرجى إدخال رقم هاتف ليبي صحيح مكون من 10 أرقام ويبدأ بـ 09.");
+        alert("خطأ: يرجى إدخال رقم هاتف ليبي مكون من 10 أرقام ويبدأ بـ 09.");
         return;
       }
 
-      btn.disabled = true;
-      btn.textContent = "جاري الحفظ في المنظومة السحابية...";
-
-      const donorCode = "WRD-" + Math.floor(1000 + Math.random() * 9000);
       const lastDate = (statusType === "resting") ? new Date().toISOString().split("T")[0] : "";
-
-      const newDonor = {
-        id: "d_" + Date.now(),
-        code: donorCode,
-        blood: blood,
-        city: city,
-        phone: phone,
-        preferredTime: preferredTime,
-        lastDonationDate: lastDate,
-        isVerified: false,
-        createdAt: new Date().toISOString().split("T")[0]
-      };
+      const submitBtn = document.querySelector("#regForm .btn-submit");
+      const origBtnText = submitBtn.textContent;
+      submitBtn.disabled = true;
+      submitBtn.textContent = "⏳ جاري الحفظ في المنظومة الوطنية...";
 
       try {
-        const response = await fetch('/api/donors', {
+        const res = await fetch('/api/donors', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(newDonor)
+          body: JSON.stringify({
+            blood: blood,
+            city: city,
+            phone: phone,
+            preferredTime: preferredTime,
+            lastDonationDate: lastDate
+          })
         });
-        const resData = await response.json();
-        if (!response.ok) {
-          throw new Error(resData.message || "فشل التسجيل السحابي");
-        }
-      } catch (err) {
-        console.warn("تنبيه: تم الحفظ محلياً:", err.message);
-        let localList = getLocalDonors();
-        localList.unshift(newDonor);
-        saveLocalDonors(localList);
-      }
 
-      btn.disabled = false;
-      btn.textContent = "توليد كود المتبرع والانضمام سحابياً 🩸";
-      document.getElementById("regForm").reset();
-      alert("تم تسجيلك بنجاح! كود المتبرع السري الخاص بك هو: " + donorCode);
-      document.getElementById("tab-search").checked = true;
-      window.renderDonors();
+        const data = await res.json();
+
+        if (!res.ok || !data.success) {
+          alert(data.message || "تنبيه: هذا الرقم مسجل مسبقاً في المنظومة!");
+          submitBtn.disabled = false;
+          submitBtn.textContent = origBtnText;
+          return;
+        }
+
+        const list = getDonors();
+        list.unshift(data.donor);
+        saveDonors(list);
+
+        document.getElementById("regForm").reset();
+        window.openVerifyModal(data.donor);
+      } catch (err) {
+        alert("تعذر الاتصال بالسيرفر، يرجى التحقق من اتصال الإنترنت والمحاولة مجدداً.");
+      } finally {
+        submitBtn.disabled = false;
+        submitBtn.textContent = origBtnText;
+      }
     };
 
-    window.openPledge = async function(donorId) {
-      const list = await getDonors();
-      const donor = list.find(d => d.id === donorId);
+
+    function getAdminContactPhone() {
+      return localStorage.getItem(STORAGE_KEY_ADMIN_PHONE) || "0926497310";
+    }
+
+    window.adminSaveContactPhone = function() {
+      const p = document.getElementById("admContactPhone").value.trim();
+      if (!p) {
+        alert("يرجى إدخال رقم هاتف صحيح.");
+        return;
+      }
+      localStorage.setItem(STORAGE_KEY_ADMIN_PHONE, p);
+      alert("تم حفظ رقم هاتف الإدارة لاستقبال رسائل التفعيل بنجاح!");
+    };
+
+    window.openVerifyModal = function(donor) {
+      document.getElementById("modalDonorCode").textContent = donor.code;
+      document.getElementById("modalDonorMeta").textContent = "فصيلة " + donor.blood + " | " + donor.city;
+
+      const adminRaw = getAdminContactPhone();
+      const arDigits = ['٠','١','٢','٣','٤','٥','٦','٧','٨','٩'];
+      let cleanAdmin = adminRaw.replace(/[٠-٩]/g, d => arDigits.indexOf(d)).replace(/\D/g, "");
+      if (cleanAdmin.startsWith("0")) cleanAdmin = cleanAdmin.substring(1);
+      if (!cleanAdmin.startsWith("218")) cleanAdmin = "218" + cleanAdmin;
+
+      const msg = "السلام عليكم ورحمة الله، أود تأكيد وتفعيل حسابي كمتبرع في منصة وريد الوطنية.\n" +
+                  "كود المتبرع: " + donor.code + "\n" +
+                  "فصيلة الدم: " + donor.blood + "\n" +
+                  "المدينة: " + donor.city + "\n" +
+                  "رقم الهاتف: " + donor.phone;
+
+      const encodedMsg = encodeURIComponent(msg);
+
+      // رابط واتساب المباشر
+      document.getElementById("btnVerifyWhatsApp").href = "https://wa.me/" + cleanAdmin + "?text=" + encodedMsg;
+
+      // رابط الرسائل القصيرة SMS
+      document.getElementById("btnVerifySMS").href = "sms:+" + cleanAdmin + "?body=" + encodedMsg;
+
+      document.getElementById("verifySuccessModal").style.display = "flex";
+    };
+
+    window.closeVerifyModal = function() {
+      document.getElementById("verifySuccessModal").style.display = "none";
+      document.getElementById("tab-search").checked = true;
+    };
+
+    window.openPledge = function(donorId) {
+      const donor = getDonors().find(d => d.id === donorId);
       if (!donor) return;
       document.getElementById("pledgeDonorId").value = donorId;
       document.getElementById("pledgeDonorCodeText").textContent = donor.code;
@@ -2023,10 +2020,9 @@
       document.getElementById("pledgeModal").style.display = "none";
     };
 
-    window.confirmPledge = async function() {
+    window.confirmPledge = function() {
       const id = document.getElementById("pledgeDonorId").value;
-      const list = await getDonors();
-      const donor = list.find(d => d.id === id);
+      const donor = getDonors().find(d => d.id === id);
       if (donor) {
         const phoneBox = document.getElementById("phone-box-" + id);
         const actionsBox = document.getElementById("actions-" + id);
@@ -2050,9 +2046,9 @@
       document.getElementById("themeToggleBtn").textContent = next === "dark" ? "☀️ الوضع النهاري" : "🌙 الوضع الليلي";
     };
 
-    // خدمات الإدارة (الطباعة، الإكسيل، التحكم)
-    window.printOfficialRoster = async function() {
-      const list = await getDonors();
+    // ================= خدمات الإدارة المؤمنة بالسيرفر =================
+    window.printOfficialRoster = function() {
+      const list = getDonors();
       const tbody = document.getElementById("printTableBody");
       document.getElementById("printTimestampMeta").textContent = "تاريخ استخراج الكشف: " + new Date().toLocaleString("ar-LY") + " | إجمالي المسجلين: " + list.length;
       tbody.innerHTML = list.map((d, idx) =>
@@ -2069,8 +2065,8 @@
       window.print();
     };
 
-    window.exportCSV = async function() {
-      const list = await getDonors();
+    window.exportCSV = function() {
+      const list = getDonors();
       let csvContent = "\uFEFFالكود,الفصيلة,المدينة,رقم الهاتف,وقت التواصل,التفعيل\r\n";
       list.forEach(d => {
         const row = [
@@ -2104,23 +2100,41 @@
       document.getElementById("adminModal").style.display = "none";
     };
 
-    window.verifyAdmin = function() {
-      if (document.getElementById("adminPassInput").value.trim() === ADMIN_SECRET) {
-        document.getElementById("adminLoginView").style.display = "none";
-        document.getElementById("adminDashboardView").style.display = "block";
+    window.verifyAdmin = async function() {
+      const pass = document.getElementById("adminPassInput").value.trim();
+      if (!pass) {
+        alert("يرجى إدخال الرمز السري للإدارة.");
+        return;
+      }
+      try {
+        const res = await fetch('/api/donors', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ action: 'admin_login', password: pass })
+        });
+        const data = await res.json();
+        if (res.ok && data.success) {
+          adminSessionToken = data.token;
+          sessionStorage.setItem("wareed_admin_token", adminSessionToken);
+          document.getElementById("adminLoginView").style.display = "none";
+          document.getElementById("adminDashboardView").style.display = "block";
 
-        const sos = getSosConfig();
-        document.getElementById("admSosVisible").checked = sos.visible !== false;
-        document.getElementById("admSosText").value = sos.text || "";
-        document.getElementById("admSosBlood").value = sos.blood || "";
+          const sos = getSosConfig();
+          document.getElementById("admSosVisible").checked = sos.visible !== false;
+          document.getElementById("admSosText").value = sos.text || "";
+          document.getElementById("admSosBlood").value = sos.blood || "";
 
-        const banks = getBanks();
-        document.getElementById("admGlobalShowStock").checked = banks.some(b => b.show_stock !== false);
+          const banks = getBanks();
+          document.getElementById("admGlobalShowStock").checked = banks.some(b => b.show_stock !== false);
 
-        window.adminPopulateBankSelect();
-        window.renderAdminDonors();
-      } else {
-        alert("خطأ: الرمز السري غير صحيح!");
+          document.getElementById("admContactPhone").value = getAdminContactPhone();
+          window.adminPopulateBankSelect();
+          window.renderAdminDonors();
+        } else {
+          alert(data.message || "خطأ: الرمز السري غير صحيح!");
+        }
+      } catch (err) {
+        alert("تعذر الاتصال بالسيرفر للتحقق من الرمز السري.");
       }
     };
 
@@ -2155,11 +2169,8 @@
       const normalizedText = rawText.replace(/[٠-٩]/g, d => arDigits.indexOf(d));
 
       const lines = normalizedText.split(/\r?\n/);
-      let donors = await getDonors();
-      let addedCount = 0;
-      let skippedCount = 0;
-
-      const citiesList = ["الزاوية", "صرمان", "صبراتة", "زوارة", "العجيلات", "الجميل", "رقدالين", "غريان", "يفرن", "الزنتان", "جادو", "نالوت", "طرابلس", "جنزور", "تاجوراء", "ترهونة", "مسلاتة", "الخمس", "زليتن", "مصراتة", "سرت", "بني وليد", "بنغازي", "المرج", "البيضاء", "شحات", "درنة", "طبرق", "إجدابيا", "سبها", "أوباري", "مرزق", "غات", "براك الشاطئ", "الكفرة"];
+      const citiesList = ["الزاوية", "صرمان", "صبراتة", "زوارة", "طرابلس", "غريان", "مصراتة", "بنغازي", "سبها"];
+      const records = [];
 
       lines.forEach(line => {
         if (!line.trim()) return;
@@ -2167,11 +2178,6 @@
         if (!phoneMatch) return;
         let phone = phoneMatch[0];
         if (phone.length === 9 && phone.startsWith("9")) phone = "0" + phone;
-
-        if (donors.some(d => d.phone === phone)) {
-          skippedCount++;
-          return;
-        }
 
         const bloodMatch = line.toUpperCase().match(/(?:AB|A|B|O)[+-]/);
         const blood = bloodMatch ? bloodMatch[0] : "O+";
@@ -2183,27 +2189,34 @@
             break;
           }
         }
-
-        const code = "WRD-" + Math.floor(1000 + Math.random() * 9000);
-        donors.unshift({
-          id: "d_" + Date.now() + "_" + Math.random().toString(36).substring(2, 6),
-          code: code,
-          blood: blood,
-          city: detectedCity,
-          phone: phone,
-          preferredTime: "24/7",
-          lastDonationDate: "",
-          isVerified: true,
-          createdAt: new Date().toISOString().split("T")[0]
-        });
-        addedCount++;
+        records.push({ phone, blood, city: detectedCity });
       });
 
-      saveLocalDonors(donors);
-      window.renderAdminDonors();
-      window.renderDonors();
-      document.getElementById("bulkPasteArea").value = "";
-      alert("تم الاستيراد بنجاح! تمت إضافة وتفعيل: " + addedCount + " متبرع. (تم تخطي المكرر: " + skippedCount + ")");
+      if (records.length === 0) {
+        alert("لم يتم العثور على أرقام هواتف ليبية صالحة في النص الملصق.");
+        return;
+      }
+
+      try {
+        const res = await fetch('/api/donors', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'x-admin-secret': adminSessionToken
+          },
+          body: JSON.stringify({ action: 'bulk_import', records })
+        });
+        const data = await res.json();
+        if (res.ok && data.success) {
+          document.getElementById("bulkPasteArea").value = "";
+          await window.syncDonorsFromServer();
+          alert("تم الاستيراد لقاعدة البيانات بنجاح! تمت إضافة وتفعيل: " + data.addedCount + " متبرع. (تم تخطي المكرر: " + data.skippedCount + ")");
+        } else {
+          alert(data.message || "حدث خطأ أثناء الاستيراد.");
+        }
+      } catch (err) {
+        alert("تعذر الاتصال بالسيرفر لإتمام الاستيراد.");
+      }
     };
 
     window.toggleGlobalStockMode = function(show) {
@@ -2324,11 +2337,11 @@
       alert("تمت إضافة المصرف بنجاح!");
     };
 
-    window.renderAdminDonors = async function() {
+    window.renderAdminDonors = function() {
       const box = document.getElementById("adminDonorsWrapper");
-      const list = await getDonors();
+      const list = getDonors();
       if (list.length === 0) {
-        box.innerHTML = "<p style='font-size:12px; color:var(--text-muted);'>لا يوجد متبرعون مسجلون.</p>";
+        box.innerHTML = "<p style='font-size:12px; color:var(--text-muted);'>لا يوجد متبرعون مسجلون في قاعدة البيانات حالياً.</p>";
         return;
       }
       box.innerHTML = list.map(d =>
@@ -2349,24 +2362,57 @@
       ).join("");
     };
 
-    window.adminToggleV = function(id) {
-      let list = getLocalDonors();
+    window.adminToggleV = async function(id) {
+      let list = getDonors();
       const d = list.find(x => x.id === id);
-      if (d) { d.isVerified = !d.isVerified; saveLocalDonors(list); window.renderAdminDonors(); window.renderDonors(); }
-    };
-
-    window.adminDelD = function(id) {
-      if (confirm("حذف هذا المتبرع نهائياً؟")) {
-        let list = getLocalDonors().filter(x => x.id !== id);
-        saveLocalDonors(list);
-        window.renderAdminDonors();
-        window.renderDonors();
+      if (!d) return;
+      const nextState = !d.isVerified;
+      try {
+        const res = await fetch('/api/donors', {
+          method: 'PUT',
+          headers: {
+            'Content-Type': 'application/json',
+            'x-admin-secret': adminSessionToken
+          },
+          body: JSON.stringify({ id, isVerified: nextState })
+        });
+        if (res.ok) {
+          d.isVerified = nextState;
+          saveDonors(list);
+          window.renderAdminDonors();
+        } else {
+          alert("تعذر تحديث حالة المتبرع في قاعدة البيانات.");
+        }
+      } catch (err) {
+        alert("خطأ في الاتصال بالسيرفر.");
       }
     };
 
-    window.exportBackup = async function() {
-      const list = await getDonors();
-      const data = { donors: list, banks: getBanks(), sos: getSosConfig() };
+    window.adminDelD = async function(id) {
+      if (!confirm("حذف هذا المتبرع نهائياً من قاعدة البيانات؟")) return;
+      try {
+        const res = await fetch('/api/donors', {
+          method: 'DELETE',
+          headers: {
+            'Content-Type': 'application/json',
+            'x-admin-secret': adminSessionToken
+          },
+          body: JSON.stringify({ id })
+        });
+        if (res.ok) {
+          let list = getDonors().filter(x => x.id !== id);
+          saveDonors(list);
+          window.renderAdminDonors();
+        } else {
+          alert("تعذر حذف المتبرع من قاعدة البيانات.");
+        }
+      } catch (err) {
+        alert("خطأ في الاتصال بالسيرفر.");
+      }
+    };
+
+    window.exportBackup = function() {
+      const data = { donors: getDonors(), banks: getBanks(), sos: getSosConfig() };
       const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(data, null, 2));
       const a = document.createElement("a");
       a.href = dataStr;
@@ -2383,11 +2429,10 @@
       reader.onload = function(e) {
         try {
           const imported = JSON.parse(e.target.result);
-          if (imported.donors) saveLocalDonors(imported.donors);
+          if (imported.donors) saveDonors(imported.donors);
           if (imported.banks) saveBanks(imported.banks);
           if (imported.sos) saveSosConfig(imported.sos);
           window.renderAdminDonors();
-          window.renderDonors();
           alert("تم استرجاع النسخة الاحتياطية بنجاح!");
         } catch (err) { alert("ملف غير صالح!"); }
       };
@@ -2399,6 +2444,7 @@
       window.renderDonors();
       window.renderPublicBanks();
       window.checkCompatibility("O+");
+      window.syncDonorsFromServer();
     })();
   </script>
 </body>
