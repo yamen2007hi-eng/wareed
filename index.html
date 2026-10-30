@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>منصة وَرِيـد | المنظومة الوطنية الموحدة لخدمات نقل الدم والطوارئ</title>
+  <title>منصة وَرِيـد | دليل المتبرعين ومصارف الدم</title>
   <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800;900&display=swap" rel="stylesheet">
   
   <style>
@@ -80,15 +80,15 @@
       transition: background-color 0.25s, color 0.25s;
     }
 
-    /* الشريط العلوي */
-    .gov-topbar {
+    /* الشريط العلوي البسيط */
+    .simple-topbar {
       background: #0f172a;
       color: #e2e8f0;
       font-size: 12px;
       padding: 8px 16px;
       border-bottom: 2px solid var(--primary);
     }
-    .gov-topbar-inner {
+    .simple-topbar-inner {
       max-width: 1080px;
       margin: 0 auto;
       display: flex;
@@ -97,7 +97,7 @@
       flex-wrap: wrap;
       gap: 8px;
     }
-    .gov-badge {
+    .status-badge {
       display: inline-flex;
       align-items: center;
       gap: 6px;
@@ -141,7 +141,7 @@
     header.main-header {
       background: linear-gradient(135deg, #991b1b 0%, #7f1d1d 55%, #450a0a 100%);
       color: white;
-      padding: 28px 16px 34px 16px;
+      padding: 26px 16px 32px 16px;
       position: relative;
       overflow: hidden;
       box-shadow: var(--shadow-md);
@@ -168,7 +168,7 @@
       align-items: center;
       flex-wrap: wrap;
       gap: 14px;
-      margin-bottom: 18px;
+      margin-bottom: 16px;
     }
     .brand-identity {
       display: flex;
@@ -176,19 +176,19 @@
       gap: 14px;
     }
     .brand-emblem {
-      width: 58px;
-      height: 58px;
+      width: 56px;
+      height: 56px;
       background: rgba(255, 255, 255, 0.14);
       border: 2px solid rgba(255, 255, 255, 0.35);
       border-radius: 16px;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 30px;
+      font-size: 28px;
       box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2);
     }
     .brand-text h1 {
-      font-size: 30px;
+      font-size: 28px;
       font-weight: 900;
       letter-spacing: -0.5px;
       line-height: 1.15;
@@ -197,7 +197,7 @@
       gap: 10px;
       flex-wrap: wrap;
     }
-    .official-seal-tag {
+    .clean-tag {
       font-size: 11px;
       background: rgba(255, 255, 255, 0.2);
       border: 1px solid rgba(255, 255, 255, 0.4);
@@ -212,7 +212,7 @@
       font-weight: 500;
     }
 
-    /* شريط الإحصائيات الحية (مطابق للتصميم النظيف) */
+    /* شريط الإحصائيات */
     .kpi-grid {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
@@ -246,10 +246,10 @@
       font-weight: 700;
     }
 
-    /* شريط نداءات الاستغاثة العاجلة */
+    /* شريط نداءات الطوارئ */
     .sos-banner {
       max-width: 1080px;
-      margin: -18px auto 18px auto;
+      margin: -16px auto 18px auto;
       padding: 0 15px;
       position: relative;
       z-index: 10;
@@ -307,11 +307,11 @@
       padding: 0 15px;
     }
 
-    /* شريط التنقل الرئيسي */
+    /* شريط التنقل الرئيسي المحسن ليشمل إدارة الحساب */
     .tab-radio { display: none; }
     .nav-bar {
       display: grid;
-      grid-template-columns: repeat(4, 1fr);
+      grid-template-columns: repeat(5, 1fr);
       gap: 8px;
       margin-bottom: 20px;
       background: var(--bg-card);
@@ -320,14 +320,19 @@
       border: 1px solid var(--border-color);
       box-shadow: var(--shadow-sm);
     }
-    @media (max-width: 640px) {
+    @media (max-width: 768px) {
+      .nav-bar {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+    @media (max-width: 480px) {
       .nav-bar {
         grid-template-columns: repeat(2, 1fr);
       }
     }
     .nav-label {
-      padding: 12px 8px;
-      font-size: 13.5px;
+      padding: 11px 6px;
+      font-size: 13px;
       font-weight: 800;
       border-radius: 10px;
       color: var(--text-muted);
@@ -339,6 +344,7 @@
       justify-content: center;
       gap: 6px;
       border: 1px solid transparent;
+      user-select: none;
     }
     .nav-label:hover {
       background: var(--bg-subtle);
@@ -347,10 +353,11 @@
     #tab-search:checked ~ .nav-bar label[for="tab-search"],
     #tab-banks:checked ~ .nav-bar label[for="tab-banks"],
     #tab-compat:checked ~ .nav-bar label[for="tab-compat"],
-    #tab-reg:checked ~ .nav-bar label[for="tab-reg"] {
+    #tab-reg:checked ~ .nav-bar label[for="tab-reg"],
+    #tab-self:checked ~ .nav-bar label[for="tab-self"] {
       background: var(--primary);
       color: white;
-      box-shadow: 0 4px 12px rgba(185, 28, 28, 0.3);
+      box-shadow: 0 4px 12px rgba(185, 28, 28, 0.28);
     }
 
     .view-box { display: none; }
@@ -358,6 +365,7 @@
     #tab-banks:checked ~ #view-banks { display: block; }
     #tab-compat:checked ~ #view-compat { display: block; }
     #tab-reg:checked ~ #view-reg { display: block; }
+    #tab-self:checked ~ #view-self { display: block; }
 
     /* البطاقات العامة */
     .card {
@@ -379,7 +387,7 @@
       border-bottom: 1px solid var(--border-color);
     }
     .section-head h2 {
-      font-size: 19px;
+      font-size: 18px;
       font-weight: 900;
       color: var(--text-main);
       display: flex;
@@ -448,7 +456,7 @@
       opacity: 0.85;
     }
 
-    /* لوحة البحث والتصفية (مطابقة للتصميم النظيف 2x2) */
+    /* لوحة البحث والتصفية */
     .advanced-filter-box {
       background: var(--bg-subtle);
       border: 1px solid var(--border-color);
@@ -558,7 +566,7 @@
       background: var(--primary-hover);
     }
 
-    /* بطاقة المتبرع */
+    /* بطاقات المتبرعين */
     .donors-grid {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
@@ -751,7 +759,7 @@
       gap: 4px;
     }
 
-    /* مصارف الدم ومصفوفة المخزون */
+    /* مصارف الدم */
     .bank-card-container {
       border: 1.5px solid var(--accent-blue-border);
       background: var(--bg-card);
@@ -771,7 +779,7 @@
       margin-bottom: 12px;
     }
     .bank-name-text {
-      font-size: 18px;
+      font-size: 17px;
       font-weight: 900;
       color: var(--text-main);
     }
@@ -868,7 +876,7 @@
       gap: 6px;
     }
 
-    /* حاسبة التوافق الذكية */
+    /* التوافق */
     .compat-selector-grid {
       display: grid;
       grid-template-columns: repeat(8, 1fr);
@@ -886,6 +894,35 @@
       margin-top: 14px;
       text-align: center;
     }
+
+    /* أزرار الإجراءات الرئيسية */
+    .btn-submit {
+      width: 100%;
+      padding: 14px;
+      font-size: 15px;
+      font-weight: 900;
+      border-radius: 10px;
+      border: none;
+      background: var(--primary);
+      color: white;
+      cursor: pointer;
+      transition: all 0.2s;
+      box-shadow: 0 4px 12px rgba(185, 28, 28, 0.25);
+    }
+    .btn-submit:hover { background: var(--primary-hover); }
+
+    .btn-danger {
+      background: var(--danger);
+      color: white;
+      border: none;
+      padding: 12px;
+      border-radius: 10px;
+      font-size: 14px;
+      font-weight: 800;
+      cursor: pointer;
+      transition: opacity 0.2s;
+    }
+    .btn-danger:hover { opacity: 0.9; }
 
     /* النوافذ المنبثقة */
     .modal-overlay {
@@ -932,22 +969,7 @@
       padding-bottom: 6px;
     }
 
-    .btn-submit {
-      width: 100%;
-      padding: 14px;
-      font-size: 15px;
-      font-weight: 900;
-      border-radius: 10px;
-      border: none;
-      background: var(--primary);
-      color: white;
-      cursor: pointer;
-      transition: all 0.2s;
-      box-shadow: 0 4px 12px rgba(185, 28, 28, 0.25);
-    }
-    .btn-submit:hover { background: var(--primary-hover); }
-
-    footer.official-footer {
+    footer.site-footer {
       max-width: 1080px;
       margin: 30px auto 0 auto;
       padding: 20px 15px;
@@ -957,7 +979,7 @@
       color: var(--text-muted);
     }
 
-    /* كشف الطباعة الخاص بالإدارة فقط */
+    /* كشف الطباعة الورقي */
     #printableRosterSection { display: none; }
     @media print {
       body * { visibility: hidden; }
@@ -987,21 +1009,21 @@
 </head>
 <body>
 
-  <!-- الشريط الحكومي العلوي (نفس التصميم الأصلي النظيف) -->
-  <div class="gov-topbar">
-    <div class="gov-topbar-inner">
-      <div class="gov-badge">
+  <!-- شريط علوي هادئ وبسيط -->
+  <div class="simple-topbar">
+    <div class="simple-topbar-inner">
+      <div class="status-badge">
         <span class="pulse-dot"></span>
-        <span>المنظومة الوطنية الموحدة لخدمات نقل الدم والطوارئ - ليبيا</span>
+        <span>منصة وَرِيـد للتبرع بالدم وربط المتبرعين في ليبيا</span>
       </div>
       <div class="topbar-actions">
         <button type="button" class="btn-top-util" onclick="window.toggleTheme()" id="themeToggleBtn">🌙 الوضع الليلي</button>
-        <button type="button" class="btn-top-util" onclick="window.openAdmin()">🔒 بوابة الإدارة المعتمدة</button>
+        <button type="button" class="btn-top-util" onclick="window.openAdmin()">🔒 لوحة الإدارة</button>
       </div>
     </div>
   </div>
 
-  <!-- الهيدر الرئيسي (نفس التصميم الأصلي في الصورة 247) -->
+  <!-- الهيدر الرئيسي -->
   <header class="main-header">
     <div class="header-container">
       <div class="brand-row">
@@ -1010,70 +1032,72 @@
           <div class="brand-text">
             <h1>
               <span>منصة وَرِيـد</span>
-              <span class="official-seal-tag">نظام وطني مشفر (بدون أسماء)</span>
+              <span class="clean-tag">حفظ الخصوصية بدون أسماء</span>
             </h1>
-            <p>الشبكة الرقمية الفورية لربط المتبرعين بمصارف الدم المركزية والمستشفيات</p>
+            <p>منصة رقمية مباشرة لربط المتبرعين بالدم بمصارف الدم والحالات الإنسانية</p>
           </div>
         </div>
       </div>
 
-      <!-- لوحة الإحصائيات الفورية -->
+      <!-- إحصائيات سريعة -->
       <div class="kpi-grid">
         <div class="kpi-card">
-          <span class="kpi-val" id="kpiTotal">7</span>
+          <span class="kpi-val" id="kpiTotal">0</span>
           <span class="kpi-lbl">🩸 إجمالي المتبرعين المسجلين</span>
         </div>
         <div class="kpi-card">
-          <span class="kpi-val" id="kpiVerified">4</span>
-          <span class="kpi-lbl">✔ المتبرعون المفعلون (موثق)</span>
+          <span class="kpi-val" id="kpiVerified">0</span>
+          <span class="kpi-lbl">✔ متبرعون موثقون ومفعلون</span>
         </div>
         <div class="kpi-card">
-          <span class="kpi-val" id="kpiReady">6</span>
-          <span class="kpi-lbl">🟢 جاهزون للتبرع الفوري</span>
+          <span class="kpi-val" id="kpiReady">0</span>
+          <span class="kpi-lbl">🟢 جاهزون للتبرع الآن</span>
         </div>
         <div class="kpi-card">
           <span class="kpi-val" id="kpiBanks">8</span>
-          <span class="kpi-lbl">🏥 مصارف الدم المركزية المربوطة</span>
+          <span class="kpi-lbl">🏥 مصارف دم ومستشفيات مدرجة</span>
         </div>
       </div>
     </div>
   </header>
 
-  <!-- شريط نداء الاستغاثة العاجل -->
+  <!-- شريط نداء الطوارئ -->
   <div class="sos-banner" id="publicSosBanner">
     <div class="sos-banner-inner">
-      <span class="sos-tag">🚨 نداء طوارئ عاجل</span>
-      <span class="sos-text" id="publicSosText">مستشفى الزاوية التعليمي (قسم الحوادث): مطلوب وحدات دم فصيلة O- و AB+ بشكل عاجل جداً.</span>
+      <span class="sos-tag">🚨 نداء عاجل</span>
+      <span class="sos-text" id="publicSosText">مستشفى الزاوية التعليمي (قسم الحوادث): مطلوب وحدات دم فصيلة O- و AB+ بشكل عاجل.</span>
       <button type="button" class="btn-sos-action" id="publicSosBtn" onclick="window.triggerSosAction()">استجابة سريعة للنداء ⬅</button>
     </div>
   </div>
 
   <div class="container">
     
-    <!-- أزرار التنقل الـ 4 الأصلية -->
+    <!-- خيارات التبويب الـ 5 (بما فيها إدارة الحساب كمتبرع) -->
     <input type="radio" name="main_nav" id="tab-search" class="tab-radio" checked>
     <input type="radio" name="main_nav" id="tab-banks" class="tab-radio">
     <input type="radio" name="main_nav" id="tab-compat" class="tab-radio">
     <input type="radio" name="main_nav" id="tab-reg" class="tab-radio">
+    <input type="radio" name="main_nav" id="tab-self" class="tab-radio">
 
     <div class="nav-bar">
-      <label for="tab-search" class="nav-label">🔍 البحث عن متبرعين</label>
-      <label for="tab-banks" class="nav-label">🏥 مخزون مصارف الدم</label>
-      <label for="tab-compat" class="nav-label">🧬 فحص توافق الفصائل</label>
-      <label for="tab-reg" class="nav-label">➕ تسجيل متبرع (بكود سري)</label>
+      <label for="tab-search" class="nav-label">🔍 البحث عن متبرع</label>
+      <label for="tab-banks" class="nav-label">🏥 مصارف الدم</label>
+      <label for="tab-compat" class="nav-label">🧬 فحص التوافق</label>
+      <label for="tab-reg" class="nav-label">➕ تسجيل متبرع</label>
+      <label for="tab-self" class="nav-label">👤 إدارة حسابي</label>
     </div>
 
-    <!-- ================= 1: محرك البحث الفوري (نفس شكل الصورة 247 تماماً) ================= -->
+    <!-- ================= 1: محرك البحث ================= -->
     <div id="view-search" class="view-box">
       <div class="card">
         <div class="section-head">
-          <h2>🔍 محرك البحث الفوري عن وحدات ومتبرعي الدم</h2>
+          <h2>🔍 البحث عن متبرعي الدم المتاحين</h2>
           <span id="searchResultsCounter" style="font-size:13px; font-weight:800; color:var(--primary);"></span>
         </div>
 
         <div class="blood-selector-title">
-          <span>1. اختر فصيلة الدم المطلوبة للبحث السريع:</span>
-          <button type="button" onclick="window.resetAllFilters()" style="background:none; border:none; color:var(--accent-blue); font-size:12px; font-weight:800; cursor:pointer;">إعادة ضبط البحث ↺</button>
+          <span>1. اختر الفصيلة المطلوبة للفرز السريع:</span>
+          <button type="button" onclick="window.resetAllFilters()" style="background:none; border:none; color:var(--accent-blue); font-size:12px; font-weight:800; cursor:pointer;">إعادة ضبط ↺</button>
         </div>
         <div class="blood-pills-grid" id="bloodPillsContainer"></div>
 
@@ -1082,7 +1106,7 @@
             <div class="form-group">
               <label>📍 تصفية حسب المدينة:</label>
               <select id="filterCity" onchange="window.renderDonors()">
-                <option value="">كل المدن الليبية</option>
+                <option value="">كل المدن</option>
                 <option value="الزاوية">الزاوية</option>
                 <option value="صرمان">صرمان</option>
                 <option value="صبراتة">صبراتة</option>
@@ -1095,37 +1119,37 @@
             </div>
 
             <div class="form-group">
-              <label>🩺 الجاهزية الطبية (90 يوماً):</label>
+              <label>🩺 الجاهزية للتبرع:</label>
               <select id="filterReadiness" onchange="window.renderDonors()">
-                <option value="">الكل (متاح وفي استشفاء)</option>
-                <option value="ready" selected>🟢 المتاحون للتبرع الفوري فقط</option>
-                <option value="resting">⏳ في فترة استشفاء</option>
+                <option value="">الكل (جاهز وفي فترة راحة)</option>
+                <option value="ready" selected>🟢 متاح للتبرع الفوري فقط</option>
+                <option value="resting">⏳ في فترة راحة بعد تبرع</option>
               </select>
             </div>
 
             <div class="form-group">
-              <label>🔢 بحث بكود المتطوع أو الهاتف:</label>
+              <label>🔢 بحث بالكود أو الهاتف:</label>
               <input type="text" id="filterKeyword" placeholder="مثال: WRD-101 أو 091..." oninput="window.renderDonors()">
             </div>
 
             <div class="form-group">
               <button type="button" class="btn-search-trigger" style="width:100%;" onclick="window.renderDonors()">
-                🔍 بحث وتحديث النتائج
+                🔍 تحديث النتائج
               </button>
             </div>
           </div>
 
           <div class="activation-tabs">
-            <span style="font-size:12.5px; font-weight:800;">🛡️ تصفية حالة تفعيل الحسابات:</span>
+            <span style="font-size:12.5px; font-weight:800;">تصفية التوثيق:</span>
             <div class="activation-btn-group">
               <button type="button" id="btnActAll" class="act-filter-btn active-all" onclick="window.setVerificationFilter('all')">
                 الكل (<span id="countActAll">0</span>)
               </button>
               <button type="button" id="btnActVerified" class="act-filter-btn" onclick="window.setVerificationFilter('verified')">
-                ✔ المتفعلون فقط (<span id="countActVerified">0</span>)
+                ✔ الموثقون فقط (<span id="countActVerified">0</span>)
               </button>
               <button type="button" id="btnActUnverified" class="act-filter-btn" onclick="window.setVerificationFilter('unverified')">
-                ⏳ غير المتفعلين (<span id="countActUnverified">0</span>)
+                ⏳ غير الموثقين (<span id="countActUnverified">0</span>)
               </button>
             </div>
           </div>
@@ -1133,19 +1157,19 @@
 
         <div id="emptyDonorsState" style="display:none; text-align:center; padding:35px 15px; color:var(--text-muted);">
           <div style="font-size:42px; margin-bottom:8px;">🩸</div>
-          <h3 style="font-size:16px; margin-bottom:4px;">لا توجد سجلات متطابقة مع شروط البحث الحالية</h3>
-          <p style="font-size:13px;">جرب تغيير خيارات التصفية أو اختيار فصيلة دم أخرى.</p>
+          <h3 style="font-size:16px; margin-bottom:4px;">لا توجد نتائج مطابقة لشروط البحث</h3>
+          <p style="font-size:13px;">يرجى تجربة تغيير المدينة أو الفصيلة.</p>
         </div>
 
         <div class="donors-grid" id="donorsListContainer"></div>
       </div>
     </div>
 
-    <!-- ================= 2: مخزون مصارف الدم ================= -->
+    <!-- ================= 2: مصارف الدم ================= -->
     <div id="view-banks" class="view-box">
       <div class="card">
         <div class="section-head">
-          <h2>🏥 مصارف الدم والمستشفيات المربوطة</h2>
+          <h2>🏥 مصارف الدم والمستشفيات المسجلة</h2>
           <div style="display:flex; gap:8px;">
             <select id="bankCityFilter" onchange="window.renderPublicBanks()" style="width:auto; padding:6px 12px; font-size:12.5px;">
               <option value="">جميع المدن</option>
@@ -1161,22 +1185,22 @@
         </div>
 
         <div style="background:#fffbeb; border:1px solid #fde68a; color:#b45309; padding:12px 14px; border-radius:12px; font-size:13px; font-weight:700; margin-bottom:18px; line-height:1.7;">
-          ⚠️ <strong>تنبيه وإبراء ذمة:</strong> تتغير فصائل الدم المتوفرة في المستشفيات بشكل مستمر حسب حالات الطوارئ والعمليات. يُرجى مراجعة <strong>تاريخ آخر تحديث</strong> الموضح لكل مصرف أو التواصل المباشر مع قسم الطوارئ.
+          ⚠️ <strong>ملاحظة:</strong> يتغير المخزون في المستشفيات باستمرار حسب الحالات الحرجة. يرجى مراجعة تاريخ التحديث لكل مصرف أو الاتصال المباشر بقسم الطوارئ.
         </div>
 
         <div id="publicBanksContainer"></div>
       </div>
     </div>
 
-    <!-- ================= 3: فحص توافق الفصائل ================= -->
+    <!-- ================= 3: فحص التوافق ================= -->
     <div id="view-compat" class="view-box">
       <div class="card">
         <div class="section-head">
-          <h2>🧬 فحص التوافق الطبي لنقل كريات الدم</h2>
-          <span style="font-size:12px; color:var(--text-muted); font-weight:700;">المعايير الطبية المعتمدة</span>
+          <h2>🧬 فحص توافق فصائل الدم</h2>
+          <span style="font-size:12px; color:var(--text-muted); font-weight:700;">دليل طبي إرشادي</span>
         </div>
         <p style="font-size:13.5px; color:var(--text-muted); margin-bottom:12px;">
-          اختر <strong>فصيلة دم المريض المحتاج</strong> لمعرفة الفصائل المطابقة التي يمكنها التبرع له بأمان:
+          اختر <strong>فصيلة دم المريض</strong> لمعرفة الفصائل المتوافقة التي يمكنها التبرع له بأمان:
         </p>
 
         <div class="compat-selector-grid" id="compatButtonsGrid">
@@ -1194,11 +1218,11 @@
       </div>
     </div>
 
-    <!-- ================= 4: تسجيل متبرع (بكود سري) ================= -->
+    <!-- ================= 4: تسجيل متبرع ================= -->
     <div id="view-reg" class="view-box">
       <div class="card">
         <div class="section-head">
-          <h2>➕ تسجيل متبرع جديد (بكود سري بدون اسم)</h2>
+          <h2>➕ تسجيل متبرع جديد (حفظ الخصوصية بكود سري)</h2>
           <span style="font-size:12px; color:var(--success); font-weight:800;">🔒 خصوصية تامة</span>
         </div>
 
@@ -1231,21 +1255,21 @@
           <div class="form-group-spaced">
             <label>📞 رقم الهاتف الليبي: <span style="color:var(--primary)">*</span></label>
             <input type="tel" id="vPhone" placeholder="091XXXXXXX أو 092XXXXXXX" maxlength="10" dir="ltr" style="text-align:right;" required>
-            <span style="font-size:11.5px; color:var(--text-muted);">10 أرقام تبدأ بـ 09 (سيتم تشفيره بالنجوم في القائمة).</span>
+            <span style="font-size:11.5px; color:var(--text-muted);">10 أرقام تبدأ بـ 09 (لن يظهر رقمك للعامة بل يُحجب بالنجوم لحمايتك).</span>
           </div>
 
           <div style="display:grid; grid-template-columns: 1fr 1fr; gap:12px;" class="form-group-spaced">
             <div>
               <label>🕒 الوقت المفضل للتواصل:</label>
               <select id="vPreferredTime" required>
-                <option value="24/7" selected>🚨 طوارئ 24 ساعة</option>
+                <option value="24/7" selected>🚨 متاح دائماً للطوارئ</option>
                 <option value="morning">☀️ صباحاً (8:00 ص - 2:00 م)</option>
                 <option value="evening">🌆 مساءً (4:00 م - 10:00 م)</option>
-                <option value="weekend">🗓️ عطلة نهاية الأسبوع</option>
+                <option value="weekend">🗓️ عطلة نهاية الأسبوع فقط</option>
               </select>
             </div>
             <div>
-              <label>🩺 حالة الجاهزية الحالية:</label>
+              <label>🩺 الجاهزية الحالية:</label>
               <select id="vLastDonationType">
                 <option value="ready" selected>🟢 جاهز ومتاح للتبرع الفوري</option>
                 <option value="resting">⏳ تبرعت مؤخراً (في فترة راحة)</option>
@@ -1253,33 +1277,131 @@
             </div>
           </div>
 
-          <button type="submit" class="btn-submit">توليد كود المتبرع والانضمام 🩸</button>
+          <button type="submit" class="btn-submit">توليد كود المتبرع وحفظ البيانات 🩸</button>
         </form>
       </div>
     </div>
 
+    <!-- ================= 5: إدارة حسابي كمتبرع (إدارة ذاتية) ================= -->
+    <div id="view-self" class="view-box">
+      <div class="card">
+        <div class="section-head">
+          <h2>👤 إدارة حسابي كمتبرع (تعديل أو حذف الحساب)</h2>
+          <span style="font-size:12px; color:var(--accent-blue); font-weight:800;">تحكم ذاتي كامل</span>
+        </div>
+
+        <!-- شاشة تسجيل دخول المتبرع -->
+        <div id="selfLoginArea">
+          <p style="font-size:13.5px; color:var(--text-muted); margin-bottom:16px;">
+            أدخل رقم هاتفك المسجل والكود السري الخاص بك لتعديل مدينتك، فصيلتك، أو حذف حسابك نهائياً في أي وقت:
+          </p>
+          <div class="filter-grid" style="margin-bottom:14px;">
+            <div class="form-group">
+              <label>📞 رقم الهاتف المسجل:</label>
+              <input type="tel" id="selfPhoneInput" placeholder="09XXXXXXXX" dir="ltr" style="text-align:right;">
+            </div>
+            <div class="form-group">
+              <label>🔑 كود المتبرع (مثل WRD-1234):</label>
+              <input type="text" id="selfCodeInput" placeholder="WRD-XXXX" dir="ltr" style="text-align:right;">
+            </div>
+          </div>
+          <button type="button" class="btn-submit" onclick="window.donorSelfLogin()">
+            تسجيل الدخول لإدارة الحساب ⬅
+          </button>
+        </div>
+
+        <!-- شاشة لوحة المتبرع بعد التحقق -->
+        <div id="selfDashboardArea" style="display:none;">
+          <div style="background:var(--bg-subtle); border:1px solid var(--border-color); border-radius:12px; padding:14px; margin-bottom:18px; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px;">
+            <div>
+              <span style="font-size:13px; color:var(--text-muted);">أهلاً بك المتبرع:</span>
+              <strong style="color:var(--primary); font-size:16px;" id="selfDisplayCode">WRD-0000</strong>
+              <div style="font-size:12px; color:var(--text-muted);" id="selfDisplayPhone">📞 09XXXXXXXX</div>
+            </div>
+            <button type="button" onclick="window.donorSelfLogout()" style="background:#64748b; color:white; border:none; padding:6px 12px; border-radius:8px; font-size:12px; font-weight:700; cursor:pointer;">
+              تسجيل الخروج ✖
+            </button>
+          </div>
+
+          <div style="display:grid; grid-template-columns: 1fr 1fr; gap:12px;" class="form-group-spaced">
+            <div>
+              <label>🩸 فصيلة الدم:</label>
+              <select id="selfEditBlood">
+                <option value="O+">O+</option><option value="O-">O-</option>
+                <option value="A+">A+</option><option value="A-">A-</option>
+                <option value="B+">B+</option><option value="B-">B-</option>
+                <option value="AB+">AB+</option><option value="AB-">AB-</option>
+              </select>
+            </div>
+            <div>
+              <label>📍 المدينة الحالية:</label>
+              <select id="selfEditCity">
+                <option value="الزاوية">الزاوية</option>
+                <option value="صرمان">صرمان</option>
+                <option value="صبراتة">صبراتة</option>
+                <option value="زوارة">زوارة</option>
+                <option value="طرابلس">طرابلس</option>
+                <option value="مصراتة">مصراتة</option>
+                <option value="بنغازي">بنغازي</option>
+                <option value="سبها">سبها</option>
+              </select>
+            </div>
+          </div>
+
+          <div style="display:grid; grid-template-columns: 1fr 1fr; gap:12px;" class="form-group-spaced">
+            <div>
+              <label>🕒 الوقت المفضل للتواصل:</label>
+              <select id="selfEditTime">
+                <option value="24/7">🚨 متاح دائماً للطوارئ</option>
+                <option value="morning">☀️ صباحاً (8ص - 2م)</option>
+                <option value="evening">🌆 مساءً (4م - 10م)</option>
+                <option value="weekend">🗓️ عطلة الأسبوع فقط</option>
+              </select>
+            </div>
+            <div>
+              <label>🩺 الجاهزية للتبرع:</label>
+              <select id="selfEditReady">
+                <option value="ready">🟢 متاح للتبرع الفوري</option>
+                <option value="resting">⏳ في فترة راحة بعد تبرع</option>
+              </select>
+            </div>
+          </div>
+
+          <div style="display:flex; gap:10px; margin-top:20px; flex-wrap:wrap;">
+            <button type="button" class="btn-submit" style="flex:2;" onclick="window.donorSelfUpdate()">
+              💾 حفظ التعديلات الجديدة
+            </button>
+            <button type="button" class="btn-danger" style="flex:1;" onclick="window.donorSelfDelete()">
+              🗑️ حذف حسابي نهائياً
+            </button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
   </div>
 
-  <!-- نافذة التعهد لكشف الرقم -->
+  <!-- نافذة التعهد الأخلاقي لكشف الرقم -->
   <div id="pledgeModal" class="modal-overlay">
-    <div class="modal-box" style="border: 3px solid var(--primary); max-width:500px;">
-      <div style="font-size:40px; margin-bottom:6px;">⚖️</div>
-      <h3 style="color:var(--primary); font-size:19px; font-weight:900; margin-bottom:8px;">تعهد أخلاقي ومساءلة قانونية</h3>
+    <div class="modal-box" style="border: 2px solid var(--primary); max-width:500px;">
+      <div style="font-size:38px; margin-bottom:6px;">🤝</div>
+      <h3 style="color:var(--primary); font-size:18px; font-weight:900; margin-bottom:8px;">تعهد استخدام الرقم لحالة إنسانية</h3>
       <div style="font-size:13.5px; font-weight:700; line-height:1.8; text-align:justify; background:var(--primary-light); padding:15px; border-radius:12px; border:1px solid var(--primary-border); margin-bottom:16px;">
-        "أشهد الله أنني أطلب رقم هذا المتبرع (<strong id="pledgeDonorCodeText">WRD</strong>) <strong>لحالة إنقاذ حياة وطوارئ طبية حقيقية فقط</strong>، وأتعهد بعدم إزعاجه أو استخدام الرقم خارج غرض التبرع بالدم."
+        "أشهد الله أنني أطلب رقم هذا المتبرع (<strong id="pledgeDonorCodeText">WRD</strong>) <strong>لحالة إنقاذ حياة أو طوارئ طبية حقيقية</strong>، وأتعهد بعدم إزعاجه أو استخدام رقمه في غير غرض التبرع بالدم."
       </div>
       <input type="hidden" id="pledgeDonorId">
-      <button type="button" class="btn-submit" onclick="window.confirmPledge()" style="margin-bottom:8px;">أتعهد وأتحمل المسؤولية (إظهار الرقم)</button>
+      <button type="button" class="btn-submit" onclick="window.confirmPledge()" style="margin-bottom:8px;">أتعهد وأوافق (إظهار الرقم)</button>
       <button type="button" class="btn-submit" style="background:#64748b;" onclick="window.closePledge()">إلغاء</button>
     </div>
   </div>
 
-  <!-- نافذة تأكيد وتفعيل المتبرع (واتساب والرسائل القصيرة) -->
+  <!-- نافذة تأكيد التسجيل -->
   <div id="verifySuccessModal" class="modal-overlay">
-    <div class="modal-box" style="border: 3px solid var(--success); max-width:520px; text-align:center;">
-      <div style="font-size:45px; margin-bottom:8px;">✅</div>
-      <h3 style="color:var(--success); font-size:21px; font-weight:900; margin-bottom:6px;">تم تسجيلك في المنظومة الوطنية بنجاح!</h3>
-      <p style="font-size:13px; color:var(--text-muted); margin-bottom:14px;">كود المتبرع السري الخاص بك:</p>
+    <div class="modal-box" style="border: 2px solid var(--success); max-width:520px; text-align:center;">
+      <div style="font-size:42px; margin-bottom:8px;">✅</div>
+      <h3 style="color:var(--success); font-size:20px; font-weight:900; margin-bottom:6px;">تم تسجيلك في منصة وريد بنجاح!</h3>
+      <p style="font-size:13px; color:var(--text-muted); margin-bottom:14px;">كودك السري المحفوظ لحسابك هو:</p>
       
       <div style="background:var(--bg-subtle); border:2px dashed var(--success); padding:12px; border-radius:12px; margin-bottom:16px;">
         <span style="font-size:26px; font-weight:900; color:var(--primary); letter-spacing:1px;" id="modalDonorCode">WRD-0000</span>
@@ -1287,32 +1409,32 @@
       </div>
 
       <div style="background:var(--success-light); border:1px solid var(--success-border); padding:12px 14px; border-radius:10px; margin-bottom:18px; font-size:13px; font-weight:700; color:var(--text-main); text-align:right; line-height:1.7;">
-        🛡️ <strong>خطوة التوثيق والتفعيل:</strong><br>
-        لتوثيق حسابك وظهور شارة <span style="color:var(--success); font-weight:900;">«✔ مفعل (موثق)»</span> أمام المستشفيات وأقسام الطوارئ، يرجى تأكيد رقمك للإدارة عبر أحد الخيارين:
+        💡 <strong>خطوة التوثيق السريعة:</strong><br>
+        لتوثيق رقمك وظهور شارة <span style="color:var(--success); font-weight:900;">«✔ موثق»</span> أمام المستشفيات والباحثين عن دم، يرجى تأكيد رقمك عبر خيار التواصل المباشر:
       </div>
 
       <div style="display:flex; flex-direction:column; gap:10px; margin-bottom:14px;">
         <a id="btnVerifyWhatsApp" href="#" target="_blank" style="background:#25d366; color:white; padding:12px; border-radius:10px; font-size:14px; font-weight:900; text-decoration:none; display:flex; align-items:center; justify-content:center; gap:8px; box-shadow:0 3px 10px rgba(37,211,102,0.3);">
-          💬 إرسال تأكيد التفعيل عبر واتساب
+          💬 تأكيد الحساب عبر واتساب
         </a>
         <a id="btnVerifySMS" href="#" style="background:#0284c7; color:white; padding:12px; border-radius:10px; font-size:14px; font-weight:900; text-decoration:none; display:flex; align-items:center; justify-content:center; gap:8px; box-shadow:0 3px 10px rgba(2,132,199,0.3);">
-          📱 إرسال تأكيد التفعيل عبر الرسائل القصيرة (SMS)
+          📱 تأكيد الحساب عبر الرسائل القصيرة (SMS)
         </a>
       </div>
 
       <button type="button" onclick="window.closeVerifyModal()" style="background:#64748b; color:white; border:none; padding:10px; border-radius:8px; font-size:13px; font-weight:800; cursor:pointer; width:100%;">
-        المتابعة لقائمة المتبرعين (التفعيل لاحقاً) ⬅
+        المتابعة إلى دليل المتبرعين ⬅
       </button>
     </div>
   </div>
 
-  <!-- ================= لوحة الإدارة المعتمدة (جميع أدوات الإكسيل والتحكم هنا فقط) ================= -->
+  <!-- لوحة الإدارة -->
   <div id="adminModal" class="modal-overlay">
     <div class="modal-box" style="max-width:760px; text-align:right;">
       <div id="adminLoginView" style="text-align:center;">
         <div style="font-size:38px; margin-bottom:6px;">🔐</div>
-        <h3 style="font-size:19px; font-weight:900; margin-bottom:6px;">بوابة الإدارة المعتمدة</h3>
-        <p style="font-size:12.5px; color:var(--text-muted); margin-bottom:14px;">أدخل الرمز السري للإدارة للتحكم في المنظومة:</p>
+        <h3 style="font-size:19px; font-weight:900; margin-bottom:6px;">لوحة الإدارة</h3>
+        <p style="font-size:12.5px; color:var(--text-muted); margin-bottom:14px;">أدخل الرمز السري للإدارة لإدارة المنصة:</p>
         <div class="form-group-spaced">
           <input type="password" id="adminPassInput" placeholder="الرمز السري للإدارة...">
         </div>
@@ -1322,11 +1444,11 @@
 
       <div id="adminDashboardView" style="display:none;">
         <div style="display:flex; justify-content:space-between; align-items:center; border-bottom:2px solid var(--primary); padding-bottom:10px; margin-bottom:16px;">
-          <h3 style="color:var(--primary); font-size:18px; font-weight:900;">🛠️ لوحة الإدارة والتحكم الكامل</h3>
+          <h3 style="color:var(--primary); font-size:18px; font-weight:900;">🛠️ لوحة تحكم الإدارة</h3>
           <button type="button" onclick="window.closeAdmin()" style="background:#64748b; color:white; border:none; padding:6px 14px; border-radius:6px; font-size:12px; font-weight:800; cursor:pointer;">خروج ✖</button>
         </div>
 
-        <!-- 0. هاتف إدارة المنظومة لاستقبال طلبات التفعيل -->
+        <!-- هاتف الإدارة لاستقبال رسائل التفعيل -->
         <div class="admin-section-card">
           <div class="admin-section-title">
             <span style="color:var(--success);">📱 رقم هاتف الإدارة لاستقبال رسائل التفعيل (واتساب و SMS)</span>
@@ -1337,20 +1459,20 @@
               💾 حفظ الرقم
             </button>
           </div>
-          <div style="font-size:11.5px; color:var(--text-muted); margin-top:5px;">هذا الرقم ستصل إليه رسائل الواتساب وSMS التلقائية من المتطوعين الجدد لطلب التفعيل.</div>
+          <div style="font-size:11.5px; color:var(--text-muted); margin-top:5px;">هذا الرقم ستصل إليه رسائل الواتساب وSMS التلقائية من المتبرعين الجدد.</div>
         </div>
 
-        <!-- 1. التحكم في شريط نداء الطوارئ (النشرة الإخبارية) -->
+        <!-- 1. التحكم في شريط الطوارئ -->
         <div class="admin-section-card">
           <div class="admin-section-title">
-            <span style="color:var(--primary);">📢 1. التحكم في شريط نداء الطوارئ (النشرة الإخبارية)</span>
+            <span style="color:var(--primary);">📢 1. التحكم في شريط نداء الطوارئ</span>
             <label style="display:inline-flex; align-items:center; gap:6px; margin:0; cursor:pointer; font-size:12px;">
               <input type="checkbox" id="admSosVisible" style="width:16px; height:16px;" onchange="window.adminSaveSos(false)">
               <span>إظهار الشريط</span>
             </label>
           </div>
           <div style="display:grid; grid-template-columns: 2fr 1fr; gap:8px; margin-bottom:8px;">
-            <input type="text" id="admSosText" placeholder="نص نداء الطوارئ أو الخبر...">
+            <input type="text" id="admSosText" placeholder="نص النداء أو الإشعار العاجل...">
             <select id="admSosBlood">
               <option value="O-">توجيه الزر لفصيلة O-</option>
               <option value="O+">توجيه الزر لفصيلة O+</option>
@@ -1364,18 +1486,18 @@
             </select>
           </div>
           <button type="button" onclick="window.adminSaveSos(true)" style="background:var(--primary); color:white; border:none; padding:8px 14px; border-radius:8px; font-size:12.5px; font-weight:800; cursor:pointer; width:100%;">
-            💾 حفظ وتحديث الشريط الإخباري
+            💾 حفظ وتحديث الشريط
           </button>
         </div>
 
-        <!-- 2. استيراد وتصدير كشوفات المتبرعين (Excel / CSV / PDF Paste / طباعة) -->
+        <!-- 2. استيراد وتصدير المتبرعين (Excel / CSV / PDF Paste / طباعة) -->
         <div class="admin-section-card">
           <div class="admin-section-title">
-            <span style="color:var(--success);">📥 2. إدخال جماعي للمتبرعين (Excel / CSV / لصق من PDF) والطباعة</span>
+            <span style="color:var(--success);">📥 2. إدخال جماعي وتصدير الكشوفات</span>
           </div>
           <div style="display:grid; grid-template-columns: 1fr 1fr; gap:8px; margin-bottom:8px;">
             <div>
-              <label style="font-size:11.5px;">المدينة الافتراضية للكشف المضاف:</label>
+              <label style="font-size:11.5px;">المدينة الافتراضية للكشف:</label>
               <select id="bulkDefaultCity">
                 <option value="الزاوية">الزاوية</option>
                 <option value="صرمان">صرمان</option>
@@ -1395,11 +1517,11 @@
             </div>
           </div>
 
-          <textarea id="bulkPasteArea" rows="3" placeholder="أو الصق هنا مباشرة أي جدول/أرقام منسوخة من Excel أو PDF أو Word (مثال: 0912345678 O+ الزاوية)..."></textarea>
+          <textarea id="bulkPasteArea" rows="3" placeholder="الصق هنا بيانات المتبرعين أو الجدول المنسوخ (مثال: 0912345678 O+ الزاوية)..."></textarea>
 
           <div style="display:flex; gap:8px; margin-top:8px; flex-wrap:wrap;">
             <button type="button" onclick="window.processBulkImport()" style="background:var(--success); color:white; border:none; padding:9px 14px; border-radius:8px; font-size:12.5px; font-weight:800; cursor:pointer; flex:2;">
-              ⚡ إدخال وتفعيل المتبرعين دفعة واحدة
+              ⚡ إدخال المتبرعين دفعة واحدة
             </button>
             <button type="button" onclick="window.exportCSV()" style="background:#0284c7; color:white; border:none; padding:9px 12px; border-radius:8px; font-size:12px; font-weight:800; cursor:pointer; flex:1;">
               📊 تصدير Excel/CSV
@@ -1410,13 +1532,13 @@
           </div>
         </div>
 
-        <!-- 3. إدارة مصارف الدم والمستشفيات (إضافة / تعديل / إظهار أو إخفاء الأكياس) -->
+        <!-- 3. إدارة المستشفيات ومصارف الدم -->
         <div class="admin-section-card">
           <div class="admin-section-title">
             <span style="color:var(--accent-blue);">🏥 3. إدارة المستشفيات ومصارف الدم</span>
             <label style="display:inline-flex; align-items:center; gap:6px; margin:0; cursor:pointer; font-size:12px; color:var(--primary);">
               <input type="checkbox" id="admGlobalShowStock" style="width:16px; height:16px;" onchange="window.toggleGlobalStockMode(this.checked)">
-              <span>تفعيل عرض فصائل الأكياس للكل</span>
+              <span>عرض جدول الفصائل للجميع</span>
             </label>
           </div>
 
@@ -1431,7 +1553,7 @@
                   <input type="text" id="editBPhone" placeholder="اتركه فارغاً إن لم يتأكد">
                 </div>
                 <div>
-                  <label style="font-size:11px;">اسم الأخصائي/المحدث:</label>
+                  <label style="font-size:11px;">المحدث:</label>
                   <input type="text" id="editBUpdatedBy" placeholder="أخصائي مصرف الدم">
                 </div>
                 <div>
@@ -1445,7 +1567,7 @@
               <div id="adminStockMatrixInputs" style="display:grid; grid-template-columns: repeat(4, 1fr); gap:6px; margin-bottom:8px;"></div>
               <div style="display:flex; gap:8px;">
                 <button type="button" onclick="window.adminSaveBankStock()" style="background:var(--success); color:white; border:none; padding:8px 14px; border-radius:8px; font-weight:800; cursor:pointer; flex:2;">
-                  ✅ حفظ التعديلات وتحديث التاريخ
+                  ✅ حفظ التعديلات
                 </button>
                 <button type="button" onclick="window.adminDeleteBank()" style="background:var(--danger); color:white; border:none; padding:8px 14px; border-radius:8px; font-weight:800; cursor:pointer; flex:1;">
                   🗑️ حذف المصرف
@@ -1454,7 +1576,7 @@
             </div>
           </div>
 
-          <label style="font-size:12px; color:var(--accent-blue);">➕ إضافة مصرف دم أو مستشفى جديد في ليبيا:</label>
+          <label style="font-size:12px; color:var(--accent-blue);">➕ إضافة مصرف دم أو مستشفى جديد:</label>
           <div style="display:grid; grid-template-columns: 1fr 1fr; gap:8px; margin-bottom:8px;">
             <input type="text" id="newBankName" placeholder="اسم المستشفى أو المصرف *">
             <select id="newBankCity">
@@ -1474,23 +1596,23 @@
             <input type="text" id="newBankPhone" placeholder="رقم الهاتف (اختياري)">
           </div>
           <div style="display:grid; grid-template-columns: 1fr 1fr; gap:8px; margin-bottom:8px;">
-            <input type="text" id="newBankMapQuery" placeholder="اسم المكان في Google Maps">
+            <input type="text" id="newBankMapQuery" placeholder="اسم المكان في خرائط جوجل">
             <input type="text" id="newBankFb" placeholder="رابط صفحة فيسبوك">
           </div>
           <button type="button" onclick="window.adminAddBank()" style="background:var(--accent-blue); color:white; border:none; padding:8px 14px; border-radius:8px; font-weight:800; cursor:pointer; width:100%;">
-            ➕ إضافة للمنظومة
+            ➕ إضافة المصرف
           </button>
         </div>
 
         <!-- 4. إدارة المتبرعين -->
         <div class="admin-section-card">
           <div class="admin-section-title">
-            <span>👥 4. التحكم في المتبرعين (تفعيل / جاهزية / حذف)</span>
+            <span>👥 4. قائمة المتبرعين (تفعيل / حذف)</span>
           </div>
           <div id="adminDonorsWrapper" style="max-height:190px; overflow-y:auto;"></div>
         </div>
 
-        <!-- 5. النسخ الاحتياطي الكامل -->
+        <!-- 5. النسخ الاحتياطي -->
         <div style="display:flex; gap:8px;">
           <button type="button" onclick="window.exportBackup()" style="background:var(--accent-blue); color:white; border:none; padding:8px 12px; border-radius:8px; font-size:12px; font-weight:800; cursor:pointer; flex:1;">📥 حفظ نسخة احتياطية (JSON)</button>
           <button type="button" onclick="document.getElementById('importFile').click()" style="background:#475569; color:white; border:none; padding:8px 12px; border-radius:8px; font-size:12px; font-weight:800; cursor:pointer; flex:1;">📤 استرجاع نسخة (JSON)</button>
@@ -1501,10 +1623,10 @@
     </div>
   </div>
 
-  <!-- جدول الطباعة الورقية الرسمي (للإدارة فقط عند الضغط على طباعة) -->
+  <!-- جدول الطباعة للورقيات -->
   <div id="printableRosterSection">
     <div style="text-align:center; border-bottom:2px solid #000; padding-bottom:10px; margin-bottom:12px;">
-      <h2 style="font-size:18px; font-weight:900;">منظومة «وَرِيـد» الوطنية لخدمات نقل الدم — ليبيا</h2>
+      <h2 style="font-size:18px; font-weight:900;">منصة «وَرِيـد» للتبرع بالدم — كشف المتبرعين</h2>
       <p style="font-size:12px;" id="printTimestampMeta"></p>
     </div>
     <table class="print-table">
@@ -1523,9 +1645,9 @@
     </table>
   </div>
 
-  <footer class="official-footer">
-    <div><strong>منصة وَرِيـد الوطنية لخدمات نقل ومصارف الدم</strong> — ليبيا</div>
-    <div style="margin-top:4px; font-size:11.5px;">جميع الحقوق محفوظة © 2026 • نظام الكود المشفر لحماية المتبرعين (WRD-ID)</div>
+  <footer class="site-footer">
+    <div><strong>منصة وَرِيـد للتبرع بالدم</strong> — مبادرة تطوعية لخدمة المجتمع</div>
+    <div style="margin-top:4px; font-size:11.5px;">نظام الكود المشفر لحماية خصوصية المتبرعين (WRD-ID) • 2026</div>
   </footer>
 
   <script>
@@ -1535,19 +1657,29 @@
     const STORAGE_KEY_ADMIN_PHONE = "wareed_admin_phone_v7";
     const BLOOD_TYPES = ["O+", "O-", "A+", "A-", "B+", "B-", "AB+", "AB-"];
 
-    let initialBanksData = [{"id": "bank_zawiya_edu", "city": "الزاوية", "name": "مصرف الدم المركزي بمستشفى الزاوية التعليمي", "location": "الزاوية - مجمع الكليات والمستشفى التعليمي", "map_query": "Zawiya Teaching Hospital, Az Zawiyah, Libya", "phone": "", "fb_url": "https://www.facebook.com/search/top?q=مستشفى%20الزاوية%20التعليمي", "show_stock": true, "last_updated": "2026-10-28 08:30", "updated_by": "أخصائي مصرف الدم المناوب", "stock": {"O+": "high", "O-": "crit", "A+": "high", "A-": "low", "B+": "high", "B-": "low", "AB+": "high", "AB-": "crit"}}, {"id": "bank_zawiya_kidney", "city": "الزاوية", "name": "مستشفى الكلى بالزاوية", "location": "الزاوية - المركز التخصصي لأمراض وجراحة الكلى", "map_query": "Kidney Hospital Az Zawiyah, Libya", "phone": "", "fb_url": "https://www.facebook.com/search/top?q=مستشفى%20الكلى%20الزاوية", "show_stock": false, "last_updated": "2026-10-28 08:30", "updated_by": "وحدة نقل الدم", "stock": {"O+": "high", "O-": "low", "A+": "high", "A-": "low", "B+": "high", "B-": "low", "AB+": "high", "AB-": "low"}}, {"id": "bank_surman_general", "city": "صرمان", "name": "مستشفى صرمان العام ومصرف الدم", "location": "صرمان - الطريق الرئيسي وسط المدينة", "map_query": "Surman General Hospital, Surman, Libya", "phone": "", "fb_url": "https://www.facebook.com/search/top?q=مستشفى%20صرمان%20العام", "show_stock": false, "last_updated": "2026-10-28 08:30", "updated_by": "قسم المختبرات وبنك الدم", "stock": {"O+": "high", "O-": "crit", "A+": "high", "A-": "low", "B+": "high", "B-": "low", "AB+": "high", "AB-": "crit"}}, {"id": "bank_sabratah_oncology", "city": "صبراتة", "name": "مصرف الدم بمعهد الأورام ومستشفى صبراتة التعليمي", "location": "صبراتة - بالقرب من الطريق الساحلي", "map_query": "Sabratha Oncology Teaching Hospital, Sabratha, Libya", "phone": "", "fb_url": "https://www.facebook.com/search/top?q=المعهد%20القومي%20لعلاج%20الأورام%20بصبراتة", "show_stock": true, "last_updated": "2026-10-28 08:30", "updated_by": "أخصائي نقل الدم", "stock": {"O+": "high", "O-": "crit", "A+": "high", "A-": "low", "B+": "high", "B-": "crit", "AB+": "high", "AB-": "crit"}}, {"id": "bank_tripoli_central", "city": "طرابلس", "name": "مصرف الدم المركزي طرابلس ومستشفى شارع الزاوية", "location": "طرابلس - شارع الزاوية / طريق الشط", "map_query": "Tripoli Central Hospital, Tripoli, Libya", "phone": "021-3605001", "fb_url": "https://www.facebook.com/search/top?q=مصرف%20الدم%20المركزي%20طرابلس", "show_stock": true, "last_updated": "2026-10-28 08:00", "updated_by": "إدارة مصرف الدم", "stock": {"O+": "high", "O-": "crit", "A+": "low", "A-": "crit", "B+": "high", "B-": "low", "AB+": "high", "AB-": "low"}}, {"id": "bank_misrata_central", "city": "مصراتة", "name": "مصرف الدم المركزي مصراتة", "location": "مصراتة - المقاصبة بالقرب من معهد الأورام", "map_query": "Central Blood Bank, Misrata, Libya", "phone": "", "fb_url": "https://www.facebook.com/search/top?q=مصرف%20الدم%20المركزي%20مصراتة", "show_stock": false, "last_updated": "2026-10-28 08:00", "updated_by": "شعبة الإمداد", "stock": {"O+": "high", "O-": "low", "A+": "high", "A-": "low", "B+": "high", "B-": "low", "AB+": "high", "AB-": "crit"}}, {"id": "bank_benghazi_central", "city": "بنغازي", "name": "مصرف الدم المركزي بنغازي (الهواري)", "location": "بنغازي - منطقة الهواري", "map_query": "Central Blood Bank Benghazi, Benghazi, Libya", "phone": "", "fb_url": "https://www.facebook.com/search/top?q=مصرف%20الدم%20المركزي%20بنغازي", "show_stock": false, "last_updated": "2026-10-28 08:00", "updated_by": "المناوب الفني", "stock": {"O+": "high", "O-": "low", "A+": "high", "A-": "crit", "B+": "high", "B-": "low", "AB+": "high", "AB-": "crit"}}, {"id": "bank_sabha_central", "city": "سبها", "name": "مصرف الدم المركزي سبها", "location": "سبها - بالقرب من مركز سبها الطبي", "map_query": "Sebha Medical Center, Sabha, Libya", "phone": "", "fb_url": "https://www.facebook.com/search/top?q=مصرف%20الدم%20المركزي%20سبها", "show_stock": false, "last_updated": "2026-10-28 08:00", "updated_by": "فني بنك الدم", "stock": {"O+": "low", "O-": "crit", "A+": "low", "A-": "crit", "B+": "low", "B-": "crit", "AB+": "low", "AB-": "crit"}}];
+    let initialBanksData = [
+      {"id": "bank_zawiya_edu", "city": "الزاوية", "name": "مصرف الدم بمستشفى الزاوية التعليمي", "location": "الزاوية - مجمع الكليات والمستشفى التعليمي", "map_query": "Zawiya Teaching Hospital, Az Zawiyah, Libya", "phone": "", "fb_url": "https://www.facebook.com/search/top?q=مستشفى%20الزاوية%20التعليمي", "show_stock": true, "last_updated": "2026-10-28 08:30", "updated_by": "أخصائي المناوبة", "stock": {"O+": "high", "O-": "crit", "A+": "high", "A-": "low", "B+": "high", "B-": "low", "AB+": "high", "AB-": "crit"}},
+      {"id": "bank_zawiya_kidney", "city": "الزاوية", "name": "مستشفى الكلى بالزاوية", "location": "الزاوية - المركز التخصصي لأمراض وجراحة الكلى", "map_query": "Kidney Hospital Az Zawiyah, Libya", "phone": "", "fb_url": "https://www.facebook.com/search/top?q=مستشفى%20الكلى%20الزاوية", "show_stock": false, "last_updated": "2026-10-28 08:30", "updated_by": "وحدة نقل الدم", "stock": {"O+": "high", "O-": "low", "A+": "high", "A-": "low", "B+": "high", "B-": "low", "AB+": "high", "AB-": "low"}},
+      {"id": "bank_surman_general", "city": "صرمان", "name": "مستشفى صرمان العام", "location": "صرمان - الطريق الرئيسي", "map_query": "Surman General Hospital, Surman, Libya", "phone": "", "fb_url": "https://www.facebook.com/search/top?q=مستشفى%20صرمان%20العام", "show_stock": false, "last_updated": "2026-10-28 08:30", "updated_by": "بنك الدم", "stock": {"O+": "high", "O-": "crit", "A+": "high", "A-": "low", "B+": "high", "B-": "low", "AB+": "high", "AB-": "crit"}},
+      {"id": "bank_sabratah_oncology", "city": "صبراتة", "name": "مصرف الدم بمعهد الأورام بصبراتة", "location": "صبراتة - بالقرب من الساحلي", "map_query": "Sabratha Oncology Teaching Hospital, Sabratha, Libya", "phone": "", "fb_url": "https://www.facebook.com/search/top?q=المعهد%20القومي%20لعلاج%20الأورام%20بصبراتة", "show_stock": true, "last_updated": "2026-10-28 08:30", "updated_by": "أخصائي نقل الدم", "stock": {"O+": "high", "O-": "crit", "A+": "high", "A-": "low", "B+": "high", "B-": "crit", "AB+": "high", "AB-": "crit"}},
+      {"id": "bank_tripoli_central", "city": "طرابلس", "name": "مصرف الدم المركزي طرابلس (شارع الزاوية)", "location": "طرابلس - شارع الزاوية", "map_query": "Tripoli Central Hospital, Tripoli, Libya", "phone": "021-3605001", "fb_url": "https://www.facebook.com/search/top?q=مصرف%20الدم%20المركزي%20طرابلس", "show_stock": true, "last_updated": "2026-10-28 08:00", "updated_by": "إدارة مصرف الدم", "stock": {"O+": "high", "O-": "crit", "A+": "low", "A-": "crit", "B+": "high", "B-": "low", "AB+": "high", "AB-": "low"}},
+      {"id": "bank_misrata_central", "city": "مصراتة", "name": "مصرف الدم المركزي مصراتة", "location": "مصراتة - المقاصبة", "map_query": "Central Blood Bank, Misrata, Libya", "phone": "", "fb_url": "https://www.facebook.com/search/top?q=مصرف%20الدم%20المركزي%20مصراتة", "show_stock": false, "last_updated": "2026-10-28 08:00", "updated_by": "شعبة الإمداد", "stock": {"O+": "high", "O-": "low", "A+": "high", "A-": "low", "B+": "high", "B-": "low", "AB+": "high", "AB-": "crit"}},
+      {"id": "bank_benghazi_central", "city": "بنغازي", "name": "مصرف الدم المركزي بنغازي (الهواري)", "location": "بنغازي - منطقة الهواري", "map_query": "Central Blood Bank Benghazi, Benghazi, Libya", "phone": "", "fb_url": "https://www.facebook.com/search/top?q=مصرف%20الدم%20المركزي%20بنغازي", "show_stock": false, "last_updated": "2026-10-28 08:00", "updated_by": "المناوب الفني", "stock": {"O+": "high", "O-": "low", "A+": "high", "A-": "crit", "B+": "high", "B-": "low", "AB+": "high", "AB-": "crit"}},
+      {"id": "bank_sabha_central", "city": "سبها", "name": "مصرف الدم المركزي سبها", "location": "سبها - قرب مركز سبها الطبي", "map_query": "Sebha Medical Center, Sabha, Libya", "phone": "", "fb_url": "https://www.facebook.com/search/top?q=مصرف%20الدم%20المركزي%20سبها", "show_stock": false, "last_updated": "2026-10-28 08:00", "updated_by": "فني بنك الدم", "stock": {"O+": "low", "O-": "crit", "A+": "low", "A-": "crit", "B+": "low", "B-": "crit", "AB+": "low", "AB-": "crit"}}
+    ];
     let initialDonorsData = [];
 
     let currentBloodFilter = "";
     let currentVerifyFilter = "all";
     let adminSessionToken = sessionStorage.getItem("wareed_admin_token") || "";
+    let activeDonorSession = null;
 
     function getSosConfig() {
       try {
         const raw = localStorage.getItem(STORAGE_KEY_SOS);
         return raw ? JSON.parse(raw) : {
           visible: true,
-          text: "مستشفى الزاوية التعليمي (قسم الحوادث): مطلوب وحدات دم فصيلة O- و AB+ بشكل عاجل جداً.",
+          text: "مستشفى الزاوية التعليمي (قسم الحوادث): مطلوب وحدات دم فصيلة O- و AB+ بشكل عاجل.",
           blood: "O-"
         };
       } catch (e) {
@@ -1599,7 +1731,6 @@
       window.renderDonors();
     }
 
-    // جلب المتبرعين الحقيقيين من قاعدة بيانات Neon عند فتح المنصة
     window.syncDonorsFromServer = async function() {
       try {
         const res = await fetch('/api/donors');
@@ -1611,7 +1742,7 @@
           }
         }
       } catch (err) {
-        console.warn("تعذر الاتصال بالسيرفر، يتم عرض البيانات المحفوظة مؤقتاً.");
+        console.warn("تنبيه: يتم العمل بالبيانات المحفوظة محلياً حالياً.");
       }
     };
 
@@ -1641,7 +1772,7 @@
       const diffDays = Math.floor((now - last) / (1000 * 60 * 60 * 24));
       if (diffDays >= 90) return { isReady: true, text: "🟢 متاح للتبرع الفوري" };
       const rem = 90 - diffDays;
-      return { isReady: false, text: "⏳ في فترة استشفاء (" + rem + " يوم)" };
+      return { isReady: false, text: "⏳ في فترة راحة (" + rem + " يوم)" };
     }
 
     function formatTimeLabel(val) {
@@ -1662,14 +1793,14 @@
       BLOOD_TYPES.forEach(t => counts[t] = 0);
       allDonors.forEach(d => { if (counts[d.blood] !== undefined) counts[d.blood]++; });
 
-      let html = '<button type="button" class="blood-pill-btn ' + (currentBloodFilter === '' ? 'active' : '') + '" onclick="window.selectBloodPill(\'\')">' +
+      let html = '<button type="button" class="blood-pill-btn ' + (currentBloodFilter === '' ? 'active' : '') + '" onclick="window.selectBloodPill('')">' +
         '<span class="blood-pill-type">الكل</span>' +
         '<span class="blood-pill-count">' + allDonors.length + ' متبرع</span>' +
         '</button>';
 
       BLOOD_TYPES.forEach(type => {
         const isActive = currentBloodFilter === type ? "active" : "";
-        html += '<button type="button" class="blood-pill-btn ' + isActive + '" onclick="window.selectBloodPill(\'' + type + '\')">' +
+        html += '<button type="button" class="blood-pill-btn ' + isActive + '" onclick="window.selectBloodPill('' + type + '')">' +
           '<span class="blood-pill-type">' + type + '</span>' +
           '<span class="blood-pill-count">' + counts[type] + ' مسجل</span>' +
           '</button>';
@@ -1755,7 +1886,7 @@
       document.getElementById("countActUnverified").textContent = totalUnverified;
 
       const filtered = window.getFilteredDonorsList();
-      document.getElementById("searchResultsCounter").textContent = "إجمالي النتائج المطابقة: " + filtered.length + " متبرع";
+      document.getElementById("searchResultsCounter").textContent = "النتائج المطابقة: " + filtered.length + " متبرع";
 
       const container = document.getElementById("donorsListContainer");
       const emptyBox = document.getElementById("emptyDonorsState");
@@ -1770,8 +1901,8 @@
       container.innerHTML = filtered.map(d => {
         const r = calculateReadiness(d.lastDonationDate);
         const verBadge = d.isVerified
-          ? '<span class="badge-verified">✔ مفعل (موثق)</span>'
-          : '<span class="badge-unverified">⏳ غير مفعل</span>';
+          ? '<span class="badge-verified">✔ موثق</span>'
+          : '<span class="badge-unverified">⏳ غير موثق</span>';
         const rBadge = r.isReady
           ? '<span class="tag-status-ready">' + r.text + '</span>'
           : '<span class="tag-status-rest">' + r.text + '</span>';
@@ -1801,7 +1932,7 @@
               '📞 ' + maskPhone(d.phone) +
             '</div>' +
             '<div class="action-btns-wrap" id="actions-' + d.id + '">' +
-              '<button type="button" class="btn-reveal" onclick="window.openPledge(\'' + d.id + '\')">⚠️ كشف الرقم للطوارئ</button>' +
+              '<button type="button" class="btn-reveal" onclick="window.openPledge('' + d.id + '')">⚠️ إظهار الرقم للحالات الإنسانية</button>' +
             '</div>' +
           '</div>' +
         '</div>';
@@ -1835,8 +1966,8 @@
           }).join("");
 
           stockSectionHtml = '<div class="bank-timestamp-bar">' +
-            '<div>🕒 آخر تحديث لفصائل الدم: <strong style="color:var(--primary);">' + (b.last_updated || "محدث") + '</strong> (' + (b.updated_by || "أخصائي المصرف") + ')</div>' +
-            '<div style="color:var(--text-muted); font-weight:700;">⚠️ قد يتغير المخزون لحظياً</div>' +
+            '<div>🕒 آخر تحديث: <strong style="color:var(--primary);">' + (b.last_updated || "محدث") + '</strong> (' + (b.updated_by || "المصرف") + ')</div>' +
+            '<div style="color:var(--text-muted); font-weight:700;">⚠️ المخزون يتغير باستمرار</div>' +
           '</div>' +
           '<div class="inventory-matrix">' + matrixHtml + '</div>';
         }
@@ -1868,7 +1999,7 @@
           '<div class="bank-actions-toolbar">' +
             '<div style="display:flex; flex-wrap:wrap; gap:8px; align-items:center;">' +
               phoneBtnHtml +
-              '<a href="' + mapsUrl + '" target="_blank" class="btn-maps">🗺️ الموقع على Google Maps</a>' +
+              '<a href="' + mapsUrl + '" target="_blank" class="btn-maps">🗺️ الخريطة</a>' +
               fbBtnHtml +
             '</div>' +
             '<span style="font-size:12px; color:var(--text-muted); font-weight:700;">طوارئ 24 ساعة</span>' +
@@ -1892,19 +2023,19 @@
       const allowed = rules[patientBlood] || [];
       const box = document.getElementById("compatResultArea");
       const badges = allowed.map(b =>
-        '<button type="button" onclick="window.quickFilterBlood(\'' + b + '\')" style="background:var(--primary); color:white; border:none; padding:10px 18px; border-radius:10px; font-size:16px; font-weight:900; cursor:pointer; margin:4px; direction:ltr;">' +
+        '<button type="button" onclick="window.quickFilterBlood('' + b + '')" style="background:var(--primary); color:white; border:none; padding:10px 18px; border-radius:10px; font-size:16px; font-weight:900; cursor:pointer; margin:4px; direction:ltr;">' +
           b + ' 🔍' +
         '</button>'
       ).join("");
 
       box.innerHTML = '<div style="font-size:15px; font-weight:800; margin-bottom:8px;">' +
-        'المريض فصيلة (<strong style="color:var(--primary); font-size:19px;" dir="ltr">' + patientBlood + '</strong>) يستقبل كريات الدم بأمان من الفصائل التالية:' +
+        'المريض فصيلة (<strong style="color:var(--primary); font-size:19px;" dir="ltr">' + patientBlood + '</strong>) يستقبل كريات الدم من:' +
         '</div>' +
         '<div style="margin:10px 0;">' + badges + '</div>' +
-        '<div style="font-size:12px; color:var(--text-muted);">اضغط على أي فصيلة بالأعلى للانتقال المباشر إلى المتبرعين المتاحين بها.</div>';
+        '<div style="font-size:12px; color:var(--text-muted);">اضغط على أي فصيلة للبحث المباشر عن متبرعين مسجلين بها.</div>';
     };
 
-    // تسجيل المتبرع مباشرة في قاعدة بيانات Neon مع منع تكرار الأرقام
+    // تسجيل المتبرع الجديد
     window.submitDonor = async function() {
       const rawPhone = document.getElementById("vPhone").value.trim();
       const arDigits = ['٠','١','٢','٣','٤','٥','٦','٧','٨','٩'];
@@ -1915,7 +2046,7 @@
       const statusType = document.getElementById("vLastDonationType").value;
 
       if (!/^09\d{8}$/.test(phone)) {
-        alert("خطأ: يرجى إدخال رقم هاتف ليبي مكون من 10 أرقام ويبدأ بـ 09.");
+        alert("يرجى إدخال رقم هاتف ليبي صحيح مكون من 10 أرقام ويبدأ بـ 09.");
         return;
       }
 
@@ -1923,7 +2054,7 @@
       const submitBtn = document.querySelector("#regForm .btn-submit");
       const origBtnText = submitBtn.textContent;
       submitBtn.disabled = true;
-      submitBtn.textContent = "⏳ جاري الحفظ في المنظومة الوطنية...";
+      submitBtn.textContent = "⏳ جاري حفظ البيانات في المنظومة...";
 
       try {
         const res = await fetch('/api/donors', {
@@ -1961,6 +2092,121 @@
       }
     };
 
+    // ================= الإدارة الذاتية للمتبرع =================
+    window.donorSelfLogin = async function() {
+      const rawPhone = document.getElementById("selfPhoneInput").value.trim();
+      const arDigits = ['٠','١','٢','٣','٤','٥','٦','٧','٨','٩'];
+      const phone = rawPhone.replace(/[٠-٩]/g, d => arDigits.indexOf(d)).replace(/\D/g, "");
+      const code = document.getElementById("selfCodeInput").value.trim().toUpperCase();
+
+      if (!phone || !code) {
+        alert("يرجى إدخال رقم الهاتف وكود المتبرع السري.");
+        return;
+      }
+
+      try {
+        const res = await fetch('/api/donors', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            action: 'donor_login',
+            phone: phone,
+            code: code
+          })
+        });
+        const data = await res.json();
+        if (res.ok && data.success) {
+          activeDonorSession = data.donor;
+          document.getElementById("selfDisplayCode").textContent = activeDonorSession.code;
+          document.getElementById("selfDisplayPhone").textContent = "📞 " + activeDonorSession.phone;
+          document.getElementById("selfEditBlood").value = activeDonorSession.blood || "O+";
+          document.getElementById("selfEditCity").value = activeDonorSession.city || "الزاوية";
+          document.getElementById("selfEditTime").value = activeDonorSession.preferredTime || "24/7";
+          document.getElementById("selfEditReady").value = activeDonorSession.lastDonationDate ? "resting" : "ready";
+
+          document.getElementById("selfLoginArea").style.display = "none";
+          document.getElementById("selfDashboardArea").style.display = "block";
+        } else {
+          alert(data.message || "بيانات الدخول غير صحيحة، تأكد من رقم الهاتف والكود.");
+        }
+      } catch (err) {
+        alert("حدث خطأ في الاتصال بالشبكة.");
+      }
+    };
+
+    window.donorSelfLogout = function() {
+      activeDonorSession = null;
+      document.getElementById("selfPhoneInput").value = "";
+      document.getElementById("selfCodeInput").value = "";
+      document.getElementById("selfLoginArea").style.display = "block";
+      document.getElementById("selfDashboardArea").style.display = "none";
+    };
+
+    window.donorSelfUpdate = async function() {
+      if (!activeDonorSession) return;
+      const blood = document.getElementById("selfEditBlood").value;
+      const city = document.getElementById("selfEditCity").value;
+      const time = document.getElementById("selfEditTime").value;
+      const isResting = document.getElementById("selfEditReady").value === "resting";
+      const lastDate = isResting ? (activeDonorSession.lastDonationDate || new Date().toISOString().split("T")[0]) : "";
+
+      try {
+        const res = await fetch('/api/donors', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            action: 'donor_update',
+            phone: activeDonorSession.phone,
+            code: activeDonorSession.code,
+            blood: blood,
+            city: city,
+            preferredTime: time,
+            lastDonationDate: lastDate
+          })
+        });
+        const data = await res.json();
+        if (res.ok && data.success) {
+          alert("تم تحديث بياناتك بنجاح!");
+          activeDonorSession.blood = blood;
+          activeDonorSession.city = city;
+          activeDonorSession.preferredTime = time;
+          activeDonorSession.lastDonationDate = lastDate;
+          await window.syncDonorsFromServer();
+        } else {
+          alert(data.message || "تعذر تحديث البيانات.");
+        }
+      } catch (e) {
+        alert("خطأ في الاتصال بالسيرفر.");
+      }
+    };
+
+    window.donorSelfDelete = async function() {
+      if (!activeDonorSession) return;
+      if (!confirm("هل أنت متأكد من رغبتك في حذف حسابك وبياناتك نهائياً من المنصة؟")) return;
+
+      try {
+        const res = await fetch('/api/donors', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            action: 'donor_delete',
+            phone: activeDonorSession.phone,
+            code: activeDonorSession.code
+          })
+        });
+        const data = await res.json();
+        if (res.ok && data.success) {
+          alert("تم حذف حسابك بنجاح من المنصة.");
+          window.donorSelfLogout();
+          await window.syncDonorsFromServer();
+          document.getElementById("tab-search").checked = true;
+        } else {
+          alert(data.message || "تعذر الحذف.");
+        }
+      } catch (e) {
+        alert("خطأ في الاتصال بالسيرفر.");
+      }
+    };
 
     function getAdminContactPhone() {
       return localStorage.getItem(STORAGE_KEY_ADMIN_PHONE) || "0926497310";
@@ -1973,7 +2219,7 @@
         return;
       }
       localStorage.setItem(STORAGE_KEY_ADMIN_PHONE, p);
-      alert("تم حفظ رقم هاتف الإدارة لاستقبال رسائل التفعيل بنجاح!");
+      alert("تم حفظ رقم الإدارة لاستقبال رسائل التفعيل بنجاح!");
     };
 
     window.openVerifyModal = function(donor) {
@@ -1986,18 +2232,19 @@
       if (cleanAdmin.startsWith("0")) cleanAdmin = cleanAdmin.substring(1);
       if (!cleanAdmin.startsWith("218")) cleanAdmin = "218" + cleanAdmin;
 
-      const msg = "السلام عليكم ورحمة الله، أود تأكيد وتفعيل حسابي كمتبرع في منصة وريد الوطنية.\n" +
-                  "كود المتبرع: " + donor.code + "\n" +
-                  "فصيلة الدم: " + donor.blood + "\n" +
-                  "المدينة: " + donor.city + "\n" +
+      const msg = "السلام عليكم، أود تأكيد وتوثيق حسابي كمتبرع في منصة وريد.
+" +
+                  "كود المتبرع: " + donor.code + "
+" +
+                  "فصيلة الدم: " + donor.blood + "
+" +
+                  "المدينة: " + donor.city + "
+" +
                   "رقم الهاتف: " + donor.phone;
 
       const encodedMsg = encodeURIComponent(msg);
 
-      // رابط واتساب المباشر
       document.getElementById("btnVerifyWhatsApp").href = "https://wa.me/" + cleanAdmin + "?text=" + encodedMsg;
-
-      // رابط الرسائل القصيرة SMS
       document.getElementById("btnVerifySMS").href = "sms:+" + cleanAdmin + "?body=" + encodedMsg;
 
       document.getElementById("verifySuccessModal").style.display = "flex";
@@ -2032,7 +2279,7 @@
           phoneBox.style.color = "var(--success)";
           phoneBox.style.borderColor = "var(--success-border)";
           const clean = donor.phone.startsWith("0") ? donor.phone.substring(1) : donor.phone;
-          actionsBox.innerHTML = '<a href="tel:' + donor.phone + '" class="btn-call-now">📞 اتصال مباشر</a>' +
+          actionsBox.innerHTML = '<a href="tel:' + donor.phone + '" class="btn-call-now">📞 اتصال</a>' +
             '<a href="https://wa.me/218' + clean + '" target="_blank" class="btn-wa-now">💬 واتساب</a>';
         }
       }
@@ -2046,11 +2293,11 @@
       document.getElementById("themeToggleBtn").textContent = next === "dark" ? "☀️ الوضع النهاري" : "🌙 الوضع الليلي";
     };
 
-    // ================= خدمات الإدارة المؤمنة بالسيرفر =================
+    // خدمات الإدارة
     window.printOfficialRoster = function() {
       const list = getDonors();
       const tbody = document.getElementById("printTableBody");
-      document.getElementById("printTimestampMeta").textContent = "تاريخ استخراج الكشف: " + new Date().toLocaleString("ar-LY") + " | إجمالي المسجلين: " + list.length;
+      document.getElementById("printTimestampMeta").textContent = "تاريخ الطباعة: " + new Date().toLocaleString("ar-LY") + " | إجمالي المسجلين: " + list.length;
       tbody.innerHTML = list.map((d, idx) =>
         '<tr>' +
           '<td>' + (idx + 1) + '</td>' +
@@ -2059,7 +2306,7 @@
           '<td>' + d.city + '</td>' +
           '<td style="direction:ltr; font-weight:bold;">' + d.phone + '</td>' +
           '<td>' + formatTimeLabel(d.preferredTime) + '</td>' +
-          '<td>' + (d.isVerified ? "مفعل (موثق)" : "غير مفعل") + '</td>' +
+          '<td>' + (d.isVerified ? "موثق" : "غير موثق") + '</td>' +
         '</tr>'
       ).join("");
       window.print();
@@ -2067,7 +2314,8 @@
 
     window.exportCSV = function() {
       const list = getDonors();
-      let csvContent = "\uFEFFالكود,الفصيلة,المدينة,رقم الهاتف,وقت التواصل,التفعيل\r\n";
+      let csvContent = "﻿الكود,الفصيلة,المدينة,رقم الهاتف,وقت التواصل,التوثيق
+";
       list.forEach(d => {
         const row = [
           d.code,
@@ -2075,9 +2323,10 @@
           d.city,
           d.phone,
           d.preferredTime,
-          d.isVerified ? "مفعل" : "غير مفعل"
+          d.isVerified ? "موثق" : "غير موثق"
         ].map(v => '"' + String(v).replace(/"/g, '""') + '"').join(",");
-        csvContent += row + "\r\n";
+        csvContent += row + "
+";
       });
       const blob = new Blob([csvContent], { type: "text/csv;charset=utf-8;" });
       const url = URL.createObjectURL(blob);
@@ -2134,7 +2383,7 @@
           alert(data.message || "خطأ: الرمز السري غير صحيح!");
         }
       } catch (err) {
-        alert("تعذر الاتصال بالسيرفر للتحقق من الرمز السري.");
+        alert("تعذر الاتصال بالسيرفر للتحقق من الرمز.");
       }
     };
 
@@ -2193,7 +2442,7 @@
       });
 
       if (records.length === 0) {
-        alert("لم يتم العثور على أرقام هواتف ليبية صالحة في النص الملصق.");
+        alert("لم يتم العثور على أرقام هواتف ليبية صالحة في النص.");
         return;
       }
 
@@ -2210,7 +2459,7 @@
         if (res.ok && data.success) {
           document.getElementById("bulkPasteArea").value = "";
           await window.syncDonorsFromServer();
-          alert("تم الاستيراد لقاعدة البيانات بنجاح! تمت إضافة وتفعيل: " + data.addedCount + " متبرع. (تم تخطي المكرر: " + data.skippedCount + ")");
+          alert("تم الاستيراد بنجاح! تمت إضافة: " + data.addedCount + " متبرع. (تم تخطي المكرر: " + data.skippedCount + ")");
         } else {
           alert(data.message || "حدث خطأ أثناء الاستيراد.");
         }
@@ -2245,7 +2494,7 @@
 
       document.getElementById("adminBankEditFields").style.display = "block";
       document.getElementById("editBPhone").value = bank.phone || "";
-      document.getElementById("editBUpdatedBy").value = bank.updated_by || "أخصائي مصرف الدم";
+      document.getElementById("editBUpdatedBy").value = bank.updated_by || "أخصائي المصرف";
       document.getElementById("editBShowStock").value = (bank.show_stock !== false) ? "true" : "false";
 
       const matrixBox = document.getElementById("adminStockMatrixInputs");
@@ -2269,7 +2518,7 @@
       if (!bank) return;
 
       bank.phone = document.getElementById("editBPhone").value.trim();
-      bank.updated_by = document.getElementById("editBUpdatedBy").value.trim() || "أخصائي مصرف الدم";
+      bank.updated_by = document.getElementById("editBUpdatedBy").value.trim() || "أخصائي المصرف";
       bank.show_stock = document.getElementById("editBShowStock").value === "true";
 
       const now = new Date();
@@ -2282,7 +2531,7 @@
       });
 
       saveBanks(banks);
-      alert("تم حفظ التعديلات وتحديث التاريخ بنجاح!");
+      alert("تم حفظ التعديلات بنجاح!");
     };
 
     window.adminDeleteBank = function() {
@@ -2341,20 +2590,20 @@
       const box = document.getElementById("adminDonorsWrapper");
       const list = getDonors();
       if (list.length === 0) {
-        box.innerHTML = "<p style='font-size:12px; color:var(--text-muted);'>لا يوجد متبرعون مسجلون في قاعدة البيانات حالياً.</p>";
+        box.innerHTML = "<p style='font-size:12px; color:var(--text-muted);'>لا يوجد متبرعون مسجلون حالياً.</p>";
         return;
       }
       box.innerHTML = list.map(d =>
         '<div style="display:flex; justify-content:space-between; align-items:center; background:var(--bg-card); padding:8px; border-radius:6px; border:1px solid var(--border-color); margin-bottom:5px; font-size:12px; flex-wrap:wrap; gap:6px;">' +
           '<div>' +
             '<strong>#' + d.code + '</strong> (<span dir="ltr" style="color:var(--primary); font-weight:bold;">' + d.blood + '</span>) - ' + d.city + ' - 📞 ' + d.phone + ' ' +
-            '<span style="color:' + (d.isVerified ? 'var(--success)' : 'var(--warning)') + '; font-weight:bold;">[' + (d.isVerified ? '✔ مفعل' : '⏳ غير مفعل') + ']</span>' +
+            '<span style="color:' + (d.isVerified ? 'var(--success)' : 'var(--warning)') + '; font-weight:bold;">[' + (d.isVerified ? '✔ موثق' : '⏳ غير موثق') + ']</span>' +
           '</div>' +
           '<div style="display:flex; gap:4px;">' +
-            '<button type="button" onclick="window.adminToggleV(\'' + d.id + '\')" style="background:' + (d.isVerified ? '#64748b' : '#15803d') + '; color:white; border:none; padding:4px 8px; border-radius:4px; font-size:11px; cursor:pointer;">' +
-              (d.isVerified ? 'إلغاء التفعيل' : '✔ تفعيل') +
+            '<button type="button" onclick="window.adminToggleV('' + d.id + '')" style="background:' + (d.isVerified ? '#64748b' : '#15803d') + '; color:white; border:none; padding:4px 8px; border-radius:4px; font-size:11px; cursor:pointer;">' +
+              (d.isVerified ? 'إلغاء التوثيق' : '✔ توثيق') +
             '</button>' +
-            '<button type="button" onclick="window.adminDelD(\'' + d.id + '\')" style="background:#dc2626; color:white; border:none; padding:4px 8px; border-radius:4px; font-size:11px; cursor:pointer;">' +
+            '<button type="button" onclick="window.adminDelD('' + d.id + '')" style="background:#dc2626; color:white; border:none; padding:4px 8px; border-radius:4px; font-size:11px; cursor:pointer;">' +
               'حذف' +
             '</button>' +
           '</div>' +
@@ -2381,7 +2630,7 @@
           saveDonors(list);
           window.renderAdminDonors();
         } else {
-          alert("تعذر تحديث حالة المتبرع في قاعدة البيانات.");
+          alert("تعذر تحديث حالة المتبرع في السيرفر.");
         }
       } catch (err) {
         alert("خطأ في الاتصال بالسيرفر.");
@@ -2389,7 +2638,7 @@
     };
 
     window.adminDelD = async function(id) {
-      if (!confirm("حذف هذا المتبرع نهائياً من قاعدة البيانات؟")) return;
+      if (!confirm("حذف هذا المتبرع نهائياً؟")) return;
       try {
         const res = await fetch('/api/donors', {
           method: 'DELETE',
@@ -2404,7 +2653,7 @@
           saveDonors(list);
           window.renderAdminDonors();
         } else {
-          alert("تعذر حذف المتبرع من قاعدة البيانات.");
+          alert("تعذر حذف المتبرع.");
         }
       } catch (err) {
         alert("خطأ في الاتصال بالسيرفر.");
@@ -2433,7 +2682,7 @@
           if (imported.banks) saveBanks(imported.banks);
           if (imported.sos) saveSosConfig(imported.sos);
           window.renderAdminDonors();
-          alert("تم استرجاع النسخة الاحتياطية بنجاح!");
+          alert("تم استرجاع النسخة بنجاح!");
         } catch (err) { alert("ملف غير صالح!"); }
       };
       reader.readAsText(file);
