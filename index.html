@@ -1,7 +1,8 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl" data-theme="light">
+<html lang="ar" dir="rtl" data-theme="light" translate="no" class="notranslate">
 <head>
   <meta charset="UTF-8">
+  <meta name="google" content="notranslate">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <title>منصة وَرِيـد | دليل المتبرعين ومصارف الدم</title>
   <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800;900&display=swap" rel="stylesheet">
@@ -80,7 +81,6 @@
       transition: background-color 0.25s, color 0.25s;
     }
 
-    /* الشريط العلوي */
     .simple-topbar {
       background: #0f172a;
       color: #e2e8f0;
@@ -137,7 +137,6 @@
       background: rgba(255, 255, 255, 0.22);
     }
 
-    /* الهيدر الرئيسي */
     header.main-header {
       background: linear-gradient(135deg, #991b1b 0%, #7f1d1d 55%, #450a0a 100%);
       color: white;
@@ -212,7 +211,6 @@
       font-weight: 500;
     }
 
-    /* شريط الإحصائيات */
     .kpi-grid {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
@@ -246,7 +244,6 @@
       font-weight: 700;
     }
 
-    /* شريط نداءات الطوارئ */
     .sos-banner {
       max-width: 1080px;
       margin: -16px auto 18px auto;
@@ -307,7 +304,6 @@
       padding: 0 15px;
     }
 
-    /* شريط التنقل الرئيسي */
     .tab-radio { display: none; }
     .nav-bar {
       display: grid;
@@ -367,7 +363,6 @@
     #tab-reg:checked ~ #view-reg { display: block; }
     #tab-self:checked ~ #view-self { display: block; }
 
-    /* البطاقات العامة */
     .card {
       background: var(--bg-card);
       border-radius: var(--radius-lg);
@@ -395,7 +390,6 @@
       gap: 8px;
     }
 
-    /* أزرار الفصائل */
     .blood-selector-title {
       font-size: 13.5px;
       font-weight: 800;
@@ -456,7 +450,6 @@
       opacity: 0.85;
     }
 
-    /* لوحة البحث والتصفية */
     .advanced-filter-box {
       background: var(--bg-subtle);
       border: 1px solid var(--border-color);
@@ -501,7 +494,6 @@
       box-shadow: 0 0 0 3px var(--primary-light);
     }
 
-    /* أزرار تصفية التفعيل */
     .activation-tabs {
       display: flex;
       flex-wrap: wrap;
@@ -566,7 +558,6 @@
       background: var(--primary-hover);
     }
 
-    /* بطاقات المتبرعين */
     .donors-grid {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
@@ -759,7 +750,6 @@
       gap: 4px;
     }
 
-    /* مصارف الدم */
     .bank-card-container {
       border: 1.5px solid var(--accent-blue-border);
       background: var(--bg-card);
@@ -876,7 +866,6 @@
       gap: 6px;
     }
 
-    /* التوافق */
     .compat-selector-grid {
       display: grid;
       grid-template-columns: repeat(8, 1fr);
@@ -895,7 +884,6 @@
       text-align: center;
     }
 
-    /* أزرار الإجراءات */
     .btn-submit {
       width: 100%;
       padding: 14px;
@@ -924,7 +912,6 @@
     }
     .btn-danger:hover { opacity: 0.9; }
 
-    /* النوافذ المنبثقة */
     .modal-overlay {
       position: fixed;
       top: 0; left: 0; right: 0; bottom: 0;
@@ -979,7 +966,6 @@
       color: var(--text-muted);
     }
 
-    /* الطباعة */
     #printableRosterSection { display: none; }
     @media print {
       body * { visibility: hidden; }
@@ -1009,7 +995,6 @@
 </head>
 <body>
 
-  <!-- شريط علوي -->
   <div class="simple-topbar">
     <div class="simple-topbar-inner">
       <div class="status-badge">
@@ -1023,7 +1008,6 @@
     </div>
   </div>
 
-  <!-- الهيدر الرئيسي -->
   <header class="main-header">
     <div class="header-container">
       <div class="brand-row">
@@ -1039,7 +1023,6 @@
         </div>
       </div>
 
-      <!-- إحصائيات سريعة -->
       <div class="kpi-grid">
         <div class="kpi-card">
           <span class="kpi-val" id="kpiTotal">0</span>
@@ -1061,7 +1044,6 @@
     </div>
   </header>
 
-  <!-- شريط نداء الطوارئ -->
   <div class="sos-banner" id="publicSosBanner">
     <div class="sos-banner-inner">
       <span class="sos-tag">🚨 نداء عاجل</span>
@@ -1072,7 +1054,6 @@
 
   <div class="container">
     
-    <!-- خيارات التبويب الـ 5 -->
     <input type="radio" name="main_nav" id="tab-search" class="tab-radio" checked>
     <input type="radio" name="main_nav" id="tab-banks" class="tab-radio">
     <input type="radio" name="main_nav" id="tab-compat" class="tab-radio">
@@ -1446,7 +1427,6 @@
           <button type="button" onclick="window.closeAdmin()" style="background:#64748b; color:white; border:none; padding:6px 14px; border-radius:6px; font-size:12px; font-weight:800; cursor:pointer;">خروج ✖</button>
         </div>
 
-        <!-- هاتف الإدارة -->
         <div class="admin-section-card">
           <div class="admin-section-title">
             <span style="color:var(--success);">📱 رقم هاتف الإدارة لاستقبال رسائل التفعيل (واتساب و SMS)</span>
@@ -1460,7 +1440,6 @@
           <div style="font-size:11.5px; color:var(--text-muted); margin-top:5px;">هذا الرقم ستصل إليه رسائل الواتساب وSMS التلقائية من المتبرعين الجدد.</div>
         </div>
 
-        <!-- 1. شريط الطوارئ -->
         <div class="admin-section-card">
           <div class="admin-section-title">
             <span style="color:var(--primary);">📢 1. التحكم في شريط نداء الطوارئ</span>
@@ -1488,7 +1467,6 @@
           </button>
         </div>
 
-        <!-- 2. استيراد وتصدير -->
         <div class="admin-section-card">
           <div class="admin-section-title">
             <span style="color:var(--success);">📥 2. إدخال جماعي وتصدير الكشوفات</span>
@@ -1530,7 +1508,6 @@
           </div>
         </div>
 
-        <!-- 3. إدارة المستشفيات -->
         <div class="admin-section-card">
           <div class="admin-section-title">
             <span style="color:var(--accent-blue);">🏥 3. إدارة المستشفيات ومصارف الدم</span>
@@ -1602,7 +1579,6 @@
           </button>
         </div>
 
-        <!-- 4. قائمة المتبرعين -->
         <div class="admin-section-card">
           <div class="admin-section-title">
             <span>👥 4. قائمة المتبرعين (تفعيل / حذف)</span>
@@ -1610,7 +1586,6 @@
           <div id="adminDonorsWrapper" style="max-height:190px; overflow-y:auto;"></div>
         </div>
 
-        <!-- 5. النسخ الاحتياطي -->
         <div style="display:flex; gap:8px;">
           <button type="button" onclick="window.exportBackup()" style="background:var(--accent-blue); color:white; border:none; padding:8px 12px; border-radius:8px; font-size:12px; font-weight:800; cursor:pointer; flex:1;">📥 حفظ نسخة احتياطية (JSON)</button>
           <button type="button" onclick="document.getElementById('importFile').click()" style="background:#475569; color:white; border:none; padding:8px 12px; border-radius:8px; font-size:12px; font-weight:800; cursor:pointer; flex:1;">📤 استرجاع نسخة (JSON)</button>
@@ -1649,7 +1624,6 @@
   </footer>
 
   <script>
-    // الدوال الأساسية للنظام
     var STORAGE_KEY_DONORS = "wareed_donors_clean_v7";
     var STORAGE_KEY_BANKS = "wareed_banks_clean_v7";
     var STORAGE_KEY_SOS = "wareed_sos_clean_v7";
@@ -1792,14 +1766,14 @@
       BLOOD_TYPES.forEach(function(t) { counts[t] = 0; });
       allDonors.forEach(function(d) { if (counts[d.blood] !== undefined) counts[d.blood]++; });
 
-      var html = '<button type="button" class="blood-pill-btn ' + (currentBloodFilter === '' ? 'active' : '') + '" onclick="window.selectBloodPill('')">' +
+      var html = '<button type="button" class="blood-pill-btn ' + (currentBloodFilter === '' ? 'active' : '') + '" data-blood="" onclick="window.selectBloodPill(this.getAttribute(\'data-blood\'))">' +
         '<span class="blood-pill-type">الكل</span>' +
         '<span class="blood-pill-count">' + allDonors.length + ' متبرع</span>' +
         '</button>';
 
       BLOOD_TYPES.forEach(function(type) {
         var isActive = currentBloodFilter === type ? "active" : "";
-        html += '<button type="button" class="blood-pill-btn ' + isActive + '" onclick="window.selectBloodPill('' + type + '')">' +
+        html += '<button type="button" class="blood-pill-btn ' + isActive + '" data-blood="' + type + '" onclick="window.selectBloodPill(this.getAttribute(\'data-blood\'))">' +
           '<span class="blood-pill-type">' + type + '</span>' +
           '<span class="blood-pill-count">' + counts[type] + ' مسجل</span>' +
           '</button>';
@@ -1808,13 +1782,13 @@
     }
 
     window.selectBloodPill = function(type) {
-      currentBloodFilter = type;
+      currentBloodFilter = type || "";
       window.renderDonors();
     };
 
     window.quickFilterBlood = function(type) {
       document.getElementById("tab-search").checked = true;
-      currentBloodFilter = type;
+      currentBloodFilter = type || "";
       document.getElementById("filterReadiness").value = "";
       window.renderDonors();
     };
@@ -1931,7 +1905,7 @@
               '📞 ' + maskPhone(d.phone) +
             '</div>' +
             '<div class="action-btns-wrap" id="actions-' + d.id + '">' +
-              '<button type="button" class="btn-reveal" onclick="window.openPledge('' + d.id + '')">⚠️ إظهار الرقم للحالات الإنسانية</button>' +
+              '<button type="button" class="btn-reveal" data-id="' + d.id + '" onclick="window.openPledge(this.getAttribute(\'data-id\'))">⚠️ إظهار الرقم للحالات الإنسانية</button>' +
             '</div>' +
           '</div>' +
         '</div>';
@@ -2022,7 +1996,7 @@
       var allowed = rules[patientBlood] || [];
       var box = document.getElementById("compatResultArea");
       var badges = allowed.map(function(b) {
-        return '<button type="button" onclick="window.quickFilterBlood('' + b + '')" style="background:var(--primary); color:white; border:none; padding:10px 18px; border-radius:10px; font-size:16px; font-weight:900; cursor:pointer; margin:4px; direction:ltr;">' +
+        return '<button type="button" data-blood="' + b + '" onclick="window.quickFilterBlood(this.getAttribute(\'data-blood\'))" style="background:var(--primary); color:white; border:none; padding:10px 18px; border-radius:10px; font-size:16px; font-weight:900; cursor:pointer; margin:4px; direction:ltr;">' +
           b + ' 🔍' +
         '</button>';
       }).join("");
@@ -2034,7 +2008,6 @@
         '<div style="font-size:12px; color:var(--text-muted);">اضغط على أي فصيلة للبحث المباشر عن متبرعين مسجلين بها.</div>';
     };
 
-    // تسجيل المتبرع الجديد
     window.submitDonor = async function() {
       var rawPhone = document.getElementById("vPhone").value.trim();
       var arDigits = ['٠','١','٢','٣','٤','٥','٦','٧','٨','٩'];
@@ -2053,7 +2026,7 @@
       var submitBtn = document.querySelector("#regForm .btn-submit");
       var origBtnText = submitBtn.textContent;
       submitBtn.disabled = true;
-      submitBtn.textContent = "⏳ جاري حفظ البيانات في المنظومة...";
+      submitBtn.textContent = "⏳ جاري حفظ البيانات...";
 
       try {
         var res = await fetch('/api/donors', {
@@ -2091,7 +2064,6 @@
       }
     };
 
-    // الإدارة الذاتية
     window.donorSelfLogin = async function() {
       var rawPhone = document.getElementById("selfPhoneInput").value.trim();
       var arDigits = ['٠','١','٢','٣','٤','٥','٦','٧','٨','٩'];
@@ -2231,12 +2203,14 @@
       if (cleanAdmin.startsWith("0")) cleanAdmin = cleanAdmin.substring(1);
       if (!cleanAdmin.startsWith("218")) cleanAdmin = "218" + cleanAdmin;
 
-      var msg = "السلام عليكم، أود تأكيد وتوثيق حسابي كمتبرع في منصة وريد.\n" +
-                "كود المتبرع: " + donor.code + "\n" +
-                "فصيلة الدم: " + donor.blood + "\n" +
-                "المدينة: " + donor.city + "\n" +
-                "رقم الهاتف: " + donor.phone;
-
+      var msgLines = [
+        "السلام عليكم، أود تأكيد وتوثيق حسابي كمتبرع في منصة وريد.",
+        "كود المتبرع: " + donor.code,
+        "فصيلة الدم: " + donor.blood,
+        "المدينة: " + donor.city,
+        "رقم الهاتف: " + donor.phone
+      ];
+      var msg = msgLines.join("\n");
       var encodedMsg = encodeURIComponent(msg);
 
       document.getElementById("btnVerifyWhatsApp").href = "https://wa.me/" + cleanAdmin + "?text=" + encodedMsg;
@@ -2288,7 +2262,6 @@
       document.getElementById("themeToggleBtn").textContent = next === "dark" ? "☀️ الوضع النهاري" : "🌙 الوضع الليلي";
     };
 
-    // خدمات الإدارة
     window.printOfficialRoster = function() {
       var list = getDonors();
       var tbody = document.getElementById("printTableBody");
@@ -2309,7 +2282,7 @@
 
     window.exportCSV = function() {
       var list = getDonors();
-      var csvContent = "\uFEFFالكود,الفصيلة,المدينة,رقم الهاتف,وقت التواصل,التوثيق\r\n";
+      var rows = ["\uFEFFالكود,الفصيلة,المدينة,رقم الهاتف,وقت التواصل,التوثيق"];
       list.forEach(function(d) {
         var row = [
           d.code,
@@ -2319,8 +2292,9 @@
           d.preferredTime,
           d.isVerified ? "موثق" : "غير موثق"
         ].map(function(v) { return '"' + String(v).replace(/"/g, '""') + '"'; }).join(",");
-        csvContent += row + "\r\n";
+        rows.push(row);
       });
+      var csvContent = rows.join("\r\n");
       var blob = new Blob([csvContent], { type: "text/csv;charset=utf-8;" });
       var url = URL.createObjectURL(blob);
       var a = document.createElement("a");
@@ -2593,10 +2567,10 @@
             '<span style="color:' + (d.isVerified ? 'var(--success)' : 'var(--warning)') + '; font-weight:bold;">[' + (d.isVerified ? '✔ موثق' : '⏳ غير موثق') + ']</span>' +
           '</div>' +
           '<div style="display:flex; gap:4px;">' +
-            '<button type="button" onclick="window.adminToggleV('' + d.id + '')" style="background:' + (d.isVerified ? '#64748b' : '#15803d') + '; color:white; border:none; padding:4px 8px; border-radius:4px; font-size:11px; cursor:pointer;">' +
+            '<button type="button" data-id="' + d.id + '" onclick="window.adminToggleV(this.getAttribute(\'data-id\'))" style="background:' + (d.isVerified ? '#64748b' : '#15803d') + '; color:white; border:none; padding:4px 8px; border-radius:4px; font-size:11px; cursor:pointer;">' +
               (d.isVerified ? 'إلغاء التوثيق' : '✔ توثيق') +
             '</button>' +
-            '<button type="button" onclick="window.adminDelD('' + d.id + '')" style="background:#dc2626; color:white; border:none; padding:4px 8px; border-radius:4px; font-size:11px; cursor:pointer;">' +
+            '<button type="button" data-id="' + d.id + '" onclick="window.adminDelD(this.getAttribute(\'data-id\'))" style="background:#dc2626; color:white; border:none; padding:4px 8px; border-radius:4px; font-size:11px; cursor:pointer;">' +
               'حذف' +
             '</button>' +
           '</div>' +
@@ -2681,7 +2655,6 @@
       reader.readAsText(file);
     };
 
-    // التشغيل التلقائي عند فتح الصفحة
     window.addEventListener("DOMContentLoaded", function() {
       window.renderSosBanner();
       window.renderDonors();
