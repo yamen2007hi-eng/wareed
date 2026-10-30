@@ -80,7 +80,7 @@
       transition: background-color 0.25s, color 0.25s;
     }
 
-    /* الشريط العلوي البسيط */
+    /* الشريط العلوي */
     .simple-topbar {
       background: #0f172a;
       color: #e2e8f0;
@@ -307,7 +307,7 @@
       padding: 0 15px;
     }
 
-    /* شريط التنقل الرئيسي المحسن ليشمل إدارة الحساب */
+    /* شريط التنقل الرئيسي */
     .tab-radio { display: none; }
     .nav-bar {
       display: grid;
@@ -395,7 +395,7 @@
       gap: 8px;
     }
 
-    /* أزرار اختيار الفصيلة السريعة */
+    /* أزرار الفصائل */
     .blood-selector-title {
       font-size: 13.5px;
       font-weight: 800;
@@ -895,7 +895,7 @@
       text-align: center;
     }
 
-    /* أزرار الإجراءات الرئيسية */
+    /* أزرار الإجراءات */
     .btn-submit {
       width: 100%;
       padding: 14px;
@@ -979,7 +979,7 @@
       color: var(--text-muted);
     }
 
-    /* كشف الطباعة الورقي */
+    /* الطباعة */
     #printableRosterSection { display: none; }
     @media print {
       body * { visibility: hidden; }
@@ -1009,7 +1009,7 @@
 </head>
 <body>
 
-  <!-- شريط علوي هادئ وبسيط -->
+  <!-- شريط علوي -->
   <div class="simple-topbar">
     <div class="simple-topbar-inner">
       <div class="status-badge">
@@ -1072,7 +1072,7 @@
 
   <div class="container">
     
-    <!-- خيارات التبويب الـ 5 (بما فيها إدارة الحساب كمتبرع) -->
+    <!-- خيارات التبويب الـ 5 -->
     <input type="radio" name="main_nav" id="tab-search" class="tab-radio" checked>
     <input type="radio" name="main_nav" id="tab-banks" class="tab-radio">
     <input type="radio" name="main_nav" id="tab-compat" class="tab-radio">
@@ -1087,7 +1087,7 @@
       <label for="tab-self" class="nav-label">👤 إدارة حسابي</label>
     </div>
 
-    <!-- ================= 1: محرك البحث ================= -->
+    <!-- 1: محرك البحث -->
     <div id="view-search" class="view-box">
       <div class="card">
         <div class="section-head">
@@ -1165,7 +1165,7 @@
       </div>
     </div>
 
-    <!-- ================= 2: مصارف الدم ================= -->
+    <!-- 2: مصارف الدم -->
     <div id="view-banks" class="view-box">
       <div class="card">
         <div class="section-head">
@@ -1192,7 +1192,7 @@
       </div>
     </div>
 
-    <!-- ================= 3: فحص التوافق ================= -->
+    <!-- 3: فحص التوافق -->
     <div id="view-compat" class="view-box">
       <div class="card">
         <div class="section-head">
@@ -1218,7 +1218,7 @@
       </div>
     </div>
 
-    <!-- ================= 4: تسجيل متبرع ================= -->
+    <!-- 4: تسجيل متبرع -->
     <div id="view-reg" class="view-box">
       <div class="card">
         <div class="section-head">
@@ -1282,7 +1282,7 @@
       </div>
     </div>
 
-    <!-- ================= 5: إدارة حسابي كمتبرع (إدارة ذاتية) ================= -->
+    <!-- 5: إدارة حسابي كمتبرع -->
     <div id="view-self" class="view-box">
       <div class="card">
         <div class="section-head">
@@ -1290,7 +1290,6 @@
           <span style="font-size:12px; color:var(--accent-blue); font-weight:800;">تحكم ذاتي كامل</span>
         </div>
 
-        <!-- شاشة تسجيل دخول المتبرع -->
         <div id="selfLoginArea">
           <p style="font-size:13.5px; color:var(--text-muted); margin-bottom:16px;">
             أدخل رقم هاتفك المسجل والكود السري الخاص بك لتعديل مدينتك، فصيلتك، أو حذف حسابك نهائياً في أي وقت:
@@ -1310,7 +1309,6 @@
           </button>
         </div>
 
-        <!-- شاشة لوحة المتبرع بعد التحقق -->
         <div id="selfDashboardArea" style="display:none;">
           <div style="background:var(--bg-subtle); border:1px solid var(--border-color); border-radius:12px; padding:14px; margin-bottom:18px; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px;">
             <div>
@@ -1382,7 +1380,7 @@
 
   </div>
 
-  <!-- نافذة التعهد الأخلاقي لكشف الرقم -->
+  <!-- نافذة التعهد -->
   <div id="pledgeModal" class="modal-overlay">
     <div class="modal-box" style="border: 2px solid var(--primary); max-width:500px;">
       <div style="font-size:38px; margin-bottom:6px;">🤝</div>
@@ -1448,7 +1446,7 @@
           <button type="button" onclick="window.closeAdmin()" style="background:#64748b; color:white; border:none; padding:6px 14px; border-radius:6px; font-size:12px; font-weight:800; cursor:pointer;">خروج ✖</button>
         </div>
 
-        <!-- هاتف الإدارة لاستقبال رسائل التفعيل -->
+        <!-- هاتف الإدارة -->
         <div class="admin-section-card">
           <div class="admin-section-title">
             <span style="color:var(--success);">📱 رقم هاتف الإدارة لاستقبال رسائل التفعيل (واتساب و SMS)</span>
@@ -1462,7 +1460,7 @@
           <div style="font-size:11.5px; color:var(--text-muted); margin-top:5px;">هذا الرقم ستصل إليه رسائل الواتساب وSMS التلقائية من المتبرعين الجدد.</div>
         </div>
 
-        <!-- 1. التحكم في شريط الطوارئ -->
+        <!-- 1. شريط الطوارئ -->
         <div class="admin-section-card">
           <div class="admin-section-title">
             <span style="color:var(--primary);">📢 1. التحكم في شريط نداء الطوارئ</span>
@@ -1490,7 +1488,7 @@
           </button>
         </div>
 
-        <!-- 2. استيراد وتصدير المتبرعين (Excel / CSV / PDF Paste / طباعة) -->
+        <!-- 2. استيراد وتصدير -->
         <div class="admin-section-card">
           <div class="admin-section-title">
             <span style="color:var(--success);">📥 2. إدخال جماعي وتصدير الكشوفات</span>
@@ -1532,7 +1530,7 @@
           </div>
         </div>
 
-        <!-- 3. إدارة المستشفيات ومصارف الدم -->
+        <!-- 3. إدارة المستشفيات -->
         <div class="admin-section-card">
           <div class="admin-section-title">
             <span style="color:var(--accent-blue);">🏥 3. إدارة المستشفيات ومصارف الدم</span>
@@ -1604,7 +1602,7 @@
           </button>
         </div>
 
-        <!-- 4. إدارة المتبرعين -->
+        <!-- 4. قائمة المتبرعين -->
         <div class="admin-section-card">
           <div class="admin-section-title">
             <span>👥 4. قائمة المتبرعين (تفعيل / حذف)</span>
@@ -1623,7 +1621,7 @@
     </div>
   </div>
 
-  <!-- جدول الطباعة للورقيات -->
+  <!-- جدول الطباعة الورقي -->
   <div id="printableRosterSection">
     <div style="text-align:center; border-bottom:2px solid #000; padding-bottom:10px; margin-bottom:12px;">
       <h2 style="font-size:18px; font-weight:900;">منصة «وَرِيـد» للتبرع بالدم — كشف المتبرعين</h2>
@@ -1647,7 +1645,7 @@
 
   <footer class="site-footer">
     <div><strong>منصة وَرِيـد للتبرع بالدم</strong> — مبادرة تطوعية لخدمة المجتمع</div>
-    <div style="margin-top:4px; font-size:11.5px;">نظام الكود المشفر لحماية خصوصية المتبرعين (WRD-ID) • 2026</div>
+    <div style="margin-top:4px; font-size:11.5px;">نظام الكود لحماية خصوصية المتبرعين (WRD-ID) • 2026</div>
   </footer>
 
   <script>
@@ -2092,7 +2090,7 @@
       }
     };
 
-    // ================= الإدارة الذاتية للمتبرع =================
+    // الإدارة الذاتية
     window.donorSelfLogin = async function() {
       const rawPhone = document.getElementById("selfPhoneInput").value.trim();
       const arDigits = ['٠','١','٢','٣','٤','٥','٦','٧','٨','٩'];
@@ -2232,14 +2230,10 @@
       if (cleanAdmin.startsWith("0")) cleanAdmin = cleanAdmin.substring(1);
       if (!cleanAdmin.startsWith("218")) cleanAdmin = "218" + cleanAdmin;
 
-      const msg = "السلام عليكم، أود تأكيد وتوثيق حسابي كمتبرع في منصة وريد.
-" +
-                  "كود المتبرع: " + donor.code + "
-" +
-                  "فصيلة الدم: " + donor.blood + "
-" +
-                  "المدينة: " + donor.city + "
-" +
+      const msg = "السلام عليكم، أود تأكيد وتوثيق حسابي كمتبرع في منصة وريد.\n" +
+                  "كود المتبرع: " + donor.code + "\n" +
+                  "فصيلة الدم: " + donor.blood + "\n" +
+                  "المدينة: " + donor.city + "\n" +
                   "رقم الهاتف: " + donor.phone;
 
       const encodedMsg = encodeURIComponent(msg);
@@ -2314,8 +2308,7 @@
 
     window.exportCSV = function() {
       const list = getDonors();
-      let csvContent = "﻿الكود,الفصيلة,المدينة,رقم الهاتف,وقت التواصل,التوثيق
-";
+      let csvContent = "\uFEFFالكود,الفصيلة,المدينة,رقم الهاتف,وقت التواصل,التوثيق\r\n";
       list.forEach(d => {
         const row = [
           d.code,
@@ -2325,8 +2318,7 @@
           d.preferredTime,
           d.isVerified ? "موثق" : "غير موثق"
         ].map(v => '"' + String(v).replace(/"/g, '""') + '"').join(",");
-        csvContent += row + "
-";
+        csvContent += row + "\r\n";
       });
       const blob = new Blob([csvContent], { type: "text/csv;charset=utf-8;" });
       const url = URL.createObjectURL(blob);
