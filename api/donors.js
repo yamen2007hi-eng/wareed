@@ -34,20 +34,15 @@ module.exports = async (req, res) => {
   try {
     await initDB();
 
-    // جلب المتبرعين: يظهر الجميع للعامة فوراً
+    // جلب المتبرعين: إرسال الرقم للواجهة ليتم حجبه بالنجوم وكشفه فقط عند التعهد
     if (req.method === 'GET') {
-      const adminHeader = req.headers['x-admin-secret'];
-      const secret = (process.env.ADMIN_SECRET || 'yamen2007hi@gmail.com').trim();
-      const isAdmin = adminHeader === secret;
-
       const result = await pool.query('SELECT * FROM donors ORDER BY created_at DESC');
       const donors = result.rows.map(r => ({
         id: r.id,
         code: r.code,
         blood: r.blood,
         city: r.city,
-        phone: isAdmin ? r.phone : (r.phone ? r.phone.substring(0, 3) + '****' + r.phone.substring(7) : ''),
-        rawPhone: isAdmin ? r.phone : undefined,
+        phone: r.phone,
         preferredTime: r.preferred_time,
         lastDonationDate: r.last_donation_date,
         isVerified: r.is_verified,
