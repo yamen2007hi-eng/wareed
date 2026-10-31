@@ -494,6 +494,29 @@
       box-shadow: 0 0 0 3px var(--primary-light);
     }
 
+    .notice-box {
+      background: #eff6ff;
+      border: 1.5px solid #bfdbfe;
+      border-radius: 10px;
+      padding: 12px 14px;
+      font-size: 12.5px;
+      color: #1e3a8a;
+      line-height: 1.7;
+      margin-bottom: 14px;
+    }
+    .notice-box strong {
+      color: #1d4ed8;
+    }
+
+    .notice-warning {
+      background: #fffbeb;
+      border: 1.5px solid #fde68a;
+      color: #92400e;
+    }
+    .notice-warning strong {
+      color: #b45309;
+    }
+
     .activation-tabs {
       display: flex;
       flex-wrap: wrap;
@@ -1030,7 +1053,7 @@
         </div>
         <div class="kpi-card">
           <span class="kpi-val" id="kpiVerified">0</span>
-          <span class="kpi-lbl">✔ متبرعون موثقون ومفعلون</span>
+          <span class="kpi-lbl">✔ متبرعون موثقون ومعتمدون</span>
         </div>
         <div class="kpi-card">
           <span class="kpi-val" id="kpiReady">0</span>
@@ -1065,7 +1088,7 @@
       <label for="tab-banks" class="nav-label">🏥 مصارف الدم</label>
       <label for="tab-compat" class="nav-label">🧬 فحص التوافق</label>
       <label for="tab-reg" class="nav-label">➕ تسجيل متبرع</label>
-      <label for="tab-self" class="nav-label">👤 إدارة حسابي</label>
+      <label for="tab-self" class="nav-label">👤 ملفي الشخصي</label>
     </div>
 
     <!-- 1: محرك البحث -->
@@ -1130,7 +1153,7 @@
                 ✔ الموثقون فقط (<span id="countActVerified">0</span>)
               </button>
               <button type="button" id="btnActUnverified" class="act-filter-btn" onclick="window.setVerificationFilter('unverified')">
-                ⏳ غير الموثقين (<span id="countActUnverified">0</span>)
+                ⏳ قيد التأكيد (<span id="countActUnverified">0</span>)
               </button>
             </div>
           </div>
@@ -1207,6 +1230,11 @@
           <span style="font-size:12px; color:var(--success); font-weight:800;">🔒 خصوصية تامة</span>
         </div>
 
+        <div class="notice-box">
+          📌 <strong>تنبيه هام جداً:</strong><br>
+          ستقوم في الأسفل بإنشاء <strong>رمز دخول سري خاص بك (من 4 إلى 8 أرقام)</strong>. احفظ هذا الرمز جيداً في ملاحظات هاتفك أو محفظتك؛ فلن يتمكن أحد (ولا حتى أنت) من تعديل بياناتك أو حذف حسابك لاحقاً إلا بهذا الرمز.
+        </div>
+
         <form id="regForm" onsubmit="event.preventDefault(); window.submitDonor();">
           <div style="display:grid; grid-template-columns: 1fr 1fr; gap:12px;" class="form-group-spaced">
             <div>
@@ -1233,10 +1261,17 @@
             </div>
           </div>
 
-          <div class="form-group-spaced">
-            <label>📞 رقم الهاتف الليبي: <span style="color:var(--primary)">*</span></label>
-            <input type="tel" id="vPhone" placeholder="091XXXXXXX أو 092XXXXXXX" maxlength="10" dir="ltr" style="text-align:right;" required>
-            <span style="font-size:11.5px; color:var(--text-muted);">10 أرقام تبدأ بـ 09 (لن يظهر رقمك للعامة بل يُحجب بالنجوم لحمايتك).</span>
+          <div style="display:grid; grid-template-columns: 1fr 1fr; gap:12px;" class="form-group-spaced">
+            <div>
+              <label>📞 رقم الهاتف الليبي: <span style="color:var(--primary)">*</span></label>
+              <input type="tel" id="vPhone" placeholder="09XXXXXXXX" maxlength="10" dir="ltr" style="text-align:right;" required>
+              <span style="font-size:11px; color:var(--text-muted);">10 أرقام تبدأ بـ 09 (يُحجب بالنجوم لحمايتك).</span>
+            </div>
+            <div>
+              <label>🔑 الرمز السري الشخصي (PIN): <span style="color:var(--primary)">*</span></label>
+              <input type="password" id="vPin" placeholder="اختر من 4 إلى 8 أرقام سرية" minlength="4" maxlength="8" dir="ltr" style="text-align:right;" required>
+              <span style="font-size:11px; color:var(--text-muted);">رمزك الخاص لتعديل أو حذف حسابك.</span>
+            </div>
           </div>
 
           <div style="display:grid; grid-template-columns: 1fr 1fr; gap:12px;" class="form-group-spaced">
@@ -1258,22 +1293,22 @@
             </div>
           </div>
 
-          <button type="submit" class="btn-submit">توليد كود المتبرع وحفظ البيانات 🩸</button>
+          <button type="submit" class="btn-submit">توليد كود المتبرع وحفظ الحساب 🩸</button>
         </form>
       </div>
     </div>
 
-    <!-- 5: إدارة حسابي كمتبرع -->
+    <!-- 5: ملفي الشخصي -->
     <div id="view-self" class="view-box">
       <div class="card">
         <div class="section-head">
-          <h2>👤 إدارة حسابي كمتبرع (تعديل أو حذف الحساب)</h2>
-          <span style="font-size:12px; color:var(--accent-blue); font-weight:800;">تحكم ذاتي كامل</span>
+          <h2>👤 ملفي الشخصي (إدارة البيانات وحذف الحساب)</h2>
+          <span style="font-size:12px; color:var(--accent-blue); font-weight:800;">حماية كاملة بالـ PIN</span>
         </div>
 
         <div id="selfLoginArea">
-          <p style="font-size:13.5px; color:var(--text-muted); margin-bottom:16px;">
-            أدخل رقم هاتفك المسجل والكود السري الخاص بك لتعديل مدينتك، فصيلتك، أو حذف حسابك نهائياً في أي وقت:
+          <p style="font-size:13.5px; color:var(--text-muted); margin-bottom:14px;">
+            أدخل رقم هاتفك المسجل والرمز السري (PIN) للدخول إلى ملفك الشخصي:
           </p>
           <div class="filter-grid" style="margin-bottom:14px;">
             <div class="form-group">
@@ -1281,13 +1316,24 @@
               <input type="tel" id="selfPhoneInput" placeholder="09XXXXXXXX" dir="ltr" style="text-align:right;">
             </div>
             <div class="form-group">
-              <label>🔑 كود المتبرع (مثل WRD-1234):</label>
-              <input type="text" id="selfCodeInput" placeholder="WRD-XXXX" dir="ltr" style="text-align:right;">
+              <label>🔑 الرمز السري (PIN):</label>
+              <input type="password" id="selfPinInput" placeholder="الرمز السري المكون من 4-8 أرقام" dir="ltr" style="text-align:right;">
             </div>
           </div>
           <button type="button" class="btn-submit" onclick="window.donorSelfLogin()">
-            تسجيل الدخول لإدارة الحساب ⬅
+            تسجيل الدخول لملفي الشخصي ⬅
           </button>
+
+          <!-- التنويه الخاص بنسيان الرمز -->
+          <div class="notice-box notice-warning" style="margin-top:20px;">
+            💬 <strong>نسيت الرمز السري أو واجهت مشكلة؟</strong><br>
+            لحمايتك، لا يمكن الدخول أو التعديل بدون الرمز. إذا نسيت رمزك وتريد تعديل بياناتك أو حذف حسابك، تواصل مع إدارة المنظومة مباشرة عبر الواتساب للتحقق وتعديل حسابك فوراً:
+            <div style="margin-top:8px;">
+              <a id="btnForgotPinWa" href="https://wa.me/218926497310?text=%D8%A7%D9%84%D8%B3%D9%84%D8%A7%D9%85%20%D8%B9%D9%84%D9%8A%D9%83%D9%85%D8%8C%20%D9%84%D9%82%D8%AF%20%D9%86%D8%B3%D9%8A%D8%AA%20%D8%A7%D9%84%D8%B1%D9%85%D8%B2%20%D8%A7%D9%84%D8%B3%D8%B1%D9%8A%20%D9%84%D8%AD%D8%B3%D8%A7%D8%A8%D9%8A%20%D9%81%D9%8A%20%D9%88%D8%B1%D9%8A%D8%AF%20%D9%88%D8%A3%D8%B1%D8%BA%D8%A8%20%D9%81%D9%8A%20%D8%A7%D9%84%D9%85%D8%B3%D8%A7%D8%B9%D8%AF%D8%A9." target="_blank" style="display:inline-flex; align-items:center; gap:6px; background:#25d366; color:white; padding:7px 14px; border-radius:8px; font-size:12.5px; font-weight:800; text-decoration:none;">
+                💬 تواصل مع الإدارة عبر واتساب
+              </a>
+            </div>
+          </div>
         </div>
 
         <div id="selfDashboardArea" style="display:none;">
@@ -1380,7 +1426,7 @@
     <div class="modal-box" style="border: 2px solid var(--success); max-width:520px; text-align:center;">
       <div style="font-size:42px; margin-bottom:8px;">✅</div>
       <h3 style="color:var(--success); font-size:20px; font-weight:900; margin-bottom:6px;">تم تسجيلك في منصة وريد بنجاح!</h3>
-      <p style="font-size:13px; color:var(--text-muted); margin-bottom:14px;">كودك السري المحفوظ لحسابك هو:</p>
+      <p style="font-size:13px; color:var(--text-muted); margin-bottom:14px;">كودك العام هو:</p>
       
       <div style="background:var(--bg-subtle); border:2px dashed var(--success); padding:12px; border-radius:12px; margin-bottom:16px;">
         <span style="font-size:26px; font-weight:900; color:var(--primary); letter-spacing:1px;" id="modalDonorCode">WRD-0000</span>
@@ -1389,7 +1435,7 @@
 
       <div style="background:var(--success-light); border:1px solid var(--success-border); padding:12px 14px; border-radius:10px; margin-bottom:18px; font-size:13px; font-weight:700; color:var(--text-main); text-align:right; line-height:1.7;">
         💡 <strong>خطوة التوثيق السريعة:</strong><br>
-        لتوثيق رقمك وظهور شارة <span style="color:var(--success); font-weight:900;">«✔ موثق»</span> أمام المستشفيات والباحثين عن دم، يرجى تأكيد رقمك عبر خيار التواصل المباشر:
+        لتوثيق رقمك وظهور شارة <span style="color:var(--success); font-weight:900;">«✔ موثق ومعتمد»</span>، اضغط أدناه لإرسال رسالة التأكيد للإدارة:
       </div>
 
       <div style="display:flex; flex-direction:column; gap:10px; margin-bottom:14px;">
@@ -1429,7 +1475,7 @@
 
         <div class="admin-section-card">
           <div class="admin-section-title">
-            <span style="color:var(--success);">📱 رقم هاتف الإدارة لاستقبال رسائل التفعيل (واتساب و SMS)</span>
+            <span style="color:var(--success);">📱 رقم هاتف الإدارة لاستقبال رسائل التفعيل والدعم (واتساب و SMS)</span>
           </div>
           <div style="display:flex; gap:8px; margin-top:4px;">
             <input type="tel" id="admContactPhone" placeholder="0926497310" dir="ltr" style="text-align:right;">
@@ -1437,7 +1483,7 @@
               💾 حفظ الرقم
             </button>
           </div>
-          <div style="font-size:11.5px; color:var(--text-muted); margin-top:5px;">هذا الرقم ستصل إليه رسائل الواتساب وSMS التلقائية من المتبرعين الجدد.</div>
+          <div style="font-size:11.5px; color:var(--text-muted); margin-top:5px;">هذا الرقم ستصل إليه رسائل الواتساب وSMS التلقائية للمساعدة وتأكيد الحسابات.</div>
         </div>
 
         <div class="admin-section-card">
@@ -1583,7 +1629,7 @@
           <div class="admin-section-title">
             <span>👥 4. قائمة المتبرعين (تفعيل / حذف)</span>
           </div>
-          <div id="adminDonorsWrapper" style="max-height:190px; overflow-y:auto;"></div>
+          <div id="adminDonorsWrapper" style="max-height:220px; overflow-y:auto;"></div>
         </div>
 
         <div style="display:flex; gap:8px;">
@@ -1596,7 +1642,6 @@
     </div>
   </div>
 
-  <!-- جدول الطباعة الورقي -->
   <div id="printableRosterSection">
     <div style="text-align:center; border-bottom:2px solid #000; padding-bottom:10px; margin-bottom:12px;">
       <h2 style="font-size:18px; font-weight:900;">منصة «وَرِيـد» للتبرع بالدم — كشف المتبرعين</h2>
@@ -1624,10 +1669,10 @@
   </footer>
 
   <script>
-    var STORAGE_KEY_DONORS = "wareed_donors_clean_v7";
-    var STORAGE_KEY_BANKS = "wareed_banks_clean_v7";
-    var STORAGE_KEY_SOS = "wareed_sos_clean_v7";
-    var STORAGE_KEY_ADMIN_PHONE = "wareed_admin_phone_v7";
+    var STORAGE_KEY_DONORS = "wareed_donors_clean_v8";
+    var STORAGE_KEY_BANKS = "wareed_banks_clean_v8";
+    var STORAGE_KEY_SOS = "wareed_sos_clean_v8";
+    var STORAGE_KEY_ADMIN_PHONE = "wareed_admin_phone_v8";
     var BLOOD_TYPES = ["O+", "O-", "A+", "A-", "B+", "B-", "AB+", "AB-"];
 
     var initialBanksData = [
@@ -1874,8 +1919,8 @@
       container.innerHTML = filtered.map(function(d) {
         var r = calculateReadiness(d.lastDonationDate);
         var verBadge = d.isVerified
-          ? '<span class="badge-verified">✔ موثق</span>'
-          : '<span class="badge-unverified">⏳ غير موثق</span>';
+          ? '<span class="badge-verified">✔ موثق ومعتمد</span>'
+          : '<span class="badge-unverified">⏳ قيد التأكيد</span>';
         var rBadge = r.isReady
           ? '<span class="tag-status-ready">' + r.text + '</span>'
           : '<span class="tag-status-rest">' + r.text + '</span>';
@@ -2012,6 +2057,7 @@
       var rawPhone = document.getElementById("vPhone").value.trim();
       var arDigits = ['٠','١','٢','٣','٤','٥','٦','٧','٨','٩'];
       var phone = rawPhone.replace(/[٠-٩]/g, function(d) { return arDigits.indexOf(d); }).replace(/\D/g, "");
+      var pin = document.getElementById("vPin").value.trim();
       var blood = document.getElementById("vBlood").value;
       var city = document.getElementById("vCity").value;
       var preferredTime = document.getElementById("vPreferredTime").value;
@@ -2019,6 +2065,11 @@
 
       if (!/^09\d{8}$/.test(phone)) {
         alert("يرجى إدخال رقم هاتف ليبي صحيح مكون من 10 أرقام ويبدأ بـ 09.");
+        return;
+      }
+
+      if (!pin || pin.length < 4 || pin.length > 8) {
+        alert("يرجى إدخال رمز سري (PIN) مكون من 4 إلى 8 أرقام لحماية حسابك.");
         return;
       }
 
@@ -2036,6 +2087,7 @@
             blood: blood,
             city: city,
             phone: phone,
+            pin: pin,
             preferredTime: preferredTime,
             lastDonationDate: lastDate
           })
@@ -2068,10 +2120,10 @@
       var rawPhone = document.getElementById("selfPhoneInput").value.trim();
       var arDigits = ['٠','١','٢','٣','٤','٥','٦','٧','٨','٩'];
       var phone = rawPhone.replace(/[٠-٩]/g, function(d) { return arDigits.indexOf(d); }).replace(/\D/g, "");
-      var code = document.getElementById("selfCodeInput").value.trim().toUpperCase();
+      var pin = document.getElementById("selfPinInput").value.trim();
 
-      if (!phone || !code) {
-        alert("يرجى إدخال رقم الهاتف وكود المتبرع السري.");
+      if (!phone || !pin) {
+        alert("يرجى إدخال رقم الهاتف والرمز السري (PIN).");
         return;
       }
 
@@ -2082,7 +2134,7 @@
           body: JSON.stringify({
             action: 'donor_login',
             phone: phone,
-            code: code
+            pin: pin
           })
         });
         var data = await res.json();
@@ -2098,7 +2150,7 @@
           document.getElementById("selfLoginArea").style.display = "none";
           document.getElementById("selfDashboardArea").style.display = "block";
         } else {
-          alert(data.message || "بيانات الدخول غير صحيحة، تأكد من رقم الهاتف والكود.");
+          alert(data.message || "رقم الهاتف أو الرمز السري غير صحيح!");
         }
       } catch (err) {
         alert("حدث خطأ في الاتصال بالشبكة.");
@@ -2108,7 +2160,7 @@
     window.donorSelfLogout = function() {
       activeDonorSession = null;
       document.getElementById("selfPhoneInput").value = "";
-      document.getElementById("selfCodeInput").value = "";
+      document.getElementById("selfPinInput").value = "";
       document.getElementById("selfLoginArea").style.display = "block";
       document.getElementById("selfDashboardArea").style.display = "none";
     };
@@ -2120,6 +2172,7 @@
       var time = document.getElementById("selfEditTime").value;
       var isResting = document.getElementById("selfEditReady").value === "resting";
       var lastDate = isResting ? (activeDonorSession.lastDonationDate || new Date().toISOString().split("T")[0]) : "";
+      var pin = document.getElementById("selfPinInput").value.trim();
 
       try {
         var res = await fetch('/api/donors', {
@@ -2128,7 +2181,7 @@
           body: JSON.stringify({
             action: 'donor_update',
             phone: activeDonorSession.phone,
-            code: activeDonorSession.code,
+            pin: pin,
             blood: blood,
             city: city,
             preferredTime: time,
@@ -2154,6 +2207,7 @@
     window.donorSelfDelete = async function() {
       if (!activeDonorSession) return;
       if (!confirm("هل أنت متأكد من رغبتك في حذف حسابك وبياناتك نهائياً من المنصة؟")) return;
+      var pin = document.getElementById("selfPinInput").value.trim();
 
       try {
         var res = await fetch('/api/donors', {
@@ -2162,7 +2216,7 @@
           body: JSON.stringify({
             action: 'donor_delete',
             phone: activeDonorSession.phone,
-            code: activeDonorSession.code
+            pin: pin
           })
         });
         var data = await res.json();
@@ -2274,7 +2328,7 @@
           '<td>' + d.city + '</td>' +
           '<td style="direction:ltr; font-weight:bold;">' + d.phone + '</td>' +
           '<td>' + formatTimeLabel(d.preferredTime) + '</td>' +
-          '<td>' + (d.isVerified ? "موثق" : "غير موثق") + '</td>' +
+          '<td>' + (d.isVerified ? "موثق ومعتمد" : "قيد التأكيد") + '</td>' +
         '</tr>';
       }).join("");
       window.print();
@@ -2384,13 +2438,13 @@
       var arDigits = ['٠','١','٢','٣','٤','٥','٦','٧','٨','٩'];
       var normalizedText = rawText.replace(/[٠-٩]/g, function(d) { return arDigits.indexOf(d); });
 
-      var lines = normalizedText.split(/\r?\n/);
+      var lines = normalizedText.split(/\\r?\\n/);
       var citiesList = ["الزاوية", "صرمان", "صبراتة", "زوارة", "طرابلس", "غريان", "مصراتة", "بنغازي", "سبها"];
       var records = [];
 
       lines.forEach(function(line) {
         if (!line.trim()) return;
-        var phoneMatch = line.match(/(?:09|9)\d{8}/);
+        var phoneMatch = line.match(/(?:09|9)\\d{8}/);
         if (!phoneMatch) return;
         var phone = phoneMatch[0];
         if (phone.length === 9 && phone.startsWith("9")) phone = "0" + phone;
