@@ -16,6 +16,7 @@ async function initDB() {
       preferred_time TEXT DEFAULT '24/7',
       last_donation_date TEXT DEFAULT '',
       is_verified BOOLEAN DEFAULT false,
+      pin TEXT DEFAULT '1234',
       status TEXT DEFAULT 'active',
       created_at TEXT NOT NULL,
       updated_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
@@ -33,23 +34,20 @@ module.exports = async (req, res) => {
   try {
     await initDB();
 
-    // جلب المتبرعين الموثقين للعرض العام أو الجميع للإدارة
+    // جلب المتبرعين: يظهر الجميع للعامة فوراً
     if (req.method === 'GET') {
       const adminHeader = req.headers['x-admin-secret'];
       const secret = (process.env.ADMIN_SECRET || 'yamen2007hi@gmail.com').trim();
       const isAdmin = adminHeader === secret;
 
-      const query = isAdmin
-        ? 'SELECT * FROM donors ORDER BY created_at DESC'
-        : 'SELECT id, code, blood, city, preferred_time, last_donation_date, is_verified FROM donors WHERE is_verified = true ORDER BY created_at DESC';
-
-      const result = await pool.query(query);
+      const result = await pool.query('SELECT * FROM donors ORDER BY created_at DESC');
       const donors = result.rows.map(r => ({
         id: r.id,
         code: r.code,
         blood: r.blood,
         city: r.city,
-        phone: isAdmin ? r.phone : undefined,
+        phone: isAdmin ? r.phone : (r.phone ? r.phone.substring(0, 3) + '****' + r.phone.substring(7) : ''),
+        rawPhone: isAdmin ? r.phone : undefined,
         preferredTime: r.preferred_time,
         lastDonationDate: r.last_donation_date,
         isVerified: r.is_verified,
@@ -61,22 +59,22 @@ module.exports = async (req, res) => {
     if (req.method === 'POST') {
       const { action } = req.body || {};
 
-      // تسجيل دخول الإدارة
+      // دخول الإدارة
       if (action === 'admin_login') {
         const { password } = req.body;
         const secret = (process.env.ADMIN_SECRET || 'yamen2007hi@gmail.com').trim();
         if (password && password.trim() === secret) {
           return res.status(200).json({ success: true, token: secret });
         }
-        return res.status(401).json({ success: false, message: 'الرمز السري غير صحيح!' });
+        return res.status(401).json({ success: false, message: 'رمز الإدارة غير صحيح!' });
       }
 
-      // إدارة ذاتية: جلب بيانات المتبرع للتحقق
+      // تسجيل دخول المتبرع لملفه الشخصي برقم الهاتف + الـ PIN
       if (action === 'donor_login') {
-        const { phone, code } = req.body;
-        const result = await pool.query('SELECT * FROM donors WHERE phone = $1 AND code = $2', [phone, code]);
+        const { phone, pin } = req.body;
+        const result = await pool.query('SELECT * FROM donors WHERE phone = $1 AND pin = $2', [phone, pin]);
         if (result.rows.length === 0) {
-          return res.status(404).json({ success: false, message: 'بيانات الدخول غير صحيحة (تحقق من رقم الهاتف والكود).' });
+          return res.status(401).json({ success: false, message: 'رقم الهاتف أو الرمز السري (PIN) غير صحيح!' });
         }
         const d = result.rows[0];
         return res.status(200).json({
@@ -93,35 +91,35 @@ module.exports = async (req, res) => {
         });
       }
 
-      // إدارة ذاتية: المتبرع يعدل بياناته بنفسه
+      // تعديل بيانات الملف الشخصي للمتبرع
       if (action === 'donor_update') {
-        const { phone, code, blood, city, preferredTime, lastDonationDate } = req.body;
-        const check = await pool.query('SELECT id FROM donors WHERE phone = $1 AND code = $2', [phone, code]);
+        const { phone, pin, blood, city, preferredTime, lastDonationDate } = req.body;
+        const check = await pool.query('SELECT id FROM donors WHERE phone = $1 AND pin = $2', [phone, pin]);
         if (check.rows.length === 0) {
-          return res.status(403).json({ success: false, message: 'غير مصرح بتعديل هذه البيانات.' });
+          return res.status(403).json({ success: false, message: 'فشل التعديل: الرمز السري غير صحيح.' });
         }
         await pool.query(
           `UPDATE donors SET blood = $1, city = $2, preferred_time = $3, last_donation_date = $4, updated_at = NOW()
-           WHERE phone = $5 AND code = $6`,
-          [blood, city, preferredTime, lastDonationDate, phone, code]
+           WHERE phone = $5 AND pin = $6`,
+          [blood, city, preferredTime, lastDonationDate, phone, pin]
         );
-        return res.status(200).json({ success: true, message: 'تم تحديث بياناتك بنجاح!' });
+        return res.status(200).json({ success: true, message: 'تم حفظ تعديلاتك بنجاح!' });
       }
 
-      // إدارة ذاتية: المتبرع يحذف نفسه نهائياً
+      // حذف الملف الشخصي نهائياً
       if (action === 'donor_delete') {
-        const { phone, code } = req.body;
-        const resDel = await pool.query('DELETE FROM donors WHERE phone = $1 AND code = $2', [phone, code]);
+        const { phone, pin } = req.body;
+        const resDel = await pool.query('DELETE FROM donors WHERE phone = $1 AND pin = $2', [phone, pin]);
         if (resDel.rowCount === 0) {
-          return res.status(403).json({ success: false, message: 'تعذر الحذف، البيانات غير متطابقة.' });
+          return res.status(403).json({ success: false, message: 'فشل الحذف: الرمز السري غير صحيح.' });
         }
-        return res.status(200).json({ success: true, message: 'تم حذف حسابك وبياناتك من المنظومة بالكامل.' });
+        return res.status(200).json({ success: true, message: 'تم حذف حسابك نهائياً من المنظومة.' });
       }
 
       // تسجيل متبرع جديد
-      const { blood, city, phone, preferredTime, lastDonationDate } = req.body;
+      const { blood, city, phone, preferredTime, lastDonationDate, pin } = req.body;
       if (!phone || !/^09\d{8}$/.test(phone)) {
-        return res.status(400).json({ success: false, message: 'رقم هاتف غير صحيح.' });
+        return res.status(400).json({ success: false, message: 'رقم هاتف غير صحيح (10 أرقام تبدأ بـ 09).' });
       }
 
       const existing = await pool.query('SELECT code FROM donors WHERE phone = $1', [phone]);
@@ -135,21 +133,22 @@ module.exports = async (req, res) => {
       const id = 'd_' + Date.now();
       const code = 'WRD-' + Math.floor(1000 + Math.random() * 9000);
       const createdAt = new Date().toISOString().split('T')[0];
+      const donorPin = pin && pin.length >= 4 ? pin : '1234';
 
       await pool.query(
-        `INSERT INTO donors (id, code, blood, city, phone, preferred_time, last_donation_date, is_verified, created_at)
-         VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9)`,
-        [id, code, blood || 'O+', city || 'الزاوية', phone, preferredTime || '24/7', lastDonationDate || '', false, createdAt]
+        `INSERT INTO donors (id, code, blood, city, phone, preferred_time, last_donation_date, is_verified, pin, created_at)
+         VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10)`,
+        [id, code, blood || 'O+', city || 'الزاوية', phone, preferredTime || '24/7', lastDonationDate || '', false, donorPin, createdAt]
       );
 
       return res.status(201).json({
         success: true,
         message: 'تم التسجيل بنجاح!',
-        donor: { id, code, blood, city, phone, preferredTime, lastDonationDate, createdAt }
+        donor: { id, code, blood, city, phone, preferredTime, lastDonationDate, createdAt, isVerified: false }
       });
     }
 
-    // عمليات المسؤول (تفعيل أو حذف إداري)
+    // أوامر الإدارة (توثيق وحذف)
     if (req.method === 'PUT' || req.method === 'DELETE') {
       const adminHeader = req.headers['x-admin-secret'];
       const secret = (process.env.ADMIN_SECRET || 'yamen2007hi@gmail.com').trim();
