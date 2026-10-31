@@ -1705,9 +1705,18 @@
       }
     }
 
-    function saveSosConfig(cfg) {
+    async function saveSosConfig(cfg) {
       localStorage.setItem(STORAGE_KEY_SOS, JSON.stringify(cfg));
       window.renderSosBanner();
+      if (adminSessionToken) {
+        try {
+          await fetch('/api/donors', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json', 'x-admin-secret': adminSessionToken },
+            body: JSON.stringify({ action: 'save_sos', sos: cfg })
+          });
+        } catch (e) { console.error(e); }
+      }
     }
 
     window.renderSosBanner = function() {
@@ -1753,10 +1762,27 @@
       try {
         var res = await fetch('/api/donors');
         var data = await res.json();
-        if (res.ok && data.success && Array.isArray(data.donors)) {
-          saveDonors(data.donors);
-          if (document.getElementById("adminDashboardView").style.display === "block") {
-            window.renderAdminDonors();
+        if (res.ok && data.success) {
+          if (Array.isArray(data.donors)) {
+            localStorage.setItem(STORAGE_KEY_DONORS, JSON.stringify(data.donors));
+            window.renderDonors();
+            if (document.getElementById("adminDashboardView").style.display === "block") {
+              window.renderAdminDonors();
+            }
+          }
+          if (data.sos) {
+            localStorage.setItem(STORAGE_KEY_SOS, JSON.stringify(data.sos));
+            window.renderSosBanner();
+          }
+          if (Array.isArray(data.banks)) {
+            localStorage.setItem(STORAGE_KEY_BANKS, JSON.stringify(data.banks));
+            window.renderPublicBanks();
+            document.getElementById("kpiBanks").textContent = data.banks.length;
+          }
+          if (data.adminPhone) {
+            localStorage.setItem(STORAGE_KEY_ADMIN_PHONE, data.adminPhone);
+            var phEl = document.getElementById("admContactPhone");
+            if (phEl) phEl.value = data.adminPhone;
           }
         }
       } catch (err) {
@@ -1777,10 +1803,19 @@
       }
     }
 
-    function saveBanks(list) {
+    async function saveBanks(list) {
       localStorage.setItem(STORAGE_KEY_BANKS, JSON.stringify(list));
       window.renderPublicBanks();
       document.getElementById("kpiBanks").textContent = list.length;
+      if (adminSessionToken) {
+        try {
+          await fetch('/api/donors', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json', 'x-admin-secret': adminSessionToken },
+            body: JSON.stringify({ action: 'save_banks', banks: list })
+          });
+        } catch (e) { console.error(e); }
+      }
     }
 
     function calculateReadiness(lastDateStr) {
@@ -2237,13 +2272,27 @@
       return localStorage.getItem(STORAGE_KEY_ADMIN_PHONE) || "0926497310";
     }
 
-    window.adminSaveContactPhone = function() {
+    window.adminSaveContactPhone = async function() {
       var p = document.getElementById("admContactPhone").value.trim();
       if (!p) {
         alert("يرجى إدخال رقم هاتف صحيح.");
         return;
       }
       localStorage.setItem(STORAGE_KEY_ADMIN_PHONE, p);
+      if (adminSessionToken) {
+        try {
+          var res = await fetch('/api/donors', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json', 'x-admin-secret': adminSessionToken },
+            body: JSON.stringify({ action: 'save_admin_phone', phone: p })
+          });
+          var d = await res.json();
+          if (res.ok && d.success) {
+            alert("تم حفظ رقم الإدارة وتحديثه لكل الزوار بنجاح!");
+            return;
+          }
+        } catch (e) { console.error(e); }
+      }
       alert("تم حفظ رقم الإدارة لاستقبال رسائل التفعيل بنجاح!");
     };
 
